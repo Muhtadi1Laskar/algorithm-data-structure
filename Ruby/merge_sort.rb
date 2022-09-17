@@ -33,5 +33,3 @@ def merge_sort(array)
 
     return merge(sorted_left, sorted_right)
 end
-
-puts merge_sort([5, 4, 2, 1])

@@ -12,5 +12,3 @@ def selection_sort(array)
     end
     return array
 end
-
-puts selection_sort([5, 4, 3, 2, 1])

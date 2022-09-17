@@ -13,6 +13,3 @@ def insertion_sort(array)
     end
     return array
 end
-
-
-puts insertion_sort([5, 4, 3, 2, 1])

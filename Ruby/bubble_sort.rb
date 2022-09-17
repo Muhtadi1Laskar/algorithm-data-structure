@@ -8,6 +8,3 @@ def bubble_sort(array)
     end
     return array
 end
-
-
-puts bubble_sort([5, 4, 3, 2, 1])

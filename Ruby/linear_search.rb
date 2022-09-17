@@ -6,5 +6,3 @@ def linear_search(array, item)
     end
     return -1
 end
-
-puts linear_search([1, 2, 3, 4, 5], 3)

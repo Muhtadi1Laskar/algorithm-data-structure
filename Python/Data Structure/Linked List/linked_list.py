@@ -26,6 +26,22 @@ class LinkedList:
 
         return None
 
+    def delete(self, index):
+        if index < 0 and index > self.length:
+            return 'Index out of range'
+        if index == 0:
+            self.head = self.head.next
+            self.length -= 1
+            return
+        
+        previous_node = self.traverse_list(index-1)
+        unwanted_node = previous_node.next
+        previous_node.next = unwanted_node.next
+
+        self.length -= 1
+
+        return None
+
     def search(self, value):
         current_node = self.head
 
@@ -66,4 +82,8 @@ linked_list.push_front("Odin")
 
 print(linked_list.print_list())
 
-print(linked_list.traverse_list(4).value)
+linked_list.delete(6)
+
+print(linked_list.print_list())
+
+ 

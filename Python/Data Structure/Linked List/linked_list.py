@@ -14,6 +14,20 @@ class LinkedList:
             return True
         return False
     
+    def pre_append(self, value) -> None:
+        new_node = Node(value)
+
+        if self.is_empty():
+            self.head = new_node
+            self.tail = self.head
+            self.length += 1
+            return None
+
+        new_node.next = self.head
+        self.head = new_node
+        self.length += 1
+        return None
+    
     def append(self, value) -> None:
         new_node = Node(value)
 
@@ -56,3 +70,8 @@ linked_list.append('Odin')
 
 print(linked_list.print_list())
 print(linked_list.get_length())
+
+linked_list.pre_append('Assembly')
+
+print(linked_list.print_list())
+

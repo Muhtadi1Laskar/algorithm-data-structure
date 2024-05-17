@@ -42,6 +42,19 @@ class LinkedList:
         self.length += 1
         return None
     
+    def get_value(self, index):
+        if self.is_empty():
+            return None
+        current_node = self.head
+        iterator = 1
+
+        while current_node:
+            if iterator == index:
+                return current_node.value
+            current_node = current_node.next
+            iterator += 1
+        return None
+    
     def print_list(self) -> list:
         li = []
 
@@ -74,4 +87,6 @@ print(linked_list.get_length())
 linked_list.pre_append('Assembly')
 
 print(linked_list.print_list())
+
+print(linked_list.get_value(1))
 

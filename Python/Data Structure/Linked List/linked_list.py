@@ -43,6 +43,9 @@ class LinkedList:
         return None
     
     def insert(self, index, value):
+        if index < 0:
+            raise IndexError("Index out of range")
+        
         if self.is_empty():
             self.append(value)
             return None
@@ -118,5 +121,5 @@ linked_list.pre_append('Assembly')
 
 print(linked_list.print_list())
 
-print(linked_list.insert(7, 'S'))
+print(linked_list.insert(8, 'S'))
 print(linked_list.print_list())

@@ -42,7 +42,37 @@ class LinkedList:
         self.length += 1
         return None
     
-    def get_value(self, index):
+    def insert(self, index, value):
+        if self.is_empty():
+            self.append(value)
+            return None
+
+        if index == 1:
+            self.pre_append(value)
+            return None
+
+        new_node = Node(value)
+        previous_node = self.traverse(index-1)
+        new_node.next = previous_node.next
+        previous_node.next = new_node
+        self.length += 1
+        return None
+    
+    def traverse(self, index):
+        if self.is_empty():
+            return None
+        current_node = self.head
+        iterator = 1
+
+        while current_node:
+            if iterator == index:
+                return current_node
+            current_node = current_node.next
+            iterator += 1
+        return None
+        
+
+    def search(self, index):
         if self.is_empty():
             return None
         current_node = self.head
@@ -88,5 +118,5 @@ linked_list.pre_append('Assembly')
 
 print(linked_list.print_list())
 
-print(linked_list.get_value(1))
-
+print(linked_list.insert(7, 'S'))
+print(linked_list.print_list())

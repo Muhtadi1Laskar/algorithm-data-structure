@@ -45,10 +45,38 @@ class LinkedList {
         return;
     }
 
+    insert(index, value) {
+        if(index < 0 ) {
+            return "Index out of range";
+        }
+        if(index === 1) {
+            this.preAppend(value);
+            return;
+        }
+        const newNode = new Node(value);
+        let previousNode = this.traverse(index-1);
+        newNode.next = previousNode.next;
+        previousNode.next = newNode;
+        this.len++;
+        return;
+    }
+
     addToEmptyList(newNode) {
         this.head = newNode;
         this.tail = this.head;
         this.len++;
+    }
+
+    traverse(index) {
+        let currentNode = this.head;
+
+        for(let i=1;i<index;i++) {
+            if(!currentNode) {
+                return;
+            }
+            currentNode = currentNode.next;
+        }
+        return currentNode;
     }
 
     print() {
@@ -80,5 +108,9 @@ console.log(linkedList.print());
 
 linkedList.preAppend('Assembly');
 linkedList.preAppend('Machine Code');
+
+console.log(linkedList.print());
+
+linkedList.insert(10, 'x64 Assembly');
 
 console.log(linkedList.print());

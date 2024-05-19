@@ -43,7 +43,7 @@ class LinkedList:
         return None
     
     def insert(self, index, value):
-        if index < 0:
+        if index <= 0:
             raise IndexError("Index out of range")
         
         if self.is_empty():
@@ -59,6 +59,22 @@ class LinkedList:
         new_node.next = previous_node.next
         previous_node.next = new_node
         self.length += 1
+        return None
+    
+    def delete(self, index):
+        if index <= 0:
+            return IndexError("Index out of range")
+        
+        if index == 1:
+            self.head = self.head.next
+            self.length -= 1
+            return None
+        
+        previous_node = self.traverse(index-1)
+        unwanted_node = previous_node.next
+        previous_node.next = unwanted_node.next
+        self.length -= 1
+
         return None
     
     def traverse(self, index):
@@ -122,4 +138,8 @@ linked_list.pre_append('Assembly')
 print(linked_list.print_list())
 
 print(linked_list.insert(8, 'S'))
+print(linked_list.print_list())
+
+linked_list.delete(7)
+
 print(linked_list.print_list())

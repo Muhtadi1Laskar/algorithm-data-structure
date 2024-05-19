@@ -37,12 +37,13 @@ class DynamicArray {
         if(this.len === this.capacity) {
             this.resize();
         }
-
+        
+        this.len++;
+        
         for(let i=this.len-1;i>index-1;i--) {
             this.array[i] = this.array[i-1];
         }
         this.array[index] = value;
-        this.len++;
     }
 
     popBack() {
@@ -75,9 +76,9 @@ array.pushBack(1);
 array.pushBack(2);
 array.pushBack(3);
 
-console.log(array.array);
-console.log(array.capacity);
-console.log(array.len);
+// console.log(array.array);
+// console.log(array.capacity);
+// console.log(array.len);
 
 array.pushBack(4);
 array.pushBack(5);
@@ -85,23 +86,29 @@ array.pushBack(6);
 array.pushBack(7);
 
 console.log(array.array);
-console.log(array.capacity);
-console.log(array.len);
 
-console.log(array.get(7));
+array.insert(2, 200);
 
 console.log(array.array);
 
-array.popBack();
-array.popBack();
-array.popBack();
+// console.log(array.array);
+// console.log(array.capacity);
+// console.log(array.len);
 
-array.pushBack(10)
+// console.log(array.get(7));
 
-console.log(array.array);
+// console.log(array.array);
 
-console.log(array.array);
+// array.popBack();
+// array.popBack();
+// array.popBack();
 
-array.popFront();
+// array.pushBack(10)
 
-console.log(array.array);
+// console.log(array.array);
+
+// console.log(array.array);
+
+// array.popFront();
+
+// console.log(array.array);

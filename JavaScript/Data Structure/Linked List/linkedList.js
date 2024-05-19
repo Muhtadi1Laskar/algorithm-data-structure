@@ -19,19 +19,36 @@ class LinkedList {
         return false;
     }
 
+    preAppend(value) {
+        const newNode = new Node(value);
+
+        if(this.isEmpty()) {
+            this.addToEmptyList(newNode);
+            return;
+        }
+        newNode.next = this.head;
+        this.head = newNode;
+        this.len++;
+        return;
+    }
+
     append(value) {
         const newNode = new Node(value);
 
         if(this.isEmpty()) {
-            this.head = newNode;
-            this.tail = this.head;
-            this.len++;
+            this.addToEmptyList(newNode);
             return;
         }
         this.tail.next = newNode;
         this.tail = newNode;
         this.len++;
         return;
+    }
+
+    addToEmptyList(newNode) {
+        this.head = newNode;
+        this.tail = this.head;
+        this.len++;
     }
 
     print() {
@@ -56,5 +73,12 @@ linkedList.append('JavaScript');
 linkedList.append('Python');
 linkedList.append('Julia');
 linkedList.append('Haskell');
+linkedList.append('Clojure');
+linkedList.append('Odin');
+
+console.log(linkedList.print());
+
+linkedList.preAppend('Assembly');
+linkedList.preAppend('Machine Code');
 
 console.log(linkedList.print());

@@ -11,9 +11,9 @@ class LinkedList {
         this.tail = this.head;
         this.len = 0;
     }
-    
+
     isEmpty() {
-        if(!this.head) {
+        if (!this.head) {
             return true;
         }
         return false;
@@ -22,7 +22,7 @@ class LinkedList {
     preAppend(value) {
         const newNode = new Node(value);
 
-        if(this.isEmpty()) {
+        if (this.isEmpty()) {
             this.addToEmptyList(newNode);
             return;
         }
@@ -35,7 +35,7 @@ class LinkedList {
     append(value) {
         const newNode = new Node(value);
 
-        if(this.isEmpty()) {
+        if (this.isEmpty()) {
             this.addToEmptyList(newNode);
             return;
         }
@@ -46,15 +46,15 @@ class LinkedList {
     }
 
     insert(index, value) {
-        if(index < 0 ) {
+        if (index < 0) {
             return "Index out of range";
         }
-        if(index === 1) {
+        if (index === 1) {
             this.preAppend(value);
             return;
         }
         const newNode = new Node(value);
-        let previousNode = this.traverse(index-1);
+        let previousNode = this.traverse(index - 1);
         newNode.next = previousNode.next;
         previousNode.next = newNode;
         this.len++;
@@ -68,6 +68,21 @@ class LinkedList {
         return item;
     }
 
+    delete(index) {
+        if (index < 0 || index > this.len) {
+            return "Index out of range";
+        }
+        if (index === 1) {
+            this.pop();
+            return;
+        }
+        let previousNode = this.traverse(index - 1);
+        let currentNode = previousNode.next;
+        previousNode.next = currentNode.next;
+        this.len--;
+        return;
+    }
+
     addToEmptyList(newNode) {
         this.head = newNode;
         this.tail = this.head;
@@ -77,8 +92,8 @@ class LinkedList {
     traverse(index) {
         let currentNode = this.head;
 
-        for(let i=1;i<index;i++) {
-            if(!currentNode) {
+        for (let i = 1; i < index; i++) {
+            if (!currentNode) {
                 return;
             }
             currentNode = currentNode.next;
@@ -87,13 +102,13 @@ class LinkedList {
     }
 
     print() {
-        if(this.isEmpty()) {
+        if (this.isEmpty()) {
             return "The List is empty";
         }
         const array = [];
         let currentNode = this.head;
 
-        while(currentNode) {
+        while (currentNode) {
             array.push(currentNode.value);
             currentNode = currentNode.next;
         }
@@ -116,14 +131,10 @@ console.log(linkedList.print());
 linkedList.preAppend('Assembly');
 linkedList.preAppend('Machine Code');
 
-console.log(linkedList.print());
-
 linkedList.insert(10, 'x64 Assembly');
 
 console.log(linkedList.print());
 
-linkedList.pop();
-linkedList.pop();
-linkedList.pop();
+linkedList.delete(9);
 
 console.log(linkedList.print());

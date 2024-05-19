@@ -61,6 +61,13 @@ class LinkedList {
         return;
     }
 
+    pop() {
+        const item = this.head.value;
+        this.head = this.head.next;
+        this.len--;
+        return item;
+    }
+
     addToEmptyList(newNode) {
         this.head = newNode;
         this.tail = this.head;
@@ -112,5 +119,11 @@ linkedList.preAppend('Machine Code');
 console.log(linkedList.print());
 
 linkedList.insert(10, 'x64 Assembly');
+
+console.log(linkedList.print());
+
+linkedList.pop();
+linkedList.pop();
+linkedList.pop();
 
 console.log(linkedList.print());

@@ -36,6 +36,29 @@ class BinarySearchTree {
             }
         }
     }
+
+    search(value) {
+        if(!this.root) {
+            return null;
+        }
+        let currentNode = this.root;
+
+        while(currentNode) {
+            if(value < currentNode.value) {
+                currentNode = currentNode.left;
+            }
+            else if(value > currentNode.value) {
+                currentNode = currentNode.right
+            }
+            else if(value === currentNode.value) {
+                return currentNode.value;
+            }
+            else {
+                return null;
+            }
+        }
+    }
+
 }
 
 const bst = new BinarySearchTree();
@@ -47,3 +70,5 @@ bst.insert('Odin');
 bst.insert('Haskell');
 
 console.log(bst);
+
+console.log(bst.search('Python'));

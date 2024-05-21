@@ -81,14 +81,12 @@ class LinkedList:
         if self.is_empty():
             return None
         current_node = self.head
-        iterator = 1
 
-        while current_node:
-            if iterator == index:
-                return current_node
+        for _ in range(1, index):
+            if not self.head:
+                return None
             current_node = current_node.next
-            iterator += 1
-        return None
+        return current_node
         
 
     def search(self, index):

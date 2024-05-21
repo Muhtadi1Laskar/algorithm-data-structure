@@ -81,6 +81,23 @@ class BinarySearchTree {
         return list;
     }
 
+    dfsInOrder() {
+        return this.traverseInOrder(this.root, []);
+    }
+
+    traverseInOrder(node, list) {
+        if(node.left) {
+            this.traverseInOrder(node.left, list);
+        }
+        
+        list.push(node.value);
+
+        if(node.right) {
+            this.traverseInOrder(node.right, list);
+        }
+        return list;
+    }
+
 }
 
 const bst = new BinarySearchTree();
@@ -94,3 +111,4 @@ bst.insert('Haskell');
 console.log(bst);
 
 console.log(bst.breadthFirstSearch());
+console.log(bst.dfsInOrder());

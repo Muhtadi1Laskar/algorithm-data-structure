@@ -59,6 +59,28 @@ class BinarySearchTree {
         }
     }
 
+    breadthFirstSearch() {
+        if(!this.root) {
+            return null;
+        }
+        let currentNode = this.root;
+        let list = [];
+        let queue = [currentNode];
+
+        while(queue.length > 0) {
+            currentNode = queue.pop();
+            list.push(currentNode.value);
+
+            if(currentNode.left) {
+                queue.push(currentNode.left);
+            }
+            if(currentNode.right) {
+                queue.push(currentNode.right);
+            }
+        }
+        return list;
+    }
+
 }
 
 const bst = new BinarySearchTree();
@@ -71,4 +93,4 @@ bst.insert('Haskell');
 
 console.log(bst);
 
-console.log(bst.search('Python'));
+console.log(bst.breadthFirstSearch());

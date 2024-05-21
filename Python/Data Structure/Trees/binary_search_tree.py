@@ -43,6 +43,25 @@ class BinarySearchTree:
                 return current_node.value
             else:
                 return False
+    
+    def breadth_first_search(self):
+        if not self.root:
+            return
+        
+        current_node = self.root
+        li = []
+        queue = [current_node]
+
+        while queue:
+            current_node = queue.pop()
+            li.append(current_node.value)
+
+            if current_node.left:
+                queue.append(current_node.left)
+            if current_node.right:
+                queue.append(current_node.right)
+
+        return li
 
     def traverse_in_order(self, node, list):
         if node.left:

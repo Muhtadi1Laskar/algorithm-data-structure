@@ -85,6 +85,10 @@ class BinarySearchTree {
         return this.traverseInOrder(this.root, []);
     }
 
+    dfsPreOrder() {
+        return this.traversePreOrder(this.root, []);
+    }
+
     traverseInOrder(node, list) {
         if(node.left) {
             this.traverseInOrder(node.left, list);
@@ -92,6 +96,19 @@ class BinarySearchTree {
         
         list.push(node.value);
 
+        if(node.right) {
+            this.traverseInOrder(node.right, list);
+        }
+        return list;
+    }
+
+    traversePreOrder(node, list) {
+        list.push(node.value);
+
+        if(node.left) {
+            this.traverseInOrder(node.left, list);
+        }
+        
         if(node.right) {
             this.traverseInOrder(node.right, list);
         }

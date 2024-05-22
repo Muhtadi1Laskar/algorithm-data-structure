@@ -1,3 +1,5 @@
+from functools import lru_cache
+
 def fib(n: int) -> int:
     if n <= 2:
         return 1
@@ -10,8 +12,15 @@ def fib_memo(n: int, memo: dict = {}) -> int:
     if n <= 2:
         return 1
     
-    memo[n] = fib_memo(n-1, memo) + fib_memo(n-2, memo)
+    memo[n] = fib_memo(n-1) + fib_memo(n-2)
+
     return memo[n]
+
+@lru_cache(maxsize=None)
+def fib_memo_auto(n: int) -> int:
+    if n <= 2:
+        return 1
+    return fib_memo_auto(n-2) + fib_memo_auto(n-1)
 
 def fib_loop(n: int) -> int:
     if n == 0:
@@ -25,9 +34,10 @@ def fib_loop(n: int) -> int:
     
     return nexts
 
-
 # print(fib(10))
 
 # print(fib_memo(100))
 
-print(fib_loop(100))
+# print(fib_loop(100))
+
+# print(fib_memo_auto(100))

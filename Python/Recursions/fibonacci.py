@@ -1,4 +1,5 @@
 from functools import lru_cache
+from typing import Generator
 
 def fib(n: int) -> int:
     if n <= 2:
@@ -34,6 +35,19 @@ def fib_loop(n: int) -> int:
     
     return nexts
 
+def fib_seq(n: int) -> Generator[int, None, None]:
+    yield 0
+
+    if n > 0:
+        yield 1
+    
+    last: int = 0
+    nexts: int = 1
+
+    for _ in range(1, n):
+        last, nexts = nexts, last + nexts
+        yield nexts
+
 # print(fib(10))
 
 # print(fib_memo(100))
@@ -41,3 +55,6 @@ def fib_loop(n: int) -> int:
 # print(fib_loop(100))
 
 # print(fib_memo_auto(100))
+
+for i in fib_seq(10):
+    print(i)

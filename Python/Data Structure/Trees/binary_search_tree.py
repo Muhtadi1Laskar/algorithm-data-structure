@@ -10,24 +10,24 @@ class BinarySearchTree:
         self.root = None
     
     def insert(self, value) -> None:
-        new_node = Node(value)
-
-        if not self.root:
-            self.root = new_node
-            return
-
-        current_node = self.root
-        while True:
-            if value < current_node.value:
-                if not current_node.left:
-                    current_node.left = new_node
-                    return 
-                current_node = current_node.left
+        if self.root is None:
+            self.root = Node(value)
+            return 
+        else:
+            self._insert(self.root, value)
+        return 
+    
+    def _insert(self, node, value):
+        if value < node.value:
+            if node.left is None:
+                node.left = Node(value)
             else:
-                if not current_node.right:
-                    current_node.right = new_node
-                    return
-                current_node = current_node.right
+                self._insert(node.left, value)
+        else:
+            if node.right is None:
+                node.right = Node(value)
+            else:
+                self._insert(node.right, value)
     
     def look_up(self, value):
         if not self.root:
@@ -89,7 +89,6 @@ class BinarySearchTree:
 
     def DFS_in_preorder(self):
         return self.traverse_in_preorder(self.root, [])
-    
     
 
 

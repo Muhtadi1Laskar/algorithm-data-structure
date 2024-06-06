@@ -127,6 +127,16 @@ class BinarySearchTree {
         return list;
     }
 
+    sums(currentNode=this.root) {
+        if(!currentNode) {
+            return 0;
+        }
+        const leftSum = this.sums(currentNode.left);
+        const rightSum = this.sums(currentNode.right);
+
+        return currentNode.value + leftSum + rightSum;
+    }
+
 }
 
 const bst = new BinarySearchTree();

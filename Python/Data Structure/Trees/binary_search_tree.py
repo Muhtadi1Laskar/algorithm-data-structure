@@ -95,8 +95,15 @@ class BinarySearchTree:
             li += self._postorder(node.right)
             li.append(node.value)
         return li
-
     
+    def sums(self, current_node):
+        if current_node is None:
+            return 0
+        
+        leftSum = self.sums(current_node.left)
+        rightSum = self.sums(current_node.right)
+
+        return current_node.value + leftSum + rightSum
 
 
 bst = BinarySearchTree()
@@ -109,4 +116,4 @@ bst.insert('Haskell')
 
 print(bst.preorder())
 
-print(bst.look_up('Python'))
+print(bst.look_up('Python

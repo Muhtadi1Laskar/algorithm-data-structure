@@ -116,4 +116,6 @@ bst.insert('Haskell')
 
 print(bst.preorder())
 
-print(bst.look_up('Python
+print(bst.look_up('Python'))
+
+print(bst.sums(bst.root))

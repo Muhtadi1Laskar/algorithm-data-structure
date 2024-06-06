@@ -10,71 +10,66 @@ class BinarySearchTree {
     constructor() {
         this.root = null;
     }
-
     insert(value) {
-        let newNode = new Node(value);
-
         if (!this.root) {
-            this.root = newNode;
+            this.root = new Node(value);
             return;
+        } else {
+            this._insert(this.root, value);
         }
-        let currentNode = this.root;
+    }
 
-        while (true) {
-            if (value < currentNode.value) {
-                if (!currentNode.left) {
-                    currentNode.left = newNode;
-                    return;
-                }
-                currentNode = currentNode.left;
+    _insert(node, value) {
+        if (value < node.value) {
+            if (!node.left) {
+                node.left = new Node(value);
             } else {
-                if (!currentNode.right) {
-                    currentNode.right = newNode
-                    return;
-                }
-                currentNode = currentNode.right;
+                this._insert(node.left, value);
+            }
+        } else {
+            if (!node.right) {
+                node.right = new Node(value);
+            } else {
+                this._insert(node.right, value);
             }
         }
     }
 
     search(value) {
-        if(!this.root) {
+        if (!this.root) {
             return null;
         }
         let currentNode = this.root;
 
-        while(currentNode) {
-            if(value < currentNode.value) {
+        while (currentNode) {
+            if (value < currentNode.value) {
                 currentNode = currentNode.left;
-            }
-            else if(value > currentNode.value) {
+            } else if (value > currentNode.value) {
                 currentNode = currentNode.right
-            }
-            else if(value === currentNode.value) {
+            } else if (value === currentNode.value) {
                 return currentNode.value;
-            }
-            else {
+            } else {
                 return null;
             }
         }
     }
 
     breadthFirstSearch() {
-        if(!this.root) {
+        if (!this.root) {
             return null;
         }
         let currentNode = this.root;
         let list = [];
         let queue = [currentNode];
 
-        while(queue.length > 0) {
+        while (queue.length > 0) {
             currentNode = queue.pop();
             list.push(currentNode.value);
 
-            if(currentNode.left) {
+            if (currentNode.left) {
                 queue.push(currentNode.left);
             }
-            if(currentNode.right) {
+            if (currentNode.right) {
                 queue.push(currentNode.right);
             }
         }
@@ -94,13 +89,13 @@ class BinarySearchTree {
     }
 
     traverseInOrder(node, list) {
-        if(node.left) {
+        if (node.left) {
             this.traverseInOrder(node.left, list);
         }
-        
+
         list.push(node.value);
 
-        if(node.right) {
+        if (node.right) {
             this.traverseInOrder(node.right, list);
         }
         return list;
@@ -109,22 +104,22 @@ class BinarySearchTree {
     traversePreOrder(node, list) {
         list.push(node.value);
 
-        if(node.left) {
+        if (node.left) {
             this.traverseInOrder(node.left, list);
         }
-        
-        if(node.right) {
+
+        if (node.right) {
             this.traverseInOrder(node.right, list);
         }
         return list;
     }
 
     traversePostOrder(node, list) {
-        if(node.left) {
+        if (node.left) {
             this.traverseInOrder(node.left, list);
         }
-        
-        if(node.right) {
+
+        if (node.right) {
             this.traverseInOrder(node.right, list);
         }
 

@@ -62,33 +62,40 @@ class BinarySearchTree:
                 queue.append(current_node.right)
 
         return li
+    
+    def inorder(self):
+        return self._inorder(self.root)
+    
+    def _inorder(self, node):
+        li = []
+        if node is not None:
+            li += self._inorder(node.left)
+            li.append(node.value)
+            li += self._inorder(node.right)
+        return li
+    
+    def preorder(self):
+        return self._preorder(self.root)
+    
+    def _preorder(self, node):
+        li = []
+        if node is not None:
+            li.append(node.value)
+            li += self._inorder(node.left)
+            li += self._inorder(node.right)
+        return li
+    
+    def postorder(self):
+        return self._postorder(self.root)
+    
+    def _postorder(self, node):
+        li = []
+        if node is not None:
+            li += self._postorder(node.left)
+            li += self._postorder(node.right)
+            li.append(node.value)
+        return li
 
-    def traverse_in_order(self, node, list):
-        if node.left:
-            self.traverse_in_order(node.left, list)
-
-        list.append(node.value)
-
-        if node.right:
-            self.traverse_in_order(node.right, list)
-        return list
-
-    def traverse_in_preorder(self, node, list):
-        list.append(node.value)
-
-        if node.left:
-            self.traverse_in_preorder(node.left, list)
-
-        if node.right:
-            self.traverse_in_preorder(node.right, list)
-
-        return list   
-
-    def DFS_in_order(self):
-        return self.traverse_in_order(self.root, [])
-
-    def DFS_in_preorder(self):
-        return self.traverse_in_preorder(self.root, [])
     
 
 
@@ -100,6 +107,6 @@ bst.insert('Python')
 bst.insert('Odin')
 bst.insert('Haskell')
 
-print(bst.DFS_in_preorder())
+print(bst.preorder())
 
 print(bst.look_up('Python'))

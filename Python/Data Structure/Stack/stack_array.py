@@ -27,6 +27,9 @@ class Stack:
         self.length -= 1
 
         return item
+
+    def peak(self):
+        return self.stack[0]
     
     def print_list(self):
         return self.stack

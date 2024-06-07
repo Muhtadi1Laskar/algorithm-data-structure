@@ -137,6 +137,25 @@ class BinarySearchTree {
         return currentNode.value + leftSum + rightSum;
     }
 
+    depth(value) {
+        return this._depth(this.root, value, 1);
+    }
+
+    _depth(node, value, depth) {
+        if(!node) {
+            return -1;
+        }
+        if(node.value === value) {
+            return depth;
+        }
+        if(value < node.value) {
+            return this._depth(node.left, value, depth+1);
+        }
+        else {
+            return this._depth(node.right, value, depth+1);
+        }
+    }
+
 }
 
 const bst = new BinarySearchTree();
@@ -151,3 +170,5 @@ console.log(bst);
 
 console.log(bst.breadthFirstSearch());
 console.log(bst.dfsInOrder());
+
+console.log(bst.depth('Python'));

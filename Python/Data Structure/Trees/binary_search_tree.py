@@ -105,26 +105,18 @@ class BinarySearchTree:
 
         return current_node.value + leftSum + rightSum
     
-    def depth(self, node, value):
+    def depth(self, value):
+        return self._depth(self.root, value, 0)
+    
+    def _depth(self, node, value, depth):
         if node is None:
             return -1
-
-        dist = -1
-
         if node.value == value:
-            return dist + 1
-        
-        dist = self.depth(node.left, value)
-
-        if dist >= 0:
-            return dist + 1
-        
-        dist = self.depth(node.right, value)
-
-        if dist >= 0:
-            return dist + 1
-
-        return dist
+            return depth
+        if value < node.value:
+            return self._depth(node.left, value, depth+1)
+        else:
+            return self._depth(node.right, value, depth+1)
         
 
 
@@ -142,4 +134,4 @@ print(bst.preorder())
 
 # print(bst.sums(bst.root))
 
-print(bst.depth(bst.root, 'Python'))
+print(bst.depth('Python'))

@@ -104,6 +104,28 @@ class BinarySearchTree:
         rightSum = self.sums(current_node.right)
 
         return current_node.value + leftSum + rightSum
+    
+    def depth(self, node, value):
+        if node is None:
+            return -1
+
+        dist = -1
+
+        if node.value == value:
+            return dist + 1
+        
+        dist = self.depth(node.left, value)
+
+        if dist >= 0:
+            return dist + 1
+        
+        dist = self.depth(node.right, value)
+
+        if dist >= 0:
+            return dist + 1
+
+        return dist
+        
 
 
 bst = BinarySearchTree()
@@ -116,6 +138,8 @@ bst.insert('Haskell')
 
 print(bst.preorder())
 
-print(bst.look_up('Python'))
+# print(bst.look_up('Python'))
 
-print(bst.sums(bst.root))
+# print(bst.sums(bst.root))
+
+print(bst.depth(bst.root, 'Python'))

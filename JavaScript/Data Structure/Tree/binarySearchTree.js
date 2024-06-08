@@ -127,8 +127,8 @@ class BinarySearchTree {
         return list;
     }
 
-    sums(currentNode=this.root) {
-        if(!currentNode) {
+    sums(currentNode = this.root) {
+        if (!currentNode) {
             return 0;
         }
         const leftSum = this.sums(currentNode.left);
@@ -142,18 +142,31 @@ class BinarySearchTree {
     }
 
     _depth(node, value, depth) {
-        if(!node) {
+        if (!node) {
             return -1;
         }
-        if(node.value === value) {
+        if (node.value === value) {
             return depth;
         }
-        if(value < node.value) {
-            return this._depth(node.left, value, depth+1);
+        if (value < node.value) {
+            return this._depth(node.left, value, depth + 1);
+        } else {
+            return this._depth(node.right, value, depth + 1);
         }
-        else {
-            return this._depth(node.right, value, depth+1);
+    }
+
+    height() {
+        return this._height(this.root);
+    }
+
+    _height(node) {
+        if (!node) {
+            return -1;
         }
+        const leftBranch = this._height(node.left);
+        const rightBranch = this._height(node.right);
+
+        return 1 + Math.max(leftBranch, rightBranch);
     }
 
 }
@@ -172,3 +185,5 @@ console.log(bst.breadthFirstSearch());
 console.log(bst.dfsInOrder());
 
 console.log(bst.depth('Python'));
+
+console.log(bst.height());

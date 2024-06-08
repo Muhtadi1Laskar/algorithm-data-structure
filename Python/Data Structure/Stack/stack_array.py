@@ -7,7 +7,7 @@ class Stack:
     def push(self, value):
         if self.top == self.array_size - 1:
             self.resize()
-        self.top = self.top + 1
+        self.top += 1
         self.stack[self.top] = value
         
         print(self.stack[self.top])
@@ -19,6 +19,20 @@ class Stack:
         for idx, item in enumerate(self.stack):
             new_stack[idx] = item
         self.stack = new_stack
+    
+    def pop(self):
+        value = None
+
+        if self.top > -1:
+            value = self.stack[self.top]
+            self.top -= 1
+        return value
+    
+    def peak(self):
+        if self.top > -1:
+            return self.top
+        return -1
+        
     
     def log(self):
         return self.stack
@@ -36,5 +50,10 @@ print(stack.log())
 
 stack.push('Number')
 stack.push('Number')
+stack.pop()
+
+print(stack.log())
+
+stack.push(123)
 
 print(stack.log())

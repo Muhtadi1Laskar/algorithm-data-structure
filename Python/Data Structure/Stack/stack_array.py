@@ -1,62 +1,40 @@
 class Stack:
-    def __init__(self):
-        self.stack = []
-        self.length = 0
+    def __init__(self, size):
+        self.top = -1
+        self.array_size = size
+        self.stack = size * [0]
     
-    def add(self, value):
-        if not self.stack:
-            self.stack.append(value)
-            self.length += 1
-            return
+    def push(self, value):
+        if self.top == self.array_size - 1:
+            self.resize()
+        self.top = self.top + 1
+        self.stack[self.top] = value
         
-        self.stack.append(None)
-        
-        for i in range(self.length-1, 0-1, -1):
-            self.stack[i+1] = self.stack[i]
-
-        self.stack[0] = value
-        self.length += 1
+        print(self.stack[self.top])
     
-    def pop(self):
-        item = self.stack[0]
+    def resize(self):
+        self.array_size = self.array_size * 2
+        new_stack = self.array_size * [0]
 
-        for i in range(0, self.length-1):
-            self.stack[i] = self.stack[i + 1]
-
-        self.stack[self.length-1] = 0
-        self.length -= 1
-
-        return item
-
-    def peak(self):
-        return self.stack[0]
+        for idx, item in enumerate(self.stack):
+            new_stack[idx] = item
+        self.stack = new_stack
     
-    def print_list(self):
+    def log(self):
         return self.stack
 
 
-stack = Stack()
+stack = Stack(5)
 
-stack.add(1)
-stack.add(2)
-stack.add(3)
-stack.add(4)
-stack.add(5)
+stack.push(1)
+stack.push(2)
+stack.push(3)
+stack.push(4)
+stack.push(5)
 
-print(stack.print_list())
+print(stack.log())
 
-stack.pop()
-stack.pop()
-stack.pop()
-stack.pop()
-stack.pop()
+stack.push('Number')
+stack.push('Number')
 
-print(stack.print_list())
-
-stack.add(1)
-stack.add(2)
-stack.add(3)
-stack.add(4)
-stack.add(5)
-
-print(stack.print_list())
+print(stack.log())

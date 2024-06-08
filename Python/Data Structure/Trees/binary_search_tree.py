@@ -117,6 +117,18 @@ class BinarySearchTree:
             return self._depth(node.left, value, depth+1)
         else:
             return self._depth(node.right, value, depth+1)
+    
+    def height(self):
+        return self._height(self.root)
+
+    def _height(self, node):
+        if node is None:
+            return -1
+        
+        leftBranch = self._height(node.left)
+        rightBranch = self._height(node.right)
+
+        return 1 + max(leftBranch, rightBranch) 
         
 
 

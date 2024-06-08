@@ -9,8 +9,6 @@ class Stack:
             self.resize()
         self.top += 1
         self.stack[self.top] = value
-        
-        print(self.stack[self.top])
     
     def resize(self):
         self.array_size = self.array_size * 2

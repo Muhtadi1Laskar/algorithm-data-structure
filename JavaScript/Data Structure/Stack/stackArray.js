@@ -24,6 +24,16 @@ class Stack {
         this.stack = newStack;
     }
 
+    pop() {
+        let value = 0;
+
+        if(this.top > -1) {
+            value = this.stack[this.top];
+            this.top--;        
+        }
+        return value;
+    }
+
     print() {
         return this.stack;
     }
@@ -45,4 +55,16 @@ stack.push(8);
 stack.push(9);
 stack.push(10);
 
+console.log(stack.print());
+
+stack.pop();
+stack.pop();
+stack.pop();
+
+console.log(stack.pop());
+
+stack.push(400);
+stack.push(400);
+stack.push(400);
+stack.push(400);
 console.log(stack.print());

@@ -34,6 +34,13 @@ class Stack {
         return value;
     }
 
+    peak() {
+        if(this.top < -1) {
+            return null;
+        }
+        return this.stack[this.top];
+    }
+
     print() {
         return this.stack;
     }

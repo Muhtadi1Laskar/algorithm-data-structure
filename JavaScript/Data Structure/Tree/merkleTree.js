@@ -59,6 +59,23 @@ class MerkleTree {
   get_root() {
     return this.root.value;
   }
+
+  logTree() {
+    let nodes = [];
+    this.__collectNodes(this.root, nodes);
+    return nodes;
+  }
+
+  __collectNodes(node, nodes) {
+    if(node) {
+      nodes.push({
+        value: node.value,
+        content: node.content
+      });
+      this.__collectNodes(node.left, nodes);
+      this.__collectNodes(node.right, nodes);
+    }
+  }
 }
 
 const array = ["C", "JavaScript", "Python", "Haskell", "Go", "Odin"];
@@ -66,3 +83,4 @@ const array = ["C", "JavaScript", "Python", "Haskell", "Go", "Odin"];
 const tree = new MerkleTree(array);
 
 console.log(tree.get_root());
+console.log(tree.logTree());

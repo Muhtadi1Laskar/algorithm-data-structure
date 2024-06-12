@@ -1,36 +1,20 @@
 import hashlib
 
-class MerkleTree:
-    def __init__(self, value):
-        self.leaves = [self.hash_data(leave) for leave in value]
-        self.root = self.build_tree(self.leaves)
+class Node:
+    def __init__(self, left, right, value, content, is_copied=False):
+        self.left = left
+        self.right = right
+        self.value = value
+        self.content = content
+        self.is_copied = is_copied
     
-    def hash_data(self, data):
-        return hashlib.sha256(data.encode('utf-8')).hexdigest()
-    
-    def build_tree(self, leaves):
-        if not leaves:
-            return None
-        
-        current_level = leaves[:]
-        
-        while len(current_level) > 1:
-            if len(current_level) % 2 != 0:
-                current_level.append(current_level[-1])
-            
-            next_level = []
-            for i in range(0, len(current_level), 2):
-                parent_hash = self.hash_data(current_level[i] + current_level[i+1])
-                next_level.append(parent_hash)
-            current_level = next_level
-        
-        return current_level[0]
-    
-    def get_root(self):
-        return self.root
+    def hash(value):
+        return hashlib.sha256(value.encode('utf08')).hexdigest()
 
-data = ['C', 'JavaScript', 'Python', 'Haskell', 'Go', 'Odin']
+    def __str__(self):
+        return str(self.value)
 
-merkle_tree = MerkleTree(data)
+    def copy(self):
+        return Node(self.left, self.right, self.value, self.content, True)
 
-print(merkle_tree.root)
+

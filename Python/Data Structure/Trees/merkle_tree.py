@@ -47,8 +47,12 @@ class MerkleTree:
         content = f"{left.content} + {right.content}"
 
         return Node(left, right, value, content)
+
+    def get_root(self):
+        return self.root
     
 
 values = ['C', 'JavaScript', 'Python', 'Haskell', 'Go', 'Odin']
 merkle_tree = MerkleTree(values)
-print("Merkle Root:", merkle_tree.root)
+
+print("Merkle Root:", merkle_tree.get_root())

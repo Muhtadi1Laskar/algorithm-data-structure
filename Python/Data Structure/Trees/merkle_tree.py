@@ -47,12 +47,29 @@ class MerkleTree:
         content = f"{left.content} + {right.content}"
 
         return Node(left, right, value, content)
+    
+    def print_tree(self):
+        nodes = []
+        self.__collect_nodes(self.root, nodes)
+        return nodes
+
+    def __collect_nodes(self, node, nodes):
+        if node is not None:
+            nodes.append({
+                "value": node.value,
+                "content": node.content
+            })
+            self.__collect_nodes(node.left, nodes)
+            self.__collect_nodes(node.right, nodes)
 
     def get_root(self):
         return self.root
-    
 
-values = ['C', 'JavaScript', 'Python', 'Haskell', 'Go', 'Odin']
+
+values = ["C", "JavaScript", "Python", "Haskell", "Go", "Odin"]
 merkle_tree = MerkleTree(values)
 
 print("Merkle Root:", merkle_tree.get_root())
+
+for _, value in enumerate(merkle_tree.print_tree()):
+    print(value)

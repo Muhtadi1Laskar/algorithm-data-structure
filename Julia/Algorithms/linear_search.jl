@@ -1,6 +1,5 @@
 function linear_search(li, item)
     idx = 1
-
     while idx <= length(li)
         if li[idx] == item
             return idx

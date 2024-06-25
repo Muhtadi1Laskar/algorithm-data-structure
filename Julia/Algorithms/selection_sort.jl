@@ -1,4 +1,4 @@
-function selection_sort(array)
+function selection_sort!(array)
     for i in 1:length(array)
         min = i
         for j in i+1:length(array)
@@ -15,4 +15,4 @@ end
 
 array = [5, 4, 3, 2, 1]
 
-println(selection_sort(array))
+println(selection_sort!(array))

@@ -1,4 +1,4 @@
-function insertion_sort(array)
+function insertion_sort!(array)
     for i in 2:length(array)
         key = array[i]
         j = i - 1
@@ -15,4 +15,4 @@ end
 
 array = [-5, 4, 3, 2, 10, 1]
 
-println(insertion_sort(array))
+println(insertion_sort!(array))

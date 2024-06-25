@@ -1,5 +1,5 @@
 function insertion_sort(array)
-    for i in 1:length(array)
+    for i in 2:length(array)
         key = array[i]
         j = i - 1
 
@@ -13,6 +13,6 @@ function insertion_sort(array)
     return array
 end
 
-array = [-5, 4, 3, 2, 10]
+array = [-5, 4, 3, 2, 10, 1]
 
 println(insertion_sort(array))

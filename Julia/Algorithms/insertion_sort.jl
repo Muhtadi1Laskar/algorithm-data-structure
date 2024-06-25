@@ -13,6 +13,6 @@ function insertion_sort(array)
     return array
 end
 
-array = [5, 4, 3, 2, 10]
+array = [-5, 4, 3, 2, 10]
 
 println(insertion_sort(array))

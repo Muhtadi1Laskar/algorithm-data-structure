@@ -11,14 +11,14 @@ function fib_memo(n, memo = Dict())
       return memo[n]
     end
     if n <= 1
-      return n  # Base case
+      return n  
     end
     memo[n] = fib_memo(n-1, memo) + fib_memo(n-2, memo)
     return memo[n]
 end
-  
-# Example usage
+
+
 n = 10
-println(fib_recursive(n)) 
+println(fib(n)) 
 println(fib_memo(n))  
   

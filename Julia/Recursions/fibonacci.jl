@@ -5,19 +5,20 @@ function fib(n)
     return fib(n-1) + fib(n-2)
 end
 
-function fib_loop(n)
-    if n == 0
-      return 0 
+
+function fib_memo(n, memo = Dict())
+    if haskey(memo, n)
+      return memo[n]
     end
-  
-    last = 0
-    first = 1
-  
-    for i in 1:n-1 
-      last, first = first, last + first
+    if n <= 1
+      return n  # Base case
     end
+    memo[n] = fib_memo(n-1, memo) + fib_memo(n-2, memo)
+    return memo[n]
+end
   
-    return first
-  end
+# Example usage
+n = 10
+println(fib_recursive(n)) 
+println(fib_memo(n))  
   
-  println(fib_loop(10))

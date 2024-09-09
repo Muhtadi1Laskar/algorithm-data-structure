@@ -10,9 +10,7 @@ class LinkedList:
         self.length = 0
     
     def is_empty(self):
-        if not self.head:
-            return True
-        return False
+        return not self.head
     
     def pre_append(self, value) -> None:
         new_node = Node(value)

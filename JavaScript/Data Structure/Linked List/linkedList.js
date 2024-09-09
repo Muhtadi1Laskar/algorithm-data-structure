@@ -13,10 +13,7 @@ class LinkedList {
     }
 
     isEmpty() {
-        if (!this.head) {
-            return true;
-        }
-        return false;
+        return !this.head;
     }
 
     preAppend(value) {

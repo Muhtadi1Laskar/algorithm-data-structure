@@ -1,26 +1,21 @@
-package main
+package main 
 
 import "fmt"
 
-func binarySearch(array []int, item int) int {
-	var l int = 0;
-	var r int = len(array) - 1;
-
-	for l <= r {
-		var mid int = l + (r-l) / 2;
-
-		if array[mid] == item {
-			return mid;
-		} else if array[mid] > item {
-			r = mid - 1;
-		} else {
-			l = mid + 1;
+func bubbleSort(array []int) []int {
+	for i := 0; i < len(array); i++ {
+		for j := i+1; j < len(array); j++ {
+			if array[i] > array[j] {
+				temp := array[i];
+				array[i] = array[j];
+				array[j] = temp;
+			}
 		}
 	}
-	return -1;
+	return array;
 }
 
 func main() {
-	array := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-	fmt.Println(binarySearch(array, 10));
+	array := []int{5, 4, 3, 2, 1};
+	fmt.Println(bubbleSort(array));
 }

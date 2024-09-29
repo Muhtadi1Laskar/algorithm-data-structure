@@ -52,6 +52,26 @@ func (list *LinkedList) Append(data string) {
 	return
 }
 
+func (list *LinkedList) Delete(index int) *Node {
+	if index == 1 {
+		currentNode := list.head;
+		list.head = currentNode.next;
+		list.length--;
+		return currentNode;
+	}
+	if index <= 0 {
+		fmt.Println("Index out of range");
+		return nil;
+	}
+	previousNode := list.TraverseToIndex(index-1);
+	currentNode := previousNode.next;
+
+	previousNode.next = currentNode.next;
+	list.length--;
+
+	return currentNode;
+}
+
 func (list *LinkedList) TraverseToIndex(index int) *Node {
 	if list.head == nil {
 		fmt.Println("The list is empty");
@@ -62,7 +82,7 @@ func (list *LinkedList) TraverseToIndex(index int) *Node {
 		fmt.Println("Index out of range");
 		return nil;
 	}
-	
+
 	currentNode := list.head;
 
 	for i := 1; i < index; i++ {
@@ -98,6 +118,9 @@ func main() {
 	lists.PreAppend("Assembly");
 	lists.PreAppend("Machine Code");
 
+	fmt.Println(lists.Log());
+
+	lists.Delete(3);
 	fmt.Println(lists.Log());
 }
 

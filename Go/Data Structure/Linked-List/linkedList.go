@@ -52,6 +52,25 @@ func (list *LinkedList) Append(data string) {
 	return
 }
 
+func (list *LinkedList) TraverseToIndex(index int) *Node {
+	if list.head == nil {
+		fmt.Println("The list is empty");
+		return nil;
+	}
+
+	if index < 0 {
+		fmt.Println("Index out of range");
+		return nil;
+	}
+	
+	currentNode := list.head;
+
+	for i := 1; i < index; i++ {
+		currentNode = currentNode.next;
+	}
+	return currentNode;
+}
+
 func (list *LinkedList) Log() []string {
 	currentNode := list.head;
 	var nodeData []string;

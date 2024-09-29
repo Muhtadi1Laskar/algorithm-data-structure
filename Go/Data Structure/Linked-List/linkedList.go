@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 type Node struct {
 	value string
@@ -91,7 +94,7 @@ func (list *LinkedList) TraverseToIndex(index int) *Node {
 	return currentNode;
 }
 
-func (list *LinkedList) Log() []string {
+func (list *LinkedList) Log() string {
 	currentNode := list.head;
 	var nodeData []string;
 
@@ -99,7 +102,9 @@ func (list *LinkedList) Log() []string {
 		nodeData = append(nodeData, currentNode.value);
 		currentNode = currentNode.next;
 	}
-	return nodeData;
+	outputString := strings.Join(nodeData, " ----> ");
+
+	return outputString;
 }
 
 func main() {

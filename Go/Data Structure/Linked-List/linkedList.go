@@ -94,6 +94,7 @@ func (list *LinkedList) TraverseToIndex(index int) *Node {
 	return currentNode;
 }
 
+
 func (list *LinkedList) Log() string {
 	currentNode := list.head;
 	var nodeData []string;
@@ -107,6 +108,56 @@ func (list *LinkedList) Log() string {
 	return outputString;
 }
 
+func (list *LinkedList) SwapNodes(val1, val2 string) {
+	if val1 == val2 {
+		fmt.Println("Both nodes have the same value, no need to swap.")
+		return
+	}
+
+	var prevX, prevY, nodeX, nodeY *Node
+	current := list.head
+
+	// Traverse the list to find nodes with val1 and val2
+	for current != nil {
+		if current.next != nil && current.next.value == val1 {
+			prevX = current
+			nodeX = current.next
+		} else if current.next != nil && current.next.value == val2 {
+			prevY = current
+			nodeY = current.next
+		}
+		if current.value == val1 {
+			nodeX = current
+		}
+		if current.value == val2 {
+			nodeY = current
+		}
+		current = current.next
+	}
+
+	// If either of the nodes wasn't found, we cannot swap
+	if nodeX == nil || nodeY == nil {
+		fmt.Println("One or both of the values were not found in the list.")
+		return
+	}
+
+	// Swap the nodes
+	if prevX != nil {
+		prevX.next = nodeY
+	} else {
+		list.head = nodeY
+	}
+
+	if prevY != nil {
+		prevY.next = nodeX
+	} else {
+		list.head = nodeX
+	}
+
+	// Swap next pointers
+	nodeX.next, nodeY.next = nodeY.next, nodeX.next
+}
+
 func main() {
 	lists := NewLinkedList();
 
@@ -118,15 +169,13 @@ func main() {
 	lists.Append("Odin");
 	lists.Append("Haskell");
 
-	fmt.Println(lists.Log());
+	// fmt.Println(lists.Log());
 
 	lists.PreAppend("Assembly");
 	lists.PreAppend("Machine Code");
 
 	fmt.Println(lists.Log());
-
-	lists.Delete(3);
+	
+	lists.SwapNodes("Go", "Julia");
 	fmt.Println(lists.Log());
 }
-
-

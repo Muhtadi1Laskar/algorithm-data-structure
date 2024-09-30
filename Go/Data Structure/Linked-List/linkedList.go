@@ -117,7 +117,6 @@ func (list *LinkedList) SwapNodes(val1, val2 string) {
 	var prevX, prevY, nodeX, nodeY *Node
 	current := list.head
 
-	// Traverse the list to find nodes with val1 and val2
 	for current != nil {
 		if current.next != nil && current.next.value == val1 {
 			prevX = current
@@ -135,13 +134,11 @@ func (list *LinkedList) SwapNodes(val1, val2 string) {
 		current = current.next
 	}
 
-	// If either of the nodes wasn't found, we cannot swap
 	if nodeX == nil || nodeY == nil {
 		fmt.Println("One or both of the values were not found in the list.")
 		return
 	}
 
-	// Swap the nodes
 	if prevX != nil {
 		prevX.next = nodeY
 	} else {
@@ -154,7 +151,6 @@ func (list *LinkedList) SwapNodes(val1, val2 string) {
 		list.head = nodeX
 	}
 
-	// Swap next pointers
 	nodeX.next, nodeY.next = nodeY.next, nodeX.next
 }
 
@@ -169,7 +165,7 @@ func main() {
 	lists.Append("Odin");
 	lists.Append("Haskell");
 
-	// fmt.Println(lists.Log());
+	fmt.Println(lists.Log());
 
 	lists.PreAppend("Assembly");
 	lists.PreAppend("Machine Code");

@@ -25,6 +25,15 @@ func (b *Bag) Log() {
 	}
 }
 
+func (b *Bag) Remove(item string) {
+	for i, val := range b.arr {
+		if val == item {
+			b.arr = append(b.arr[:i], b.arr[i+1:]...)
+			return
+		}
+	}
+}
+
 func main() {
 	arr := newBag();
 	arr.Add("Saitama");
@@ -32,6 +41,8 @@ func main() {
 	arr.Add("Zoro");
 	arr.Add("Billy Bat");
 	arr.Add("Zenetisu");
+
+	arr.Remove("Saitama");
 
 	arr.Log();
 }

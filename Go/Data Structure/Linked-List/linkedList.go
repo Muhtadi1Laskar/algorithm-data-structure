@@ -55,6 +55,30 @@ func (list *LinkedList) Append(data string) {
 	return
 }
 
+func (list *LinkedList) Insert(index int, data string) {
+	if index <= 0 || index > list.length+1 {
+		fmt.Println("Index out of bound");
+		return;
+	}
+
+	if index == 1 {
+		list.PreAppend(data);
+		return
+	}
+
+	previousNode := list.head;
+	for i := 1; i < index-1; i++ {
+		previousNode = previousNode.next;
+	}
+
+	newNode := &Node{ value: data };
+
+	newNode.next = previousNode.next;
+	previousNode.next = newNode;
+	list.length++;
+	return;
+}
+
 func (list *LinkedList) Delete(index int) *Node {
 	if index == 1 {
 		currentNode := list.head;
@@ -93,7 +117,6 @@ func (list *LinkedList) TraverseToIndex(index int) *Node {
 	}
 	return currentNode;
 }
-
 
 func (list *LinkedList) Log() string {
 	currentNode := list.head;
@@ -173,5 +196,8 @@ func main() {
 	fmt.Println(lists.Log());
 	
 	lists.SwapNodes("Go", "Julia");
+	fmt.Println(lists.Log());
+
+	lists.Insert(10, "Transistors");
 	fmt.Println(lists.Log());
 }

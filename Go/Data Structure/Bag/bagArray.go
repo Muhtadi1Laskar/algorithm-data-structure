@@ -28,8 +28,8 @@ func (b *Bag) Log() {
 func (b *Bag) Remove(item string) {
 	for i, val := range b.arr {
 		if val == item {
-			b.arr = append(b.arr[:i], b.arr[i+1:]...)
-			return
+			b.arr = append(b.arr[:i], b.arr[i+1:]...);
+			return;
 		}
 	}
 }

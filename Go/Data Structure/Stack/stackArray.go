@@ -22,8 +22,18 @@ func (s *Stack) Push(item string) {
 	s.array[s.top] = item;
 }
 
-func (s *Stack) Log() string {
-	return s.array[s.top];
+func (s *Stack) Pop() string {
+	var result string;
+
+	if s.top > -1 {
+		result = s.array[s.top];
+		s.top--;
+	}
+	return result;
+}
+
+func (s *Stack) Log() [5]string {
+	return s.array;
 }
 
 func main() {
@@ -35,5 +45,10 @@ func main() {
 	stack.Push("Conan");
 	stack.Push("Bill");
 
+	fmt.Println(stack.Log());
+
+	stack.Pop();
+	fmt.Println(stack.Log());
+	stack.Push("Gloria");
 	fmt.Println(stack.Log());
 }

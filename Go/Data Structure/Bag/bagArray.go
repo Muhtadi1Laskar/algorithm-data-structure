@@ -43,16 +43,16 @@ func (b *Bag) Remove(item string) {
 	}
 }
 
-func main() {
-	arr := newBag();
-	arr.Add("Saitama");
-	arr.Add("Luffy");
-	arr.Add("Zoro");
-	arr.Add("Billy Bat");
-	arr.Add("Zenetisu");
+// func main() {
+// 	arr := newBag();
+// 	arr.Add("Saitama");
+// 	arr.Add("Luffy");
+// 	arr.Add("Zoro");
+// 	arr.Add("Billy Bat");
+// 	arr.Add("Zenetisu");
 
-	arr.Remove("Saitama");
+// 	arr.Remove("Saitama");
 
-	arr.Log();
-	fmt.Println(arr.Search("Zoro"));
-}
+// 	arr.Log();
+// 	fmt.Println(arr.Search("Zoro"));
+// }

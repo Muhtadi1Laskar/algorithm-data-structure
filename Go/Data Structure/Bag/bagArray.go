@@ -25,6 +25,15 @@ func (b *Bag) Log() {
 	}
 }
 
+func (b *Bag) Search(item string) int {
+	for i := 0; i < len(b.arr); i++ {
+		if b.arr[i] == item {
+			return i;
+		}
+	}
+	return -1;
+}
+
 func (b *Bag) Remove(item string) {
 	for i, val := range b.arr {
 		if val == item {
@@ -45,4 +54,5 @@ func main() {
 	arr.Remove("Saitama");
 
 	arr.Log();
+	fmt.Println(arr.Search("Zoro"));
 }

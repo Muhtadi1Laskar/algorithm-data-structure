@@ -59,15 +59,15 @@ func main() {
 	stack.Push("Python");
 	stack.Push("Julia");
 	stack.Push("Go");
-	stack.Push("Groovy1");
-	stack.Push("Groovy2");
-	stack.Push("Groovy3");
-	stack.Push("Groovy4");
-	stack.Push("Groovy5");
-	stack.Push("Groovy6");
-	stack.Push("Groovy7");
-	stack.Push("Groovy11");
-	stack.Push("Groovy12");
+	stack.Push("Groovy");
+	stack.Push("Ada");
+	stack.Push("Assembly");
+	stack.Push("B");
+	stack.Push("Rust");
+	stack.Push("Jai");
+	stack.Push("Haskell");
+	stack.Push("Clojure");
+	stack.Push("Dart");
 
 	fmt.Println(stack.Log());
 

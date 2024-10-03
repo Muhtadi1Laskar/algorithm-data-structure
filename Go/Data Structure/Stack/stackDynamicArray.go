@@ -48,33 +48,34 @@ func (s *DynamicStack) Resize() *DynamicStack {
 		newArray[i] = s.array[i];
 	}
 	s.array = newArray;
-	
+
+	fmt.Println();
 	return s;
 }
 
-func main() {
-	stack := NewDynamicStack(10);
+// func main() {
+// 	stack := NewDynamicStack(10);
 
-	stack.Push("C");
-	stack.Push("Python");
-	stack.Push("Julia");
-	stack.Push("Go");
-	stack.Push("Groovy");
-	stack.Push("Ada");
-	stack.Push("Assembly");
-	stack.Push("B");
-	stack.Push("Rust");
-	stack.Push("Jai");
-	stack.Push("Haskell");
-	stack.Push("Clojure");
-	stack.Push("Dart");
+// 	stack.Push("C");
+// 	stack.Push("Python");
+// 	stack.Push("Julia");
+// 	stack.Push("Go");
+// 	stack.Push("Groovy");
+// 	stack.Push("Ada");
+// 	stack.Push("Assembly");
+// 	stack.Push("B");
+// 	stack.Push("Rust");
+// 	stack.Push("Jai");
+// 	stack.Push("Haskell");
+// 	stack.Push("Clojure");
+// 	stack.Push("Dart");
 
-	fmt.Println(stack.Log());
+// 	fmt.Println(stack.Log());
 
-	stack.Pop();
+// 	stack.Pop();
 
-	fmt.Println(stack.Peak());
-	stack.Push("Ruby");
+// 	fmt.Println(stack.Peak());
+// 	stack.Push("Ruby");
 	
-	fmt.Println(stack.Peak());
-}
+// 	fmt.Println(stack.Peak());
+// }

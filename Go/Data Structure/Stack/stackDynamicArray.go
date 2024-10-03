@@ -19,6 +19,16 @@ func (s *DynamicStack) Push(item string) {
 	s.array[s.top] = item;
 }
 
+func (s *DynamicStack) Pop() string {
+	var poppedItem string;
+
+	if s.top > -1 {
+		poppedItem = s.array[s.top];
+		s.top--;
+	}
+	return poppedItem;
+}
+
 func (s *DynamicStack) Log() []string {
 	return s.array;
 }
@@ -26,7 +36,7 @@ func (s *DynamicStack) Log() []string {
 func (s *DynamicStack) Resize() *DynamicStack {
 	newSize := len(s.array) * 2;
 	newArray := make([]string, newSize);
-	
+
 	for i := 0; i < len(s.array); i++ {
 		newArray[i] = s.array[i];
 	}
@@ -53,4 +63,8 @@ func main() {
 	stack.Push("Groovy12");
 
 	fmt.Println(stack.Log());
+
+	stack.Pop();
+
+	fmt.Println(stack.top);
 }

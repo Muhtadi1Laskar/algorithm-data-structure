@@ -36,6 +36,13 @@ func (s *Stack) Log() [5]string {
 	return s.array;
 }
 
+func (s *Stack) Peak() string {
+	if s.top <= -1 {
+		return "The stack is empty";
+	}
+	return s.array[s.top]
+}
+
 func main() {
 	stack := NewStack();
 
@@ -51,4 +58,11 @@ func main() {
 	fmt.Println(stack.Log());
 	stack.Push("Gloria");
 	fmt.Println(stack.Log());
+	fmt.Println(stack.Peak());
+	
+	stack.Pop();
+	stack.Pop();
+	stack.Pop();
+
+	fmt.Println(stack.Peak());
 }

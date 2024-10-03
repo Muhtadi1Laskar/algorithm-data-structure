@@ -40,29 +40,30 @@ func (s *Stack) Peak() string {
 	if s.top <= -1 {
 		return "The stack is empty";
 	}
+	fmt.Println(s.array[s.top]);
 	return s.array[s.top]
 }
 
-func main() {
-	stack := NewStack();
+// func main() {
+// 	stack := NewStack();
 
-	stack.Push("James");
-	stack.Push("Ice Cude");
-	stack.Push("Kevin Hart");
-	stack.Push("Conan");
-	stack.Push("Bill");
+// 	stack.Push("James");
+// 	stack.Push("Ice Cude");
+// 	stack.Push("Kevin Hart");
+// 	stack.Push("Conan");
+// 	stack.Push("Bill");
 
-	fmt.Println(stack.Log());
+// 	fmt.Println(stack.Log());
 
-	stack.Pop();
-	fmt.Println(stack.Log());
-	stack.Push("Gloria");
-	fmt.Println(stack.Log());
-	fmt.Println(stack.Peak());
+// 	stack.Pop();
+// 	fmt.Println(stack.Log());
+// 	stack.Push("Gloria");
+// 	fmt.Println(stack.Log());
+// 	fmt.Println(stack.Peak());
 	
-	stack.Pop();
-	stack.Pop();
-	stack.Pop();
+// 	stack.Pop();
+// 	stack.Pop();
+// 	stack.Pop();
 
-	fmt.Println(stack.Peak());
-}
+// 	fmt.Println(stack.Peak());
+// }

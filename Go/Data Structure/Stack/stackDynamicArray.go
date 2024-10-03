@@ -29,6 +29,13 @@ func (s *DynamicStack) Pop() string {
 	return poppedItem;
 }
 
+func (s *DynamicStack) Peak() string {
+	if s.top <= -1 {
+		return "The stack is empty";
+	}
+	return s.array[s.top];
+}
+
 func (s *DynamicStack) Log() []string {
 	return s.array;
 }
@@ -66,5 +73,8 @@ func main() {
 
 	stack.Pop();
 
-	fmt.Println(stack.top);
+	fmt.Println(stack.Peak());
+	stack.Push("Ruby");
+	
+	fmt.Println(stack.Peak());
 }

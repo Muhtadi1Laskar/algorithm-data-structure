@@ -14,7 +14,6 @@ func newArray() *Array {
 }
 
 func (array *Array) Push(item int) {
-	fmt.Println(array.len);
 	if array.len >= size {
 		fmt.Println("Array is full");
 		return;
@@ -25,20 +24,17 @@ func (array *Array) Push(item int) {
 	return;
 }
 
+func (array *Array) GetLength() int {
+	return array.len;
+}
+
 func main() {
 	array := newArray();
 
-	array.Push(1);
-	array.Push(2);
-	array.Push(3);
-	array.Push(4);
-	array.Push(5);
-	array.Push(6);
-	array.Push(7);
-	array.Push(8);
-	array.Push(9);
-	array.Push(10);
-	array.Push(10);
+	for i := 1; i <= 10; i++ {
+		array.Push(i);
+	}
 
 	fmt.Println(array.array);
+	fmt.Println(array.len);
 }

@@ -63,6 +63,13 @@ func (s *StackList) Pop() {
 	return;
 }
 
+func (s *StackList) Peak() string {
+	if s.top == nil {
+		return "The stack is empty";
+	}
+	return s.top.value;
+}
+
 func main() {
 	stack := NewStackList();
 
@@ -78,4 +85,5 @@ func main() {
 	stack.Pop();
 
 	fmt.Println(stack.Log());
+	fmt.Println(stack.Peak());
 }

@@ -26,6 +26,15 @@ func (arr *DynamicArray) GetLen() int {
 	return arr.len
 }
 
+func (arr *DynamicArray) Search(item string) int {
+	for i := 0; i < arr.len; i++ {
+		if arr.arr[i] == item {
+			return i;
+		}
+	}
+	return -1;
+}
+
 func (arr *DynamicArray) Resize() *DynamicArray {
 	newSize := arr.size * 2
 	newArray := make([]string, newSize)

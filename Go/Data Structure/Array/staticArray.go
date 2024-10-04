@@ -24,6 +24,20 @@ func (array *Array) Push(item int) {
 	return;
 }
 
+func (array *Array) Delete(index int) []int {
+	if index < 0 || index > array.len {
+		fmt.Println("Index out of Range");
+		return nil;
+	}
+	for i := index; i < len(array.array)-1; i++ {
+		array.array[i] = array.array[i+1];
+	}
+	array.len--;
+	array.array[array.len] = 0;
+
+	return array.array[:array.len];
+}
+
 func (array *Array) Traverse(fn func(int) int) []int {
 	var resultArray []int;
 
@@ -52,4 +66,21 @@ func main() {
 	fmt.Println(array.len);
 
 	fmt.Println(array.Traverse(double));
+
+	fmt.Println(array.Delete(0));
+	fmt.Println(array.Delete(1));
+	fmt.Println(array.Delete(2));
+	fmt.Println(array.Delete(3));
+	fmt.Println(array.Delete(4));
+	fmt.Println(array.Delete(5));
+	fmt.Println(array.array);
+
+	array.Push(100);
+	array.Push(200);
+	array.Push(300);
+	array.Push(400);
+	array.Push(500);
+	array.Push(600);
+
+	fmt.Println(array.array);
 }

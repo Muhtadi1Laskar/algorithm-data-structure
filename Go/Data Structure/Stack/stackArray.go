@@ -2,11 +2,11 @@ package main
 
 import "fmt"
 
-const size int = 5;
+const size int = 5
 
 type Stack struct {
 	array [5]string
-	top int
+	top   int
 }
 
 func NewStack() *Stack {
@@ -15,32 +15,32 @@ func NewStack() *Stack {
 
 func (s *Stack) Push(item string) {
 	if s.top == size-1 {
-		fmt.Println("Index out of Range");
-		return;
+		fmt.Println("Index out of Range")
+		return
 	}
-	s.top++;
-	s.array[s.top] = item;
+	s.top++
+	s.array[s.top] = item
 }
 
 func (s *Stack) Pop() string {
-	var result string;
+	var result string
 
 	if s.top > -1 {
-		result = s.array[s.top];
-		s.top--;
+		result = s.array[s.top]
+		s.top--
 	}
-	return result;
+	return result
 }
 
 func (s *Stack) Log() [5]string {
-	return s.array;
+	return s.array
 }
 
 func (s *Stack) Peak() string {
 	if s.top <= -1 {
-		return "The stack is empty";
+		return "The stack is empty"
 	}
-	fmt.Println(s.array[s.top]);
+	fmt.Println(s.array[s.top])
 	return s.array[s.top]
 }
 
@@ -60,7 +60,7 @@ func (s *Stack) Peak() string {
 // 	stack.Push("Gloria");
 // 	fmt.Println(stack.Log());
 // 	fmt.Println(stack.Peak());
-	
+
 // 	stack.Pop();
 // 	stack.Pop();
 // 	stack.Pop();

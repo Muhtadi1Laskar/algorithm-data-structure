@@ -4,55 +4,55 @@ import "fmt"
 
 type Array struct {
 	array []int
-	len int
+	len   int
 }
 
-const size int = 10;
+const size int = 10
 
 func newArray() *Array {
-	return &Array{array: make([]int, size), len: 0};
+	return &Array{array: make([]int, size), len: 0}
 }
 
 func (array *Array) Push(item int) {
 	if array.len >= size {
-		fmt.Println("Array is full");
-		return;
+		fmt.Println("Array is full")
+		return
 	}
-	array.array[array.len] = item;
-	array.len++;
+	array.array[array.len] = item
+	array.len++
 
-	return;
+	return
 }
 
 func (array *Array) Delete(index int) []int {
 	if index < 0 || index > array.len {
-		fmt.Println("Index out of Range");
-		return nil;
+		fmt.Println("Index out of Range")
+		return nil
 	}
 	for i := index; i < len(array.array)-1; i++ {
-		array.array[i] = array.array[i+1];
+		array.array[i] = array.array[i+1]
 	}
-	array.len--;
-	array.array[array.len] = 0;
+	array.len--
+	array.array[array.len] = 0
 
-	return array.array[:array.len];
+	return array.array[:array.len]
 }
 
 func (array *Array) Traverse(fn func(int) int) []int {
-	var resultArray []int;
+	var resultArray []int
 
 	for i := 0; i < len(array.array); i++ {
-		resultArray = append(resultArray, fn(array.array[i]));
+		resultArray = append(resultArray, fn(array.array[i]))
 	}
-	return resultArray;
+	return resultArray
 }
 
 func (array *Array) GetLength() int {
-	return array.len;
+	return array.len
 }
 
 func double(num int) int {
-	return num * num;
+	return num * num
 }
 
 // func main() {

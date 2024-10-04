@@ -2,18 +2,18 @@ package main
 
 func selectionSort(array []int) []int {
 	for i := 0; i < len(array); i++ {
-		var min int = i;
+		var min int = i
 
-		for j := i+1; j < len(array); j++ {
+		for j := i + 1; j < len(array); j++ {
 			if array[min] > array[j] {
-				min = j;
+				min = j
 			}
 		}
 		if min != i {
-			temp := array[i];
-			array[i] = array[min];
-			array[min] = temp;
+			temp := array[i]
+			array[i] = array[min]
+			array[min] = temp
 		}
 	}
-	return array;
+	return array
 }

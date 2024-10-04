@@ -4,53 +4,53 @@ import "fmt"
 
 type DynamicStack struct {
 	array []string
-	top int
+	top   int
 }
 
-func NewDynamicStack(size int) *DynamicStack { 
-	return &DynamicStack{ array: make([]string, size), top: -1 }
+func NewDynamicStack(size int) *DynamicStack {
+	return &DynamicStack{array: make([]string, size), top: -1}
 }
 
 func (s *DynamicStack) Push(item string) {
-	if s.top >= len(s.array) - 1 {
-		s.Resize();
+	if s.top >= len(s.array)-1 {
+		s.Resize()
 	}
-	s.top++;
-	s.array[s.top] = item;
+	s.top++
+	s.array[s.top] = item
 }
 
 func (s *DynamicStack) Pop() string {
-	var poppedItem string;
+	var poppedItem string
 
 	if s.top > -1 {
-		poppedItem = s.array[s.top];
-		s.top--;
+		poppedItem = s.array[s.top]
+		s.top--
 	}
-	return poppedItem;
+	return poppedItem
 }
 
 func (s *DynamicStack) Peak() string {
 	if s.top <= -1 {
-		return "The stack is empty";
+		return "The stack is empty"
 	}
-	return s.array[s.top];
+	return s.array[s.top]
 }
 
 func (s *DynamicStack) Log() []string {
-	return s.array;
+	return s.array
 }
 
 func (s *DynamicStack) Resize() *DynamicStack {
-	newSize := len(s.array) * 2;
-	newArray := make([]string, newSize);
+	newSize := len(s.array) * 2
+	newArray := make([]string, newSize)
 
 	for i := 0; i < len(s.array); i++ {
-		newArray[i] = s.array[i];
+		newArray[i] = s.array[i]
 	}
-	s.array = newArray;
+	s.array = newArray
 
-	fmt.Println();
-	return s;
+	fmt.Println()
+	return s
 }
 
 // func main() {
@@ -76,6 +76,6 @@ func (s *DynamicStack) Resize() *DynamicStack {
 
 // 	fmt.Println(stack.Peak());
 // 	stack.Push("Ruby");
-	
+
 // 	fmt.Println(stack.Peak());
 // }

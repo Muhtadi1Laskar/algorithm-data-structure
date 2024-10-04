@@ -22,6 +22,20 @@ func (arr *DynamicArray) Push(item string) {
 	return
 }
 
+func (arr *DynamicArray) Delete(index int) {
+	if index < 0 || index > arr.len {
+		fmt.Println("Index out of Range")
+		return
+	}
+
+	for i := index; i < arr.len-1; i++ {
+		arr.arr[i] = arr.arr[i+1]
+	}
+	arr.arr[arr.len-1] = ""
+	arr.len--
+	return
+}
+
 func (arr *DynamicArray) GetLen() int {
 	return arr.len
 }
@@ -62,6 +76,10 @@ func main() {
 	array.Push("COBOL")
 	array.Push("Chuck")
 	array.Push("Delphi")
+
+	fmt.Println(array.arr)
+
+	array.Delete(5)
 
 	fmt.Println(array.arr)
 }

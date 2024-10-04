@@ -13,12 +13,25 @@ func NewDynamicArray(arraySize int) *DynamicArray {
 }
 
 func (arr *DynamicArray) Push(item string) {
-	fmt.Println(arr.arr)
 	if arr.len == arr.size {
 		arr.Resize()
 	}
 	arr.arr[arr.len] = item
 	arr.len++
+	return
+}
+
+func (arr *DynamicArray) Insert(index int, item string) {
+	if index < 0 || index > arr.len {
+		fmt.Println("Index out of Range")
+		return
+	}
+
+	for i := arr.len; i >= index; i-- {
+		arr.arr[i+1] = arr.arr[i]
+	}
+	arr.arr[index] = item
+	arr.len++;
 	return
 }
 
@@ -82,4 +95,8 @@ func main() {
 	array.Delete(5)
 
 	fmt.Println(array.arr)
+
+	array.Insert(9, "Machine Code")
+
+	fmt.Println(array.arr);
 }

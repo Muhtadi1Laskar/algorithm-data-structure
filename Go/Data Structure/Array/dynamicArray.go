@@ -64,7 +64,7 @@ func (arr *DynamicArray) Search(item string) int {
 	return -1;
 }
 
-func (arr *DynamicArray) Resize() *DynamicArray {
+func (arr *DynamicArray) Resize() {
 	newSize := arr.size * 2
 	newArray := make([]string, newSize)
 
@@ -73,9 +73,21 @@ func (arr *DynamicArray) Resize() *DynamicArray {
 	}
 	arr.arr = newArray
 	arr.size = newSize
-
-	return arr
 }
+
+func (arr *DynamicArray) Shrink() {
+	if arr.len < arr.size / 2 {
+		newSize := int(arr.size / 2)
+		newArray := make([]string, newSize)
+
+		for i := 0; i < arr.len; i++ {
+			newArray[i] = arr.arr[i]
+		}
+		arr.arr = newArray
+		arr.size = newSize
+	}
+}
+
 
 func main() {
 	array := NewDynamicArray(10)
@@ -100,5 +112,14 @@ func main() {
 
 	array.Insert(9, "Machine Code")
 
-	fmt.Println(array.arr);
+	// array.Delete(9)
+	// array.Delete(8)
+	// array.Delete(7)
+	// array.Delete(6)
+
+	fmt.Println(array.arr, array.size, array.len)
+
+	array.Shrink()
+
+	fmt.Println(array.arr, array.size, array.len)
 }

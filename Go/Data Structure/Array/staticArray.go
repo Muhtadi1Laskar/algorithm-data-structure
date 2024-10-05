@@ -10,7 +10,10 @@ type Array struct {
 const size int = 10
 
 func newArray() *Array {
-	return &Array{array: make([]int, size), len: 0}
+	return &Array{
+		array: make([]int, size), 
+		len: 0,
+	}
 }
 
 func (array *Array) Push(item int) {

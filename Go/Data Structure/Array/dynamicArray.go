@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 type DynamicArray struct {
 	size int
@@ -28,7 +30,7 @@ func (arr *DynamicArray) Insert(index int, item string) {
 	}
 
 	for i := arr.len; i >= index; i-- {
-		arr.arr[i+1] = arr.arr[i]
+		arr.arr[i] = arr.arr[i-1]
 	}
 	arr.arr[index] = item
 	arr.len++;
@@ -90,7 +92,7 @@ func main() {
 	array.Push("Chuck")
 	array.Push("Delphi")
 
-	fmt.Println(array.arr)
+    fmt.Println(array.arr)
 
 	array.Delete(5)
 

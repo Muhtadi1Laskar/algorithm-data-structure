@@ -33,7 +33,7 @@ func (arr *DynamicArray) Insert(index int, item string) {
 		arr.arr[i] = arr.arr[i-1]
 	}
 	arr.arr[index] = item
-	arr.len++;
+	arr.len++
 	return
 }
 
@@ -58,10 +58,10 @@ func (arr *DynamicArray) GetLen() int {
 func (arr *DynamicArray) Search(item string) int {
 	for i := 0; i < arr.len; i++ {
 		if arr.arr[i] == item {
-			return i;
+			return i
 		}
 	}
-	return -1;
+	return -1
 }
 
 func (arr *DynamicArray) Resize() {
@@ -76,7 +76,7 @@ func (arr *DynamicArray) Resize() {
 }
 
 func (arr *DynamicArray) Shrink() {
-	if arr.len < arr.size / 2 {
+	if arr.len < arr.size/2 {
 		newSize := int(arr.size / 2)
 		newArray := make([]string, newSize)
 
@@ -87,7 +87,6 @@ func (arr *DynamicArray) Shrink() {
 		arr.size = newSize
 	}
 }
-
 
 func main() {
 	array := NewDynamicArray(10)
@@ -104,7 +103,7 @@ func main() {
 	array.Push("Chuck")
 	array.Push("Delphi")
 
-    fmt.Println(array.arr)
+	fmt.Println(array.arr)
 
 	array.Delete(5)
 

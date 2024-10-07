@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 type Node struct {
 	value string
@@ -32,10 +35,32 @@ func (q *Queue) Enqueue(value string) {
 	return
 }
 
-func (q *Queue) Log() []string {
+func (q *Queue) Dequeue() string {
 	if q.top == nil {
-		fmt.Println("The Queue is empty")
-		return nil
+		return "The queue is empty"
+	}
+	if q.top.next == nil {
+		n := q.top
+		q.top = nil
+		q.bottom = nil
+		q.len--
+		return n.value
+	}
+	nodeToDelete := q.top
+
+	for nodeToDelete.next.next != nil {
+		nodeToDelete = nodeToDelete.next
+	}
+	nodeToDelete.next = nil
+	q.bottom = nodeToDelete
+	q.len--
+
+	return nodeToDelete.value
+}
+
+func (q *Queue) Log() string {
+	if q.top == nil {
+		return "The queue is empty"
 	}
 	currentNode := q.top
 	var result []string
@@ -44,16 +69,22 @@ func (q *Queue) Log() []string {
 		result = append(result, currentNode.value)
 		currentNode = currentNode.next
 	}
-	return result
+	return strings.Join(result, "|---|")
 }
 
 func main() {
 	queue := NewListQueue()
 
-	queue.Enqueue("Take note of the book Grokking Data Structure")
-	queue.Enqueue("Practise writing")
-	queue.Enqueue("Practise Golang")
-	queue.Enqueue("Read the Learn Ethereum Book")
+	queue.Enqueue("C")
+	queue.Enqueue("JavaScript")
+	queue.Enqueue("Python")
+	queue.Enqueue("C#")
+
+	fmt.Println(queue.Log())
+
+	queue.Dequeue()
+	queue.Dequeue()
+	queue.Dequeue()
 
 	fmt.Println(queue.Log())
 }

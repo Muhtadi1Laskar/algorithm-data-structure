@@ -33,6 +33,16 @@ func (queue *CircularQueue) Enqueue(value int) error {
 	return nil
 }
 
+func (queue *CircularQueue) Dequeue() (int, error) {
+	if queue.isEmpty() {
+		return 0, errors.New("Queue is empty")
+	}
+	value := queue.array[queue.front]
+	queue.front = (queue.front + 1) % queue.size
+	queue.count--
+	return value, nil
+}
+
 func (queue *CircularQueue) isFull() bool {
 	return queue.count == queue.size
 }
@@ -61,5 +71,15 @@ func main() {
 	queue.Enqueue(9)
 	queue.Enqueue(10)
 
+	fmt.Println(queue.array)
+
+	deletedItem, err := queue.Dequeue()
+	if err != nil {
+		fmt.Println(error)
+	}
+	fmt.Println(deletedItem)
+	fmt.Println(queue.array, queue.rear, queue.front)
+
+	queue.Enqueue(100)
 	fmt.Println(queue.array)
 }

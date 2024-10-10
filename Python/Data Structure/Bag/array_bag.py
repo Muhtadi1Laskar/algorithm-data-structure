@@ -11,6 +11,15 @@ class Bag:
     def get_len(self):
         return self.len
     
+    def log(self):
+        idx = 0
+
+        while idx < self.len:
+            print(self.bag[idx])
+
+            idx += 1
+        return
+    
 
 bag = Bag()
 
@@ -20,3 +29,4 @@ bag.push("Naruto")
 bag.push("Ichigo")
 
 print(bag.get_len())
+print(bag.log())

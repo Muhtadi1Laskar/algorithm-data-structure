@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"errors"
+	"fmt"
+)
 
 type CircularQueue struct {
 	array []int
@@ -20,6 +23,16 @@ func NewCircularQueue(size int) *CircularQueue {
 	}
 }
 
+func (queue *CircularQueue) Enqueue(value int) error {
+	if queue.isFull() {
+		return errors.New("Queue is full")
+	}
+	queue.array[queue.rear] = value
+	queue.rear = (queue.rear + 1) % queue.size
+	queue.count++
+	return nil
+}
+
 func (queue *CircularQueue) isFull() bool {
 	return queue.count == queue.size
 }
@@ -32,5 +45,21 @@ func (queue *CircularQueue) isEmpty() bool {
 func main() {
 	queue := NewCircularQueue(10)
 
-	fmt.Println(queue)
+	error := queue.Enqueue(2);
+
+	if error != nil {
+		fmt.Println(error)
+	}
+
+	queue.Enqueue(3)
+	queue.Enqueue(2)
+	queue.Enqueue(4)
+	queue.Enqueue(5)
+	queue.Enqueue(6)
+	queue.Enqueue(7)
+	queue.Enqueue(8)
+	queue.Enqueue(9)
+	queue.Enqueue(10)
+
+	fmt.Println(queue.array)
 }

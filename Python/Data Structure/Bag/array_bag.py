@@ -8,6 +8,9 @@ class Bag:
         self.len += 1
         return
     
+    def get_len(self):
+        return self.len
+    
 
 bag = Bag()
 
@@ -16,4 +19,4 @@ bag.push("Luffy")
 bag.push("Naruto")
 bag.push("Ichigo")
 
-print(bag.bag)
+print(bag.get_len())

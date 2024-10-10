@@ -51,6 +51,10 @@ func (queue *CircularQueue) isEmpty() bool {
 	return queue.count == 0
 }
 
+func (queue *CircularQueue) getSize() int {
+	return queue.size
+}
+
 
 func main() {
 	queue := NewCircularQueue(10)

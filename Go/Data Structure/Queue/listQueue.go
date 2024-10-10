@@ -55,6 +55,8 @@ func (q *Queue) Dequeue() string {
 	q.bottom = nodeToDelete
 	q.len--
 
+	fmt.Println()
+
 	return nodeToDelete.value
 }
 
@@ -72,19 +74,19 @@ func (q *Queue) Log() string {
 	return strings.Join(result, "|---|")
 }
 
-func main() {
-	queue := NewListQueue()
+// func main() {
+// 	queue := NewListQueue()
 
-	queue.Enqueue("C")
-	queue.Enqueue("JavaScript")
-	queue.Enqueue("Python")
-	queue.Enqueue("C#")
+// 	queue.Enqueue("C")
+// 	queue.Enqueue("JavaScript")
+// 	queue.Enqueue("Python")
+// 	queue.Enqueue("C#")
 
-	fmt.Println(queue.Log())
+// 	fmt.Println(queue.Log())
 
-	queue.Dequeue()
-	queue.Dequeue()
-	queue.Dequeue()
+// 	queue.Dequeue()
+// 	queue.Dequeue()
+// 	queue.Dequeue()
 
-	fmt.Println(queue.Log())
-}
+// 	fmt.Println(queue.Log())
+// }

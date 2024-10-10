@@ -25,6 +25,25 @@ class Bag:
         self.tail = new_node
         self.len += 1
         return
+
+    def remove(self, index):
+        if self.is_empty() or index < 0 or index > self.len:
+            return None
+        
+        if index == 1:
+            node_to_delete = self.head
+            self.head = node_to_delete.next
+            self.len -= 1
+            return
+        
+        previous_node = self.head
+        for i in range(1, index-1):
+            previous_node = previous_node.next
+        
+        node_to_remove = previous_node.next
+        previous_node.next = node_to_remove.next
+        self.len -= 1
+        return
     
     def search(self, index):
         if self.is_empty() or index < 0 or index > self.len:
@@ -62,3 +81,7 @@ print(bag.search(1))
 print(bag.search(2))
 print(bag.search(3))
 print(bag.search(4))
+
+bag.remove(5)
+
+print(bag.log())

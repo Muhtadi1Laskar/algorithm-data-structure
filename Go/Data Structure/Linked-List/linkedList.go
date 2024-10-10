@@ -89,7 +89,13 @@ func (list *LinkedList) Delete(index int) *Node {
 		fmt.Println("Index out of range")
 		return nil
 	}
-	previousNode := list.TraverseToIndex(index - 1)
+	
+	previousNode := list.head
+
+	for i := 1; i < index-1; i++ {
+		previousNode = previousNode.next
+	}
+
 	currentNode := previousNode.next
 
 	previousNode.next = currentNode.next
@@ -198,5 +204,9 @@ func main() {
 	fmt.Println(lists.Log())
 
 	lists.Insert(10, "Transistors")
+	fmt.Println(lists.Log())
+
+	lists.Delete(3)
+
 	fmt.Println(lists.Log())
 }

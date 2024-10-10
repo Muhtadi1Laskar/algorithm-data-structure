@@ -20,11 +20,17 @@ func NewCircularQueue(size int) *CircularQueue {
 	}
 }
 
+func (queue *CircularQueue) isFull() bool {
+	return queue.count == queue.size
+}
 
+func (queue *CircularQueue) isEmpty() bool {
+	return queue.count == 0
+}
 
 
 func main() {
-	queue := NewCircularQueue()
+	queue := NewCircularQueue(10)
 
 	fmt.Println(queue)
 }

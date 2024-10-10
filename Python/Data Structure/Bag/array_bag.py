@@ -19,6 +19,12 @@ class Bag:
 
             idx += 1
         return
+
+    def search(self, value):
+        for idx, elem in enumerate(self.bag):
+            if elem == value:
+                return idx
+        return None
     
 
 bag = Bag()
@@ -30,3 +36,4 @@ bag.push("Ichigo")
 
 print(bag.get_len())
 print(bag.log())
+print(bag.search("Naruto"))

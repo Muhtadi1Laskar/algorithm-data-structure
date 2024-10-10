@@ -7,13 +7,13 @@ import (
 
 type Node struct {
 	value string
-	next *Node
+	next  *Node
 }
 
 type Queue struct {
-	top *Node
+	top    *Node
 	bottom *Node
-	len int
+	len    int
 }
 
 func NewListQueue() *Queue {
@@ -21,7 +21,7 @@ func NewListQueue() *Queue {
 }
 
 func (q *Queue) Enqueue(value string) {
-	newNode := &Node{ value: value }
+	newNode := &Node{value: value}
 
 	if q.top == nil {
 		q.top = newNode

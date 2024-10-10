@@ -26,6 +26,16 @@ class Bag:
                 return idx
         return None
     
+    def remove(self, index):
+        if index < 0 or index > self.len:
+            return None
+        
+        idx = index
+        while idx < self.len-1:
+            print(self.bag[idx])
+            self.bag[idx] = self.bag[idx+1] 
+            idx += 1
+        self.bag[self.len-1] = ""
 
 bag = Bag()
 
@@ -37,3 +47,5 @@ bag.push("Ichigo")
 print(bag.get_len())
 print(bag.log())
 print(bag.search("Naruto"))
+
+print(bag.remove(0))

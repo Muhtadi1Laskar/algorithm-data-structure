@@ -26,6 +26,16 @@ class Bag:
         self.len += 1
         return
     
+    def search(self, index):
+        if self.is_empty() or index < 0 or index > self.len:
+            return None
+        
+        current_node = self.head
+        for i in range(1, index):
+            current_node = current_node.next
+        
+        return current_node.value
+
     def log(self):
         if self.is_empty():
             return None
@@ -47,3 +57,8 @@ bag.push("Naruto")
 bag.push("Ichigo")
 
 print(bag.log())
+
+print(bag.search(1))
+print(bag.search(2))
+print(bag.search(3))
+print(bag.search(4))

@@ -7,18 +7,18 @@ import (
 
 type CircularQueue struct {
 	array []int
-	size int
+	size  int
 	front int
-	rear int
+	rear  int
 	count int
 }
 
 func NewCircularQueue(size int) *CircularQueue {
 	return &CircularQueue{
 		array: make([]int, size),
-		size: size,
+		size:  size,
 		front: 0,
-		rear: 0,
+		rear:  0,
 		count: 0,
 	}
 }
@@ -55,11 +55,10 @@ func (queue *CircularQueue) getSize() int {
 	return queue.size
 }
 
-
 func main() {
 	queue := NewCircularQueue(10)
 
-	error := queue.Enqueue(2);
+	error := queue.Enqueue(2)
 
 	if error != nil {
 		fmt.Println(error)

@@ -1,17 +1,31 @@
 class CircularQueue:
-    def __init__(this, size):
-        this.size = size
-        this.array = [0] * size
-        this.front = 0
-        this.rear = 0
-        this.count = 0
+    def __init__(self, size):
+        self.size = size
+        self.array = [0] * size
+        self.front = 0
+        self.rear = 0
+        self.count = 0
+
+    def enqueue(self, value):
+        if self.is_full():
+            return None
+        self.array[self.rear] = value
+        self.rear = (self.rear + 1) % self.size
+        self.count += 1
+        return
     
-    def is_empty(this):
-        return this.count == 0
+    def is_empty(self):
+        return self.count == 0
     
-    def is_full(this):
-        return this.count == this.size
+    def is_full(self):
+        return self.count == self.size
     
 
 
 queue = CircularQueue(10)
+
+for i in range(1, 15):
+    queue.enqueue(i)
+
+
+print(queue.array)

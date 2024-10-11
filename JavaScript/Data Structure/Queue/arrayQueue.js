@@ -27,6 +27,14 @@ class CircularQueue {
         return value;
     }
 
+    print() {
+        let result = "";
+        for(let i=0;i<this.count;i++) {
+            result += this.array[(this.front + i)%this.size] + " | ";
+        }
+        return result;
+    }
+
     isFull() {
         return this.count === this.size;
     }
@@ -53,6 +61,4 @@ console.log(queue.array);
 queue.enqueue("New Elements 1");
 queue.enqueue("New Elements 2");
 
-console.log(queue.array);
-console.log(`Front: ${queue.array[queue.front]}`);
-console.log(`Rear: ${queue.array[queue.rear]}`);
+console.log(queue.print());

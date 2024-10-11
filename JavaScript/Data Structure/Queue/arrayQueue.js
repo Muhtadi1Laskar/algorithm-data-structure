@@ -28,11 +28,12 @@ class CircularQueue {
     }
 
     print() {
-        let result = "";
+        let result = [];
         for(let i=0;i<this.count;i++) {
-            result += this.array[(this.front + i)%this.size] + " | ";
+            // result += this.array[(this.front + i)%this.size];
+            result.push(this.array[(this.front + i)%this.size]);
         }
-        return result;
+        return result.join(' | ');
     }
 
     isFull() {

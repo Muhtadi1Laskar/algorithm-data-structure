@@ -14,6 +14,24 @@ class CircularQueue:
         self.count += 1
         return
     
+    def dequeue(self):
+        if self.is_empty():
+            return None
+        item_to_remove = self.array[self.front]
+        self.front = (self.front + 1) % self.size
+        self.count -= 1
+        return item_to_remove
+    
+    def log(self):
+        if self.is_empty():
+            return None
+        
+        result = []
+        for i in range(0, self.count):
+            result.append(str(self.array[(self.front + i) % self.size]))
+
+        return " | ".join(result)
+    
     def is_empty(self):
         return self.count == 0
     
@@ -29,3 +47,15 @@ for i in range(1, 15):
 
 
 print(queue.array)
+
+queue.dequeue()
+queue.dequeue()
+queue.dequeue()
+
+print(queue.log())
+
+queue.enqueue(100)
+queue.enqueue(200)
+
+print(queue.log())
+

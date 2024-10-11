@@ -29,9 +29,8 @@ class CircularQueue {
 
     print() {
         let result = [];
-        for(let i=0;i<this.count;i++) {
-            // result += this.array[(this.front + i)%this.size];
-            result.push(this.array[(this.front + i)%this.size]);
+        for(let i = 0; i < this.count; i++) {
+            result.push(this.array[(this.front + i) % this.size]);
         }
         return result.join(' | ');
     }
@@ -48,7 +47,7 @@ class CircularQueue {
 const queue = new CircularQueue(10);
 
 for(let i = 1; i <= 10; i++) {
-    queue.enqueue(i*2);
+    queue.enqueue(i * 2);
 }
 
 console.log(queue.array);

@@ -17,6 +17,16 @@ class CircularQueue {
         return this;
     }
 
+    dequeue() {
+        if(this.isEmpty()) {
+            return null;
+        }
+        const value = this.array[this.front];
+        this.front = (this.front + 1) % this.size;
+        this.count--;
+        return value;
+    }
+
     isFull() {
         return this.count === this.size;
     }
@@ -33,3 +43,16 @@ for(let i = 1; i <= 10; i++) {
 }
 
 console.log(queue.array);
+
+queue.dequeue();
+queue.dequeue();
+queue.dequeue();
+
+console.log(queue.array);
+
+queue.enqueue("New Elements 1");
+queue.enqueue("New Elements 2");
+
+console.log(queue.array);
+console.log(`Front: ${queue.array[queue.front]}`);
+console.log(`Rear: ${queue.array[queue.rear]}`);

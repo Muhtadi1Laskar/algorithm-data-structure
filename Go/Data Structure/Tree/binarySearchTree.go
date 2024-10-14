@@ -9,15 +9,47 @@ type Node struct {
 }
 
 type BinarySearchTree struct {
-	root Node
+	root *Node
 }
 
 func NewBST () *BinarySearchTree {
-	return &BinarySearchTree{}
+	return &BinarySearchTree{ }
+}
+
+func (bst *BinarySearchTree) Insert(value int) {
+	if bst.root == nil {
+		bst.root = &Node{ value: value }
+	} else {
+		bst._insert(bst.root, value)
+	}
+}
+
+func (bst *BinarySearchTree) _insert(node *Node, value int) {
+	if value < node.value {
+		if node.left == nil {
+			node.left = &Node{value: value}
+		} else {
+			bst._insert(node.left, value)
+		}
+	} else {
+		if node.right == nil {
+			node.right = &Node{ value: value }
+		} else {
+			bst._insert(node.right, value)
+		}
+	}
 }
 
 func main() {
 	binarySearchTree := NewBST()
+
+	binarySearchTree.Insert(10)
+	binarySearchTree.Insert(3)
+	binarySearchTree.Insert(2)
+	binarySearchTree.Insert(6)
+	binarySearchTree.Insert(11)
+	binarySearchTree.Insert(17)
+	binarySearchTree.Insert(120)
 
 	fmt.Println(binarySearchTree)
 }

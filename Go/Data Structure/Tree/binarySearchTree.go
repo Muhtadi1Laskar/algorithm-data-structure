@@ -5,7 +5,7 @@ import "fmt"
 type Node struct {
 	left  *Node
 	right *Node
-	value int
+	value string
 }
 
 type BinarySearchTree struct {
@@ -16,7 +16,7 @@ func NewBST () *BinarySearchTree {
 	return &BinarySearchTree{ }
 }
 
-func (bst *BinarySearchTree) Insert(value int) {
+func (bst *BinarySearchTree) Insert(value string) {
 	if bst.root == nil {
 		bst.root = &Node{ value: value }
 	} else {
@@ -24,7 +24,7 @@ func (bst *BinarySearchTree) Insert(value int) {
 	}
 }
 
-func (bst *BinarySearchTree) _insert(node *Node, value int) {
+func (bst *BinarySearchTree) _insert(node *Node, value string) {
 	if value < node.value {
 		if node.left == nil {
 			node.left = &Node{value: value}
@@ -40,7 +40,7 @@ func (bst *BinarySearchTree) _insert(node *Node, value int) {
 	}
 }
 
-func (bst *BinarySearchTree) Search(value int) int {
+func (bst *BinarySearchTree) Search(value string) string {
 	currentNode := bst.root
 	for currentNode != nil {
 		if value < currentNode.value {
@@ -51,19 +51,17 @@ func (bst *BinarySearchTree) Search(value int) int {
 			return currentNode.value
 		}
 	}
-	return -1
+	return ""
 }
 
 func main() {
-	binarySearchTree := NewBST()
+	bst := NewBST()
 
-	binarySearchTree.Insert(10)
-	binarySearchTree.Insert(3)
-	binarySearchTree.Insert(2)
-	binarySearchTree.Insert(6)
-	binarySearchTree.Insert(11)
-	binarySearchTree.Insert(17)
-	binarySearchTree.Insert(120)
+	bst.Insert("C")
+	bst.Insert("JavaScript")
+	bst.Insert("Python")
+	bst.Insert("Odin")
+	bst.Insert("Haskell")
 
-	fmt.Println(binarySearchTree.Search(11))
+	fmt.Println(bst.Search("Haskell"))
 }

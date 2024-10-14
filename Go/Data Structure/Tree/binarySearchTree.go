@@ -76,6 +76,48 @@ func (bst *BinarySearchTree) BreadthFirstSearch() []string {
 	return list
 }
 
+func (bst *BinarySearchTree) DFSInOrder() []string {
+	return bst.traverseInOrder(bst.root, []string{})
+}
+
+func (bst *BinarySearchTree) traverseInOrder(node *Node, list []string) []string {
+	if node == nil {
+		return list
+	}
+	list = bst.traverseInOrder(node.left, list)
+	list = append(list, node.value)
+	list = bst.traverseInOrder(node.right, list)
+	return list
+}
+
+func (bst *BinarySearchTree) DFSPreOrder() []string {
+	return bst.traversePreOrder(bst.root, []string{})
+}
+
+func (bst *BinarySearchTree) traversePreOrder(node *Node, list []string) []string {
+	if node == nil {
+		return list
+	}
+	list = append(list, node.value)
+	list = bst.traversePreOrder(node.left, list)
+	list = bst.traversePreOrder(node.right, list)
+	return list
+}
+
+func (bst *BinarySearchTree) DFSPostOrder() []string {
+	return bst.traversePostOrder(bst.root, []string{})
+}
+
+func (bst *BinarySearchTree) traversePostOrder(node *Node, list []string) []string {
+	if node == nil {
+		return list
+	}
+	list = bst.traversePostOrder(node.left, list)
+	list = bst.traversePostOrder(node.right, list)
+	list = append(list, node.value)
+	return list
+}
+
 func main() {
 	bst := NewBST()
 
@@ -86,5 +128,8 @@ func main() {
 	bst.Insert("Haskell")
 
 	fmt.Println(bst.Search("Haskell"))
-	fmt.Println(bst.BreadthFirstSearch())
+	// fmt.Println(bst.BreadthFirstSearch())
+	fmt.Println(bst.DFSInOrder())
+	fmt.Println(bst.DFSPreOrder())
+	fmt.Println(bst.DFSPostOrder())
 }

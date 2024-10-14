@@ -40,6 +40,20 @@ func (bst *BinarySearchTree) _insert(node *Node, value int) {
 	}
 }
 
+func (bst *BinarySearchTree) Search(value int) int {
+	currentNode := bst.root
+	for currentNode != nil {
+		if value < currentNode.value {
+			currentNode = currentNode.left
+		} else if value > currentNode.value {
+			currentNode = currentNode.right
+		} else {
+			return currentNode.value
+		}
+	}
+	return -1
+}
+
 func main() {
 	binarySearchTree := NewBST()
 
@@ -51,5 +65,5 @@ func main() {
 	binarySearchTree.Insert(17)
 	binarySearchTree.Insert(120)
 
-	fmt.Println(binarySearchTree)
+	fmt.Println(binarySearchTree.Search(11))
 }

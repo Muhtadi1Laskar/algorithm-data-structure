@@ -118,6 +118,19 @@ func (bst *BinarySearchTree) traversePostOrder(node *Node, list []string) []stri
 	return list
 }
 
+func (bst *BinarySearchTree) Sums() int {
+	return bst.sums(bst.root)
+}
+
+func (bst *BinarySearchTree) sums(node *Node) int {
+	if node == nil {
+		return 0
+	}
+	leftSum := bst.sums(node.left)
+	rightSum := bst.sums(node.right)
+	return len(node.value) + leftSum + rightSum
+}
+
 func main() {
 	bst := NewBST()
 
@@ -132,4 +145,5 @@ func main() {
 	fmt.Println(bst.DFSInOrder())
 	fmt.Println(bst.DFSPreOrder())
 	fmt.Println(bst.DFSPostOrder())
+	fmt.Println(bst.Sums())
 }

@@ -12,6 +12,12 @@ type BinarySearchTree struct {
 	root Node
 }
 
+func NewBST () *BinarySearchTree {
+	return &BinarySearchTree{}
+}
+
 func main() {
-	fmt.Println("Hello World")
+	binarySearchTree := NewBST()
+
+	fmt.Println(binarySearchTree)
 }

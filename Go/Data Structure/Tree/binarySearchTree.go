@@ -54,6 +54,28 @@ func (bst *BinarySearchTree) Search(value string) string {
 	return ""
 }
 
+func (bst *BinarySearchTree) BreadthFirstSearch() []string {
+	if bst.root == nil {
+		return nil
+	}
+	var list []string = []string{}
+	var queue []*Node = []*Node{bst.root}
+
+	for len(queue) > 0 {
+		currentNode := queue[0]
+		queue = queue[1:]
+		list = append(list, currentNode.value)
+
+		if currentNode.left != nil {
+			queue = append(queue, currentNode.left)
+		}
+		if currentNode.right != nil {
+			queue = append(queue, currentNode.right)
+		}
+	}
+	return list
+}
+
 func main() {
 	bst := NewBST()
 
@@ -64,4 +86,5 @@ func main() {
 	bst.Insert("Haskell")
 
 	fmt.Println(bst.Search("Haskell"))
+	fmt.Println(bst.BreadthFirstSearch())
 }

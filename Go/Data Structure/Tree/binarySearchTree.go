@@ -25,7 +25,7 @@ func (bst *BinarySearchTree) Insert(value string) {
 }
 
 func (bst *BinarySearchTree) _insert(node *Node, value string) {
-	if value < node.value {
+	if len(value) < len(node.value) {
 		if node.left == nil {
 			node.left = &Node{value: value}
 		} else {
@@ -152,6 +152,22 @@ func (bst *BinarySearchTree) sums(node *Node) int {
 	return len(node.value) + leftSum + rightSum
 }
 
+func (bst *BinarySearchTree) FindMax() (string, string) {
+	var parent *Node
+	node := bst.root.right
+
+	for node.right != nil {
+		parent = node
+		node = node.right
+	}
+
+	if parent == nil {
+		return node.value, ""
+	}
+
+	return node.value, parent.value
+}
+
 func main() {
 	bst := NewBST()
 
@@ -160,6 +176,7 @@ func main() {
 	bst.Insert("Python")
 	bst.Insert("Odin")
 	bst.Insert("Haskell")
+	bst.Insert("Machine Code")
 
 	fmt.Println(bst.Search("Haskell"))
 	// fmt.Println(bst.BreadthFirstSearch())
@@ -169,4 +186,7 @@ func main() {
 	fmt.Println(bst.Sums())
 
 	fmt.Println(bst.DepthFirstSearch())
+
+	maxValue, parentValue := bst.FindMax()
+	fmt.Println(maxValue, parentValue)
 }

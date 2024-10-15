@@ -118,13 +118,9 @@ func (bst *BinarySearchTree) traversePostOrder(node *Node, list []string) []stri
 	return list
 }
 
-func (bst*BinarySearchTree) DepthFirstSearch() []string {
-	return bst._DepthFirstSearch(bst.root)
-}
-
-func (bst *BinarySearchTree) _DepthFirstSearch(root *Node) []string {
+func (bst *BinarySearchTree) DepthFirstSearch() []string {
 	stack := []*Node{}
-	current := root
+	current := bst.root
 	var result []string
 
 	for current != nil || len(stack) > 0 {

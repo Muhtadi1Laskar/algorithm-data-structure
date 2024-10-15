@@ -118,6 +118,31 @@ func (bst *BinarySearchTree) traversePostOrder(node *Node, list []string) []stri
 	return list
 }
 
+func (bst*BinarySearchTree) DepthFirstSearch() []string {
+	return bst._DepthFirstSearch(bst.root)
+}
+
+func (bst *BinarySearchTree) _DepthFirstSearch(root *Node) []string {
+	stack := []*Node{}
+	current := root
+	var result []string
+
+	for current != nil || len(stack) > 0 {
+		for current != nil {
+			stack = append(stack, current)
+			current = current.left
+		}
+
+		current = stack[len(stack)-1]
+		stack = stack[:len(stack)-1]
+
+		result = append(result, current.value)
+
+		current = current.right
+	}
+	return result
+}
+
 func (bst *BinarySearchTree) Sums() int {
 	return bst.sums(bst.root)
 }
@@ -146,4 +171,6 @@ func main() {
 	fmt.Println(bst.DFSPreOrder())
 	fmt.Println(bst.DFSPostOrder())
 	fmt.Println(bst.Sums())
+
+	fmt.Println(bst.DepthFirstSearch())
 }

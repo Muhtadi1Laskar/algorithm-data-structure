@@ -179,7 +179,7 @@ func main() {
 	bst.Insert("Machine Code")
 
 	fmt.Println(bst.Search("Haskell"))
-	// fmt.Println(bst.BreadthFirstSearch())
+	fmt.Println(bst.BreadthFirstSearch()) 
 	fmt.Println(bst.DFSInOrder())
 	fmt.Println(bst.DFSPreOrder())
 	fmt.Println(bst.DFSPostOrder())

@@ -2,7 +2,7 @@ class HashMap:
     def __init__(self, size=10):
         self.size = size
         self.array = [[] for _ in range(size)]
-    
+
     def set(self, key, value):
         hashed_key = hash(key)
         index = hashed_key % self.size
@@ -14,7 +14,7 @@ class HashMap:
 
         self.array[index].append((key, value))
         return
-    
+
     def get(self, key):
         hashed_key = hash(key)
         index = hashed_key % self.size
@@ -25,10 +25,17 @@ class HashMap:
 
         return None
 
+
 hash_map = HashMap()
 
 
-items = [("Name", "Luffy"), ("Occupation", "Pirate"), ("Age", 20), ("Favourite Food", "Meat"), ("Devil Fruit User", True)]
+items = [
+    ("Name", "Luffy"),
+    ("Occupation", "Pirate"),
+    ("Age", 20),
+    ("Favourite Food", "Meat"),
+    ("Devil Fruit User", True),
+]
 
 for key, value in items:
     hash_map.set(key, value)

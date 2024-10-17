@@ -16,24 +16,26 @@ class HashMap {
     set(key, value) {
         const hashedKey = HashMap.hash(key);
         const index = hashedKey % this.size;
+        const selectedBin = this.array[index];
 
-        for(let i = 0; i < this.array[index].length; i++) {
-            if(this.array[index][i] === key) {
-                this.array[index][i] = [key, value];
+        for(let i = 0; i < selectedBin.length; i++) {
+            if(selectedBin[i] === key) {
+                selectedBin[i] = [key, value];
                 return this;
             }
         }
-        this.array[index].push([key, value]);
+        selectedBin.push([key, value]);
         return this;
     }
 
     get(key) {
         const hashedKey = HashMap.hash(key);
         let index = hashedKey % this.size;
+        const selectedBin = this.array[index];
 
-        for(let i = 0; i < this.array[index].length; i++) {
-            if(this.array[index][i][0] == key) {
-                return this.array[index][i][1];
+        for(let i = 0; i < selectedBin.length; i++) {
+            if(selectedBin[i][0] == key) {
+                return selectedBin[i][1];
             }
         }
         return null;

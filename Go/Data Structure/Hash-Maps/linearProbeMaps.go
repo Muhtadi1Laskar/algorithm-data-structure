@@ -28,6 +28,20 @@ func (h *HashMap) Set(key string, value string) {
 	return
 }
 
+func (h *HashMap) Get(key string) interface{} {
+	var hashed_key uint32 = hash(key)
+	var index uint32 = hashed_key % h.size
+
+	for h.array[index][0] != nil && h.array[index][0] != key {
+		index = (index + 1) % h.size
+	}
+
+	if h.array[index][0] == nil {
+		return nil
+	}
+	return h.array[index][1]
+}
+
 func hash(s string) uint32 {
 	h := fnv.New32a()
 	h.Write([]byte(s))
@@ -52,11 +66,9 @@ func main() {
 	}
 
 	fmt.Println(hashMap.array)
-	hashMap.Set("Rank", "2nd Captain")
 
-	for _, item := range hashMap.array {
+	for _, item := range items {
 		key := item[0]
-		value := item[1]
-		fmt.Println(key, value)
+		fmt.Println(hashMap.Get(key))
 	}
 }

@@ -39,6 +39,18 @@ func (h *HashMap) Set(key string, value interface{}) {
 	})
 }
 
+func (h *HashMap) Get(key string) interface{} {
+	var hashKey uint32 = hash(key)
+	var index int = int(hashKey) % h.size
+
+	for i := 0; i < len(h.array[index]); i++ {
+		if h.array[index][i].key == key {
+			return h.array[index][i].value
+		}
+	}
+	return ""
+}
+
 func hash(value string) uint32 {
 	h := fnv.New32a()
 	h.Write([]byte(value))
@@ -71,4 +83,6 @@ func main() {
 			}
 		} 
 	}
+
+	fmt.Println(hashMap.Get("Favourite Food"))
 }

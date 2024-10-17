@@ -79,7 +79,7 @@ func main() {
 	for _, arr := range hashMap.array {
 		if len(arr) > 0 {
 			for _, pair := range arr {
-				fmt.Println(pair.key, pair.value)
+				fmt.Printf("[%s: %v] \n", pair.key, pair.value)
 			}
 		} 
 	}

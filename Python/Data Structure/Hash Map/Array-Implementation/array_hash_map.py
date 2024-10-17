@@ -11,7 +11,7 @@ class HashMap:
             if k == key:
                 self.array[index][i] = (key, value)
                 return
-            
+
         self.array[index].append((key, value))
         return
     

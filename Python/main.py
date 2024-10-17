@@ -1,47 +1,44 @@
 class HashMap:
     def __init__(self, size=10):
         self.size = size
-        # Each slot in the array can store multiple key-value pairs (in case of collisions)
-        self.array = [[] for _ in range(size)]
+        self.array = [None] * size
 
     def set(self, key, value):
         hashed_key = hash(key)
         index = hashed_key % self.size
-        
-        # Check if the key already exists and update the value
-        for i, (k, v) in enumerate(self.array[index]):
-            if k == key:
-                self.array[index][i] = (key, value)  # Update the value
-                return
 
-        # If the key doesn't exist, append the new key-value pair
-        self.array[index].append((key, value))
+        # Handle collisions using linear probing
+        while self.array[index] is not None:
+            index = (index + 1) % self.size
+
+        self.array[index] = (key, value)
 
     def get(self, key):
         hashed_key = hash(key)
         index = hashed_key % self.size
 
-        # Search for the key in the bucket (index in the array)
-        for k, v in self.array[index]:
-            if k == key:
-                return v  # Return the value if found
+        # Handle collisions using linear probing
+        while self.array[index] is not None and self.array[index][0] != key:
+            index = (index + 1) % self.size
 
-        # If the key is not found
-        return None
+        if self.array[index] is None:
+            return None
+        else:
+            return self.array[index][1]
 
 
-# Create an instance of HashMap
-obj = HashMap(6)
+obj = HashMap(10)
 
-# Sample items to store in the hash map
 items = [("Name", "Luffy"), ("Occupation", "Pirate"), ("Age", 20), ("Favourite Food", "Meat"), ("Devil Fruit User", True)]
 
-# Set key-value pairs in the hash map
-for key, value in items:
-    obj.set(key, value)
+for elem in items:
+    key, item = elem
+    obj.set(key, item)
 
-# Print the internal array (to visualize how key-value pairs are stored)
 print(obj.array)
 
-# Get and print the value for the key "Devil Fruit User"
-print(obj.get("Occupation"))
+for key, value in items:
+    item = obj.get(key)
+
+    if item == value:
+        print(key, value)

@@ -6,40 +6,47 @@ import (
 )
 
 type HashMap struct {
-	size uint32
-	array [][2]interface{}
+	size int
+	array []*KeyValuePair
 }
 
-func NewHashMap(size uint32) *HashMap {
+type KeyValuePair struct {
+	key string
+	value interface{}
+}
+
+func NewHashMap(size int) *HashMap {
 	return &HashMap{
 		size: size,
-		array: make([][2]interface{}, size),
+		array: make([]*KeyValuePair, size),
 	}
 }
 
-func (h *HashMap) Set(key string, value string) {
-	var hashed_key uint32 = hash(key)
-	var index uint32 = hashed_key % h.size
+func (h *HashMap) Set(key string, value interface{}) {
+	var hashedKey uint32 = hash(key)
+	var index int = int(hashedKey) % h.size
 
-	for h.array[index][0] != nil && h.array[index][0] != key {
+	for h.array[index] != nil && h.array[index].key != key {
 		index = (index + 1) % h.size
 	}
-	h.array[index] = [2]interface{}{key, value}
-	return
+	h.array[index] = &KeyValuePair{
+		key: key,
+		value: value,
+	}
 }
 
 func (h *HashMap) Get(key string) interface{} {
 	var hashed_key uint32 = hash(key)
-	var index uint32 = hashed_key % h.size
+	var index int = int(hashed_key) % h.size
 
-	for h.array[index][0] != nil && h.array[index][0] != key {
+	for h.array[index] != nil && h.array[index].key != key {
 		index = (index + 1) % h.size
 	}
 
-	if h.array[index][0] == nil {
+	if h.array[index] == nil {
 		return nil
 	}
-	return h.array[index][1]
+	return h.array[index].value
 }
 
 func hash(s string) uint32 {
@@ -49,26 +56,30 @@ func hash(s string) uint32 {
 }
 
 func main() {
-	hashMap := NewHashMap(10)
+	hm := NewHashMap(10)
 
-	var items [][]string = [][]string{
+	items := []struct {
+		key   string
+		value interface{}
+	}{
 		{"Name", "Luffy"},
 		{"Occupation", "Pirate"},
-		{"Rank", "Captain"},
-		{"Devil Fruit User", "True"},
-		{"Devil Fruit Name", "Gomu Gomu No Mi"},
+		{"Age", 20},
+		{"Favourite Food", "Meat"},
+		{"Devil Fruit User", true},
 	}
 
 	for _, item := range items {
-		key := item[0]
-		value := item[1]
-		hashMap.Set(key, value)
+		hm.Set(item.key, item.value)
 	}
 
-	fmt.Println(hashMap.array)
+	hm.Set("Rank", "Captain")
 
-	for _, item := range items {
-		key := item[0]
-		fmt.Println(hashMap.Get(key))
+	for i, kv := range hm.array {
+		if kv != nil {
+			fmt.Printf("Index: %d, Key: %s, Value: %v\n", i, kv.key, kv.value)
+		}
 	}
+
+	fmt.Println(hm.Get("Devil Fruit User"))
 }

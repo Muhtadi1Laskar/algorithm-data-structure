@@ -43,6 +43,20 @@ func (h *HashMap) Set(key string, value interface{}) {
 	h.array[index] = newPair
 }
 
+func (h *HashMap) Get(key string) interface{} {
+	var hashed_key uint32 = hash(key)
+	var index int = int(hashed_key) % h.size
+
+	head := h.array[index]
+	for head != nil {
+		if head.key == key {
+			return head.value
+		}
+		head = head.next
+	}
+	return ""
+}
+
 func (h *HashMap) Print() {
 	for i, head := range h.array {
 		fmt.Printf("Index: %d: ", i)
@@ -76,8 +90,12 @@ func main() {
 		{"Captain", "Luffy"},
 	}
 
+	hashMap.Set("Devil Fruit Name", "Gomu Gomu No Mi")
+
 	for _, item := range items {
 		hashMap.Set(item.key, item.value)
 	}
 	hashMap.Print()
+
+	fmt.Println(hashMap.Get("Devil Fruit Name"))
 }

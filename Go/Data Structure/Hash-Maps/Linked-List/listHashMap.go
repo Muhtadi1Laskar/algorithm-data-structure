@@ -7,7 +7,7 @@ import (
 
 type KeyValuePair struct {
 	key string
-	valeu interface{}
+	value interface{}
 	next *KeyValuePair
 }
 
@@ -23,6 +23,24 @@ func NewHashMap(size int) *HashMap {
 	}
 }
 
+func (h *HashMap) Set(key string, value interface{}) {
+	var hashedKey uint32 = hash(key)
+	var index int = int(hashedKey) % h.size
+
+	head := h.array[index]
+	for head != nil {
+		if head.key == key {
+			head.value = value
+		}
+	}
+	newPair := &KeyValuePair{
+		key: key,
+		value: value,
+		next: h.array[index],
+	}
+	h.array[index] = newPair
+}
+
 func hash(value string) uint32 {
 	h := fnv.New32a()
 	h.Write([]byte(value))
@@ -30,5 +48,22 @@ func hash(value string) uint32 {
 }
 
 func main() {
-	fmt.Println("Hello World")
+	hashMap := NewHashMap(10)
+
+	items := []struct{
+		key string
+		value interface{}
+	}{
+		{"Name", "Luffy"},
+		{"Occupation", "Pirate"},
+		{"Age", 20},
+		{"Favourite Food", "Meat"},
+		{"Devil Fruit User", true},
+		{"Ship", "Thousand Sunny"},
+		{"Captain", "Luffy"},
+	}
+
+	for _, item := range items {
+		hashMap.Set(item.key, item.value)
+	}
 }

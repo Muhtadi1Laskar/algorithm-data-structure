@@ -31,7 +31,9 @@ func (h *HashMap) Set(key string, value interface{}) {
 	for head != nil {
 		if head.key == key {
 			head.value = value
+			return
 		}
+		head = head.next
 	}
 	newPair := &KeyValuePair{
 		key: key,
@@ -39,6 +41,17 @@ func (h *HashMap) Set(key string, value interface{}) {
 		next: h.array[index],
 	}
 	h.array[index] = newPair
+}
+
+func (h *HashMap) Print() {
+	for i, head := range h.array {
+		fmt.Printf("Index: %d: ", i)
+		for head != nil {
+			fmt.Printf("[%s: %v] -> ", head.key, head.value)
+			head = head.next
+		}
+		fmt.Println("nil")
+	}
 }
 
 func hash(value string) uint32 {
@@ -66,4 +79,5 @@ func main() {
 	for _, item := range items {
 		hashMap.Set(item.key, item.value)
 	}
+	hashMap.Print()
 }

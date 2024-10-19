@@ -1,4 +1,3 @@
-Here's a well-structured and elaborate description you can use for the `README.md` file of your **Algorithm and Data Structure** GitHub repository:
 
 ---
 
@@ -23,6 +22,17 @@ Welcome to the **Algorithm and Data Structure** repository! This repository is d
 
 This repository aims to help developers and learners dive deeper into the world of algorithms and data structures by offering intuitive, hands-on implementations. Each algorithm and data structure is implemented with a focus on **readability**, **efficiency**, and **performance**. Whether you're preparing for technical interviews, learning for academic purposes, or just expanding your programming knowledge, this repo is a valuable resource.
 
+## Languages: 
+
+- **C**
+- **Go**
+- **Haskell**
+- **Julia**
+- **JavaScript**
+- **Julia**
+- **Python**
+- **Ruby**
+
 ## What You'll Find
 
 ### Data Structures
@@ -38,8 +48,7 @@ Explore a variety of common and advanced data structures that form the foundatio
 - **Heaps (Min Heap, Max Heap)**
 - **Graphs (Adjacency List, Matrix)**
 - **Tries (Prefix Trees)**
-- **Disjoint Set/Union Find**
-- **Balanced Trees (AVL Trees, Red-Black Trees)**
+- **Merkle Tree**
 
 ### Algorithms
 

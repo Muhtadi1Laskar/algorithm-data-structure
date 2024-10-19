@@ -73,6 +73,10 @@ class HashMap:
     def get(self, key):
         index = self._hash(key)
         return self.array[index].find(key)
+    
+    def delete(self, key):
+        index = self._hash(key)
+        return self.array[index].delete(key)
 
     def print_map(self):
         for i, bucket in enumerate(self.array):
@@ -101,6 +105,11 @@ hash_map.set("Devil Fruit Name", "Gomu Gomu No Mi")
 print(hash_map.print_map())
 
 print(hash_map.get("Name"))
+
+hash_map.delete("Favourite Food")
+hash_map.delete("Devil Fruit Name")
+
+print(hash_map.print_map())
 
 
 

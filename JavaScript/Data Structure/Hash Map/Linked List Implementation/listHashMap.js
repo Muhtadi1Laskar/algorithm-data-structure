@@ -1,3 +1,5 @@
+import crypto from 'crypto';
+
 class Node {
     constructor(key, value) {
         this.key = key;
@@ -72,17 +74,54 @@ class HashMap {
         this.size = size;
         this.array = Array.from({ length: size }, () => new LinkedList())
     }
+
+    hash(key) {
+        return hash(key) % this.size;
+    }
+
+    set(key, value) {
+        const index = this.hash(key);
+        this.array[index].insert(key, value);
+    }
+
+    print() {
+        for(let i = 0; i < this.array.length; i++) {
+            let currentNode = this.array[i].head;
+
+            process.stdout.write(`Bucket ${i}: `);
+            while(currentNode) {
+                process.stdout.write(`(${currentNode.key}: ${currentNode.value}) -> `);
+                currentNode = currentNode.next;
+            }
+            console.log("None");
+        }
+    }
 }
 
 function hash(key) {
-    let hash = 0;
-    for (let i = 0; i < key.length; i++) {
-        hash = ((hash << 5) - hash) + key.charCodeAt(i);
-        hash = hash & 0xffffffff;
-    }
-    return Math.abs(hash);
+    const hash = crypto.createHash('sha256');
+    hash.update(key.toString());
+    const hashedKey = hash.digest('hex');
+    return parseInt(hashedKey.slice(0, 8), 16);
 }
 
 
 const hashMap = new HashMap(10);
+
+const data = [
+    ['Name', 'Luffy'],
+    ['Occupation', 'Pirate'],
+    ['Age', 20],
+    ['Favourite Food', 'Meat'],
+    ['Devil Fruit User', true], 
+    ['Devil Fruit Name', "Gomu Gomu No Mi"]
+];
+
+for (let i = 0; i < data.length; i++) {
+    const [key, value] = data[i];
+    hashMap.set(key, value);
+}
+
+
+hashMap.print();
 

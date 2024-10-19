@@ -89,6 +89,11 @@ class HashMap {
         return this.array[index].find(key);
     }
 
+    delete(key) {
+        const index = this.hash(key);
+        this.array[index].delete(key);
+    }
+
     print() {
         for(let i = 0; i < this.array.length; i++) {
             let currentNode = this.array[i].head;
@@ -135,3 +140,6 @@ for(let i = 0; i < data.length; i++) {
     console.log(hashMap.get(key));
 }
 
+hashMap.delete("Age");
+
+hashMap.print();

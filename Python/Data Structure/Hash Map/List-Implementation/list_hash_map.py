@@ -9,20 +9,16 @@ class LinkedList:
         self.head = None
     
     def insert(self, key, value):
-        new_node = Node(key, value)
+        current_node = self.head
 
-        if self.head is None:
-            self.head = new_node
-        else:
-            current = self.head
-            while current:
-                if current.key == key:
-                    current.value = value
-                    return
-                if current.next is None:
-                    break
-                current = current.next
-            current.next = new_node
+        while current_node:
+            if current_node.key == key:
+                current_node.value = value
+                return
+            current_node = current_node.next
+        new_node = Node(key, value)
+        new_node.next = self.head
+        self.head = new_node
     
     def find(self, key):
         if self.head is None:
@@ -107,9 +103,10 @@ print(hash_map.print_map())
 print(hash_map.get("Name"))
 
 hash_map.delete("Favourite Food")
-hash_map.delete("Devil Fruit Name")
 
-print(hash_map.print_map())
+for key, _ in items:
+    if key != "Favourite Food":
+        print(hash_map.get(key))
 
 
 

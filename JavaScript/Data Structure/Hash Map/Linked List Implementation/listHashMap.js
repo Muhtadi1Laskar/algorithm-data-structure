@@ -11,10 +11,6 @@ class LinkedList {
         this.head = null;
     }
 
-    hash(key) {
-        return hash(key) % this.size;
-    }
-
     insert(key, value) {
         let currentNode = this.head;
         
@@ -28,6 +24,18 @@ class LinkedList {
         let newNode = new Node(key, value);
         newNode.next = this.head;
         this.head = newNode;
+    }
+
+    find(key) {
+        let currentNode = this.head;
+
+        while(currentNode) {
+            if(currentNode.key === key) {
+                return currentNode.value;
+            }
+            currentNode = currentNode.next;
+        }
+        return null;
     }
 
     print() {
@@ -60,3 +68,5 @@ list.insert("Devil Fruit User", true);
 list.insert("Devil Fruit Name", "Gomu Gomu No Mi");
 
 console.log(list.print());
+
+console.log(list.find("Devil Fruit Name"));

@@ -57,6 +57,14 @@ class HashMap:
         index = self._hash(key)
         self.array[index].insert(key, value)
 
+    def print_map(self):
+        for i, bucket in enumerate(self.array):
+            current = bucket.head
+            print(f"Bucket {i}: ", end="")
+            while current:
+                print(f"({current.key}: {current.value}) -> ", end="")
+                current = current.next
+            print("None")
 
 hash_map = HashMap(10)
 
@@ -71,7 +79,8 @@ items = [
 for key, value in items:
     hash_map.set(key, value)
 
-print(hash_map.array)
+
+print(hash_map.print_map())
 
 
 

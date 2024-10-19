@@ -48,24 +48,31 @@ class LinkedList:
 class HashMap:
     def __init__(self, size=10):
         self.size = size
-        self.array = [0] * size
+        self.array = [LinkedList() for _ in range(size)]
     
-    def get(self, key, value):
-        pass
+    def _hash(self, key):
+        return hash(key) % self.size
+    
+    def set(self, key, value):
+        index = self._hash(key)
+        self.array[index].insert(key, value)
 
 
 hash_map = HashMap(10)
 
-li = LinkedList()
+items = [
+    ("Name", "Luffy"),
+    ("Occupation", "Pirate"),
+    ("Age", 20),
+    ("Favourite Food", "Meat"),
+    ("Devil Fruit User", True),
+]
 
-li.insert(1, "Luffy")
-li.insert(2, "Zoro")
-li.insert(3, "Sanji")
-li.insert(4, "Nami")
-li.insert(5, "Usopp")
-li.insert(6, "Chopper")
+for key, value in items:
+    hash_map.set(key, value)
+
+print(hash_map.array)
 
 
-print(li.print())
 
 

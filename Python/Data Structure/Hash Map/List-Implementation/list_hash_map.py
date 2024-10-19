@@ -24,7 +24,7 @@ class LinkedList:
                 current = current.next
             current.next = new_node
     
-    def get(self, key):
+    def find(self, key):
         if self.head is None:
             return None
         current_node = self.head
@@ -34,6 +34,19 @@ class LinkedList:
                 return current_node.value
             current_node = current_node.next
         return None
+
+    def delete(self, key):
+        current_node = self.head
+        prev = None
+
+        while current_node:
+            if current_node.key == key:
+                if prev:
+                    prev.next = current_node.next
+                else:
+                    self.head = current_node.next
+            prev = current_node
+            current_node = current_node.next
         
     def print(self):
         result = []
@@ -56,6 +69,10 @@ class HashMap:
     def set(self, key, value):
         index = self._hash(key)
         self.array[index].insert(key, value)
+    
+    def get(self, key):
+        index = self._hash(key)
+        return self.array[index].find(key)
 
     def print_map(self):
         for i, bucket in enumerate(self.array):
@@ -79,8 +96,11 @@ items = [
 for key, value in items:
     hash_map.set(key, value)
 
+hash_map.set("Devil Fruit Name", "Gomu Gomu No Mi")
 
 print(hash_map.print_map())
+
+print(hash_map.get("Name"))
 
 
 

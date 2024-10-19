@@ -84,6 +84,11 @@ class HashMap {
         this.array[index].insert(key, value);
     }
 
+    get(key) {
+        const index = this.hash(key);
+        return this.array[index].find(key);
+    }
+
     print() {
         for(let i = 0; i < this.array.length; i++) {
             let currentNode = this.array[i].head;
@@ -124,4 +129,9 @@ for (let i = 0; i < data.length; i++) {
 
 
 hashMap.print();
+
+for(let i = 0; i < data.length; i++) {
+    const [key] = data[i];
+    console.log(hashMap.get(key));
+}
 

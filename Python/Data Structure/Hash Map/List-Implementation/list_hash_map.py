@@ -23,6 +23,17 @@ class LinkedList:
                     break
                 current = current.next
             current.next = new_node
+    
+    def get(self, key):
+        if self.head is None:
+            return None
+        current_node = self.head
+
+        while current_node:
+            if current_node.key == key:
+                return current_node.value
+            current_node = current_node.next
+        return None
         
     def print(self):
         result = []

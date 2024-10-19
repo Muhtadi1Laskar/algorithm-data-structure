@@ -67,6 +67,13 @@ class LinkedList {
     }
 }
 
+class HashMap {
+    constructor(size=10) {
+        this.size = size;
+        this.array = Array.from({ length: size }, () => new LinkedList())
+    }
+}
+
 function hash(key) {
     let hash = 0;
     for (let i = 0; i < key.length; i++) {
@@ -76,14 +83,6 @@ function hash(key) {
     return Math.abs(hash);
 }
 
-const list = new LinkedList();
 
-list.insert("Name", "Luffy");
-list.insert("Occupation", "Pirate");
-list.insert("Rank", "Captain");
-list.insert("Devil Fruit User", true);
-list.insert("Devil Fruit Name", "Gomu Gomu No Mi");
+const hashMap = new HashMap(10);
 
-console.log(list.print());
-
-console.log(list.find("Devil Fruit Name"));

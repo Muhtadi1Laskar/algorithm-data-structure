@@ -38,6 +38,23 @@ class LinkedList {
         return null;
     }
 
+    delete(key) {
+        let currentNode = this.head;
+        let prev = null;
+
+        while(currentNode) {
+            if(currentNode.key === key) {
+                if(prev) {
+                    prev.next = currentNode.next;
+                } else {
+                    this.head = currentNode.next;
+                }
+            }
+            prev = currentNode;
+            currentNode = currentNode.next;
+        }
+    }
+
     print() {
         const result = [];
         let currentNode = this.head;

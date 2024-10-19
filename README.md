@@ -3,7 +3,7 @@
 
 # Algorithm and Data Structure Implementations
 
-Welcome to the **Algorithm and Data Structure** repository! This repository is dedicated to providing clean, efficient, and well-documented implementations of various algorithms and data structures in [insert programming language(s) here]. It serves as a reference for students, developers, and enthusiasts interested in learning the intricacies of computer science fundamentals and improving their problem-solving skills.
+Welcome to the **Algorithm and Data Structure** repository! This repository is dedicated to providing clean, efficient, and well-documented implementations of various algorithms and data structures in [multiple programming languages](#languages). It serves as a reference for students, developers, and enthusiasts interested in learning the intricacies of computer science fundamentals and improving their problem-solving skills.
 
 ## Table of Contents
 

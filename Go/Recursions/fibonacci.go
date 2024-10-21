@@ -12,6 +12,19 @@ func fib(n int) int {
 	return fib(n-1) + fib(n-2)
 }
 
+func fibMemo(n int, memo map[int]*big.Int) *big.Int {
+	if val, exists := memo[n]; exists {
+		return val
+	}
+
+	if n <= 2 {
+		return big.NewInt(1)
+	}
+
+	memo[n] = new(big.Int).Add(fibMemo(n-1, memo), fibMemo(n-2, memo))
+	return memo[n]
+}
+
 func fibIter(n int) *big.Int {
 	if n == 0 {
 		return big.NewInt(0)
@@ -29,6 +42,7 @@ func fibIter(n int) *big.Int {
 
 func main() {
 	number := 200
+	memo := make(map[int]*big.Int)
 
-	fmt.Println(fibIter(number))
+	fmt.Println(fibMemo(number, memo))
 }

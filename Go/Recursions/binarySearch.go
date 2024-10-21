@@ -1,6 +1,6 @@
 package main
 
-import "fmt"
+// import "fmt"
 
 func binarySearch(array []int, item, l, r int) int {
 	if l <= r {
@@ -18,11 +18,11 @@ func binarySearch(array []int, item, l, r int) int {
 	}
 }
 
-func main() {
-	var array []int = []int{1, 2, 3, 4, 5, 6, 7, 8, 9}
-	var item int = 9
-	var left int = 0
-	var right int = len(array) - 1
+// func main() {
+// 	var array []int = []int{1, 2, 3, 4, 5, 6, 7, 8, 9}
+// 	var item int = 9
+// 	var left int = 0
+// 	var right int = len(array) - 1
 
-	fmt.Println(binarySearch(array, item, left, right))
-}
+// 	fmt.Println(binarySearch(array, item, left, right))
+// }

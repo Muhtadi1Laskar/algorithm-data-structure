@@ -6,19 +6,18 @@ import (
 )
 
 type HashMap struct {
-	size int
+	size  int
 	array [][]*KeyValuePair
 }
 
 type KeyValuePair struct {
-	key string
+	key   string
 	value interface{}
 }
 
-
 func NewHashMap(size int) *HashMap {
 	return &HashMap{
-		size: size,
+		size:  size,
 		array: make([][]*KeyValuePair, size),
 	}
 }
@@ -34,7 +33,7 @@ func (h *HashMap) Set(key string, value interface{}) {
 		}
 	}
 	h.array[index] = append(h.array[index], &KeyValuePair{
-		key: key,
+		key:   key,
 		value: value,
 	})
 }
@@ -60,8 +59,8 @@ func hash(value string) uint32 {
 func main() {
 	hashMap := NewHashMap(10)
 
-	items := []struct{
-		key string
+	items := []struct {
+		key   string
 		value interface{}
 	}{
 		{"Name", "Luffy"},
@@ -81,7 +80,7 @@ func main() {
 			for _, pair := range arr {
 				fmt.Printf("[%s: %v] \n", pair.key, pair.value)
 			}
-		} 
+		}
 	}
 
 	fmt.Println(hashMap.Get("Favourite Food"))

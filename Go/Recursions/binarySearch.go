@@ -4,7 +4,7 @@ package main
 
 func binarySearch(array []int, item, l, r int) int {
 	if l <= r {
-		var mid int = l + (r-l) / r
+		var mid int = l + (r-l)/r
 
 		if array[mid] == item {
 			return mid

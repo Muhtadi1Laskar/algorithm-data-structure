@@ -6,18 +6,18 @@ import (
 )
 
 type HashMap struct {
-	size int
+	size  int
 	array []*KeyValuePair
 }
 
 type KeyValuePair struct {
-	key string
+	key   string
 	value interface{}
 }
 
 func NewHashMap(size int) *HashMap {
 	return &HashMap{
-		size: size,
+		size:  size,
 		array: make([]*KeyValuePair, size),
 	}
 }
@@ -30,7 +30,7 @@ func (h *HashMap) Set(key string, value interface{}) {
 		index = (index + 1) % h.size
 	}
 	h.array[index] = &KeyValuePair{
-		key: key,
+		key:   key,
 		value: value,
 	}
 }

@@ -6,19 +6,19 @@ import (
 )
 
 type KeyValuePair struct {
-	key string
+	key   string
 	value interface{}
-	next *KeyValuePair
+	next  *KeyValuePair
 }
 
 type HashMap struct {
-	size int
+	size  int
 	array []*KeyValuePair
 }
 
 func NewHashMap(size int) *HashMap {
 	return &HashMap{
-		size: size,
+		size:  size,
 		array: make([]*KeyValuePair, size),
 	}
 }
@@ -36,9 +36,9 @@ func (h *HashMap) Set(key string, value interface{}) {
 		head = head.next
 	}
 	newPair := &KeyValuePair{
-		key: key,
+		key:   key,
 		value: value,
-		next: h.array[index],
+		next:  h.array[index],
 	}
 	h.array[index] = newPair
 }
@@ -77,8 +77,8 @@ func hash(value string) uint32 {
 func main() {
 	hashMap := NewHashMap(10)
 
-	items := []struct{
-		key string
+	items := []struct {
+		key   string
 		value interface{}
 	}{
 		{"Name", "Luffy"},

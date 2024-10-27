@@ -40,9 +40,9 @@ func fibIter(n int) *big.Int {
 	return next
 }
 
-// func main() {
-// 	number := 200
-// 	memo := make(map[int]*big.Int)
+func main() {
+	number := 200
+	memo := make(map[int]*big.Int)
 
-// 	fmt.Println(fibMemo(number, memo))
-// }
+	fmt.Println(fibMemo(number, memo))
+}

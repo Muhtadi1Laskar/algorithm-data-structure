@@ -14,8 +14,4 @@ func fibonacciSeries(n int) {
 		b = temp + b
 	}
 	fmt.Println()
-} 
-
-func main() {
-	fibonacciSeries(100)
 }

@@ -12,13 +12,13 @@ type BinarySearchTree struct {
 	root *Node
 }
 
-func NewBST () *BinarySearchTree {
-	return &BinarySearchTree{ }
+func NewBST() *BinarySearchTree {
+	return &BinarySearchTree{}
 }
 
 func (bst *BinarySearchTree) Insert(value string) {
 	if bst.root == nil {
-		bst.root = &Node{ value: value }
+		bst.root = &Node{value: value}
 	} else {
 		bst._insert(bst.root, value)
 	}
@@ -33,7 +33,7 @@ func (bst *BinarySearchTree) _insert(node *Node, value string) {
 		}
 	} else {
 		if node.right == nil {
-			node.right = &Node{ value: value }
+			node.right = &Node{value: value}
 		} else {
 			bst._insert(node.right, value)
 		}
@@ -179,7 +179,7 @@ func main() {
 	bst.Insert("Machine Code")
 
 	fmt.Println(bst.Search("Haskell"))
-	fmt.Println(bst.BreadthFirstSearch()) 
+	fmt.Println(bst.BreadthFirstSearch())
 	fmt.Println(bst.DFSInOrder())
 	fmt.Println(bst.DFSPreOrder())
 	fmt.Println(bst.DFSPostOrder())

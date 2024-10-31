@@ -11,8 +11,8 @@ const size int = 10
 
 func newArray() *Array {
 	return &Array{
-		array: make([]int, size), 
-		len: 0,
+		array: make([]int, size),
+		len:   0,
 	}
 }
 

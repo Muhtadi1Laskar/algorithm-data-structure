@@ -16,14 +16,7 @@ class InvertedIndex {
         }
     }
 
-    contains(elem, id) {
-        for(let i = 0; i < elem.length; i++) {
-            if(elem[i] === id) {
-                return true
-            }
-        }
-        return false;
-    }
+    
 }
 
 const invertedIndex = new InvertedIndex();

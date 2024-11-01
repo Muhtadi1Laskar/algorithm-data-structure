@@ -10,6 +10,9 @@ class InvertedIndex:
                 self.index[char] = []
             if doc['ID'] not in self.index[char]:
                 self.index[char].append(doc['ID'])
+    
+    def search(self, word):
+        return self.index.get(word.lower(), [])
 
     
 
@@ -24,4 +27,7 @@ docs = [
 for item in docs:
     inverted_index.add_document(item)
 
-print(inverted_index.index)
+print("Documents containing 'quick':", inverted_index.search("quick"))
+print("Documents containing 'fox':", inverted_index.search("fox"))
+print("Documents containing 'fast':", inverted_index.search("fast"))
+print("Documents containing 'elephant':", inverted_index.search("elephant"))

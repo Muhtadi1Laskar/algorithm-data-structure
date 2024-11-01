@@ -26,3 +26,10 @@ func checkAbundant(n int) bool {
 	}
 	return false
 }
+
+func checkDeficient(n int) bool {
+	if aliquotSum(n) < n {
+		return true
+	}
+	return false
+}

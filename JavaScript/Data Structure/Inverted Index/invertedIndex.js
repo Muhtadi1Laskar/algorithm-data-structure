@@ -7,20 +7,21 @@ class InvertedIndex {
         const words = doc.Text.toLowerCase().split(' ');
 
         for (let i = 0; i < words.length; i++) {
-            const chars = words[i];
+            const word = words[i];
 
-            if (!this.index[chars]) {
-                this.index[chars] = [];
+            if (!this.index[word]) {
+                this.index[word] = [];
             }
-            if (!chars.includes(doc.ID)) {
-                this.index[chars].push(doc.ID);
+
+            if (!this.index[word].includes(doc.ID)) {
+                this.index[word].push(doc.ID);
             }
         }
     }
 
     search(words) {
         return this.index.hasOwnProperty(words.toLowerCase()) ?
-               this.index[words.toLowerCase()] : [];
+                this.index[words.toLowerCase()] : [];
     }
 }
 

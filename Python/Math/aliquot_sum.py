@@ -1,7 +1,6 @@
 def check_aliquot(n):
     return sum([elem for elem in range(1, n) if elem % n])
 
-
 def check_untouchable(n):
     for i in range(1, (n*n)+1):
         if check_aliquot(i) == n:
@@ -13,8 +12,7 @@ def check_abundant(n):
         return True
     return False
 
-num = 10
-
-print(check_aliquot(num))
-print(check_untouchable(53))
-print(check_abundant(num))
+def check_deficient(n):
+    if check_aliquot(n) < n:
+        return True
+    return False

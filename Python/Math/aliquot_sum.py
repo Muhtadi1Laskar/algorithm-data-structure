@@ -8,7 +8,13 @@ def check_untouchable(n):
             return False
     return True
 
+def check_abundant(n):
+    if check_aliquot(n) > n:
+        return True
+    return False
+
 num = 10
 
 print(check_aliquot(num))
 print(check_untouchable(53))
+print(check_abundant(num))

@@ -25,6 +25,9 @@ const checkAbundant = (n) => {
     return false;
 }
 
-const num = 10;
-
-console.log(aliquotSum(num));
+const checkDeficient = (n) => {
+    if(aliquotSum(n) < n) {
+        return true;
+    }
+    return false;
+}

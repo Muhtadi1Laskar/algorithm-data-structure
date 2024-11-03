@@ -18,6 +18,13 @@ const checkUntouchable = (n) => {
     return true;
 }
 
+const checkAbundant = (n) => {
+    if(aliquotSum(n) > n) {
+        return true;
+    }
+    return false;
+}
+
 const num = 10;
 
 console.log(aliquotSum(num));

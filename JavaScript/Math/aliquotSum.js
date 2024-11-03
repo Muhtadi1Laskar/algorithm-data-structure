@@ -9,6 +9,15 @@ const aliquotSum = (n) => {
     return result;
 }
 
+const checkUntouchable = (n) => {
+    for(let i = 0; i < n*n; i++) {
+        if(aliquotSum(i) === n) {
+            return false;
+        }
+    }
+    return true;
+}
+
 const num = 10;
 
 console.log(aliquotSum(num));

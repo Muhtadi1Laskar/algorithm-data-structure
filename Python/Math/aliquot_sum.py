@@ -16,3 +16,6 @@ def check_deficient(n):
     if check_aliquot(n) < n:
         return True
     return False
+
+
+print()

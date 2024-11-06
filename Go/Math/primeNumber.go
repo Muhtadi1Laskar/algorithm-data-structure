@@ -11,8 +11,17 @@ func isPrime(n int) bool {
 	return true
 }
 
-func main() {
-	for i := 1; i <= 20; i++ {
-		fmt.Printf("%d --> %t\n", i, isPrime(i))
+func generatePrimes(n int) []int {
+	var result []int
+
+	for i := 1; i <= n; i++ {
+		if isPrime(i) {
+			result = append(result, i)
+		}
 	}
+	return result
+}
+
+func main() {
+	fmt.Println(generatePrimes(1000))
 }

@@ -5,6 +5,8 @@ def is_prime(n):
     
     return True
 
+def generate_prime(n):
+    return [i for i in range(1, n+1) if is_prime(i)]
 
-for i in range(1, 20+1):
-    print(i, is_prime(i))
+
+print(generate_prime(20))

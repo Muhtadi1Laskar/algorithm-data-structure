@@ -1,8 +1,8 @@
 const aliquotSum = (n) => {
     let result = 0;
 
-    for (let i = 0; i < n; i++) {
-        if (n % i === 0) {
+    for(let i = 0; i < n; i++) {
+        if(n % i === 0) {
             result += i;
         }
     }
@@ -10,8 +10,8 @@ const aliquotSum = (n) => {
 }
 
 const checkUntouchable = (n) => {
-    for (let i = 0; i < n * n; i++) {
-        if (aliquotSum(i) === n) {
+    for(let i = 0; i < n*n; i++) {
+        if(aliquotSum(i) === n) {
             return false;
         }
     }
@@ -19,14 +19,14 @@ const checkUntouchable = (n) => {
 }
 
 const checkAbundant = (n) => {
-    if (aliquotSum(n) > n) {
+    if(aliquotSum(n) > n) {
         return true;
     }
     return false;
 }
 
 const checkDeficient = (n) => {
-    if (aliquotSum(n) < n) {
+    if(aliquotSum(n) < n) {
         return true;
     }
     return false;

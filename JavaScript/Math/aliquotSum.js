@@ -10,7 +10,6 @@ const aliquotSum = (n) => {
 }
 
 const checkUntouchable = (n) => {
-
     for(let i = 0; i < n*n; i++) {
         if(aliquotSum(i) === n) {
             return false;

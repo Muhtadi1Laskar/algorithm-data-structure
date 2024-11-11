@@ -7,7 +7,7 @@ import (
 
 func isPrime(n int) bool {
 	for i := 2; i < n; i++ {
-		if n % i == 0 {
+		if n%i == 0 {
 			return false
 		}
 	}
@@ -50,7 +50,7 @@ func sieve(n int) []int {
 
 func segmentedSieve(L, R int) []int {
 	limit := int(math.Sqrt(float64(R))) + 1
-	primes := sieve(limit) 
+	primes := sieve(limit)
 
 	isPrimeRange := make([]bool, R-L+1)
 	for i := range isPrimeRange {
@@ -59,7 +59,7 @@ func segmentedSieve(L, R int) []int {
 
 	for _, prime := range primes {
 		start := max(prime*prime, (L+prime-1)/prime*prime)
-		
+
 		for j := start; j <= R; j += prime {
 			isPrimeRange[j-L] = false
 		}
@@ -67,7 +67,7 @@ func segmentedSieve(L, R int) []int {
 
 	var result []int
 	for i, isPrime := range isPrimeRange {
-		if isPrime && (L+i > 1) { 
+		if isPrime && (L+i > 1) {
 			result = append(result, L+i)
 		}
 	}

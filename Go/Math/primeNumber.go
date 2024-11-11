@@ -25,8 +25,6 @@ func generatePrimes(n int) []int {
 	return result
 }
 
-
-// Sieve of Eratosthenes to generate all primes up to n
 func sieve(n int) []int {
 	isPrime := make([]bool, n+1)
 	for i := 2; i <= n; i++ {
@@ -50,20 +48,16 @@ func sieve(n int) []int {
 	return primes
 }
 
-// Segmented sieve to find all primes in range [L, R]
 func segmentedSieve(L, R int) []int {
 	limit := int(math.Sqrt(float64(R))) + 1
-	primes := sieve(limit) // Get small primes up to sqrt(R)
+	primes := sieve(limit) 
 
-	// Initialize range [L, R] as all true (prime)
 	isPrimeRange := make([]bool, R-L+1)
 	for i := range isPrimeRange {
 		isPrimeRange[i] = true
 	}
 
-	// Mark non-prime numbers in the range [L, R]
 	for _, prime := range primes {
-		// Find the starting point to mark multiples of `prime` within [L, R]
 		start := max(prime*prime, (L+prime-1)/prime*prime)
 		
 		for j := start; j <= R; j += prime {
@@ -71,10 +65,9 @@ func segmentedSieve(L, R int) []int {
 		}
 	}
 
-	// Collect all primes in the range [L, R]
 	var result []int
 	for i, isPrime := range isPrimeRange {
-		if isPrime && (L+i > 1) { // Exclude 1 as it's not a prime
+		if isPrime && (L+i > 1) { 
 			result = append(result, L+i)
 		}
 	}

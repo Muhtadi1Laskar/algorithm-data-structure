@@ -15,6 +15,7 @@ def check_abundant(n):
     return False
 
 
+
 def check_deficient(n):
     if check_aliquot(n) < n:
         return True

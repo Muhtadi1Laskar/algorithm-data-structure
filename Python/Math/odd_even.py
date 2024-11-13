@@ -16,3 +16,7 @@ def fn5(n):
 
 def fn6(n):
     return n | 1 == n
+
+def fn7(n):
+    return (n % 2j).imag == 0
+

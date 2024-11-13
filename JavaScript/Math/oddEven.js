@@ -5,5 +5,7 @@ const fn1 = (n) => {
     return 'Odd';
 }
 
-const fn2 = n => [...'EOVDEDN'].filter((_, i) => i % 2 === (n&1)).join('');
+const fn2 = n => [...'EOVDEDN']
+    .filter((_, i) => i % 2 === (n & 1))
+    .join('');
 

@@ -5,5 +5,7 @@ def fn1(n):
 
 fn2 = lambda n: "EOVDEDN"[n&1::2]
 
-print(fn2(11))
+def fn3(n):
+    return str(n)[-1] in "02468"
+
     

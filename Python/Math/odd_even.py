@@ -11,3 +11,5 @@ def fn3(n):
 def fn4(n):
     return (n // 2) * 2 == n
 
+def fn5(n):
+    return {0: True, 1: False}[n%2]

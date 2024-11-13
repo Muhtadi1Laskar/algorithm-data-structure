@@ -13,3 +13,6 @@ def fn4(n):
 
 def fn5(n):
     return {0: True, 1: False}[n%2]
+
+def fn6(n):
+    return n | 1 == n

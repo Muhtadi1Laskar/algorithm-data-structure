@@ -16,3 +16,5 @@ const fn4 = n => Math.floor(n / 2) * 2 === n;
 const fn5 = (n) => {
     return {0: "Even", 1: "Odd"}[n%2];
 }
+
+const fn6 = (n) => ((n | 1) === n);

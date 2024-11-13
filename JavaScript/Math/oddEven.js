@@ -12,3 +12,7 @@ const fn2 = n => [...'EOVDEDN']
 const fn3 = n => ['0', '2', '4', '6', '8'].includes(String(n).slice(-1));
 
 const fn4 = n => Math.floor(n / 2) * 2 === n;
+
+const fn5 = (n) => {
+    return {0: "Even", 1: "Odd"}[n%2];
+}

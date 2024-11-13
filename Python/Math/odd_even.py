@@ -20,3 +20,5 @@ def fn6(n):
 def fn7(n):
     return (n % 2j).imag == 0
 
+def fn8(n):
+    return (n / 2).is_integer()

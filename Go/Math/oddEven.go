@@ -60,3 +60,10 @@ func fn8(n int) bool {
 		return fn8(n-2)
 	}
 }
+
+func fn9(n int) string {
+	if n & 1 == 0 {
+		return "Even"
+	} 
+	return "Odd"
+}

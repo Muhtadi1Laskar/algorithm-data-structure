@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 func fn1(n int) string {
 	if n % 2 == 0 {
 		return "Even"

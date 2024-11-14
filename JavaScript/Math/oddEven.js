@@ -18,3 +18,13 @@ const fn5 = (n) => {
 }
 
 const fn6 = (n) => ((n | 1) === n);
+
+const fn7 = (n) => {
+    if(n === 1) {
+        return 'Odd';
+    } else if(n === 0) {
+        return 'Even';
+    } else {
+        return fn7(n - 2);
+    }
+}

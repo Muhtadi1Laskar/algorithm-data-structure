@@ -19,7 +19,19 @@ func fn2(n int) string {
 	return result
 }
 
+func fn3(n int) bool {
+	var str string = fmt.Sprint(n)
+	var evenStr string = "02468"
+	
+	for i := 0; i < len(evenStr); i++ {
+		if evenStr[i] == str[len(str)-1] {
+			return true
+		}
+	}
+	return false
+}
+
 func main() {
-	fmt.Printf("%s\n", fn2(10))
-	fmt.Printf("%s\n", fn2(11))
+	fmt.Printf("%t\n", fn3(10))
+	fmt.Printf("%t\n", fn3(11))
 }

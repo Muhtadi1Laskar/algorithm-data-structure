@@ -1,9 +1,5 @@
 package main
 
-import (
-	"fmt"
-)
-
 func fn1(n int) string {
 	if n % 2 == 0 {
 		return "Even"
@@ -53,7 +49,12 @@ func fn7(n int) bool {
 	return float64(n%2) == 0
 }
 
-func main() {
-	fmt.Printf("%t\n", fn7(10))
-	fmt.Printf("%t\n", fn7(11))
+func fn8(n int) bool {
+	if n == 0 {
+		return true
+	} else if n == 1 {
+		return false
+	} else {
+		return fn8(n-2)
+	}
 }

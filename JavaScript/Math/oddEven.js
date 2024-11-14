@@ -28,3 +28,5 @@ const fn7 = (n) => {
         return fn7(n - 2);
     }
 }
+
+const fn8 = n =>  n & 1 !== 0 ? "Odd" : "Even";

@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func fn1(n int) string {
 	if n % 2 == 0 {
@@ -31,7 +33,11 @@ func fn3(n int) bool {
 	return false
 }
 
+func fn4(n int) bool {
+	return (n / 2) * 2 == n
+}
+
 func main() {
-	fmt.Printf("%t\n", fn3(10))
-	fmt.Printf("%t\n", fn3(11))
+	fmt.Printf("%t\n", fn4(10))
+	fmt.Printf("%t\n", fn4(11))
 }

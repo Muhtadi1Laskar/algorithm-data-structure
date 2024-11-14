@@ -45,7 +45,11 @@ func fn5(n int) bool {
 	return hashMap[n % 2]
 }
 
+func fn6(n int) bool {
+	return n | 1 == n
+}
+
 func main() {
-	fmt.Printf("%t\n", fn5(10))
-	fmt.Printf("%t\n", fn5(11))
+	fmt.Printf("%t\n", fn6(10))
+	fmt.Printf("%t\n", fn6(11))
 }

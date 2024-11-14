@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"math"
 )
 
@@ -79,10 +78,4 @@ func max(a, b int) int {
 		return a
 	}
 	return b
-}
-
-func main() {
-	L, R := 10, 50
-	primesInRange := segmentedSieve(L, R)
-	fmt.Printf("Primes between %d and %d: %v\n", L, R, primesInRange)
 }

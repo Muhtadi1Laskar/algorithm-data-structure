@@ -30,3 +30,8 @@ def fn9(n):
         return False
     else:
         return fn9(n-2)
+
+def fn10(n):
+    if n & 1 == 0:
+        return "Even"
+    return "Odd"

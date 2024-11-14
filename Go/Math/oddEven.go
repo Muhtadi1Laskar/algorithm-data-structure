@@ -37,7 +37,15 @@ func fn4(n int) bool {
 	return (n / 2) * 2 == n
 }
 
+func fn5(n int) bool {
+	hashMap := map[int]bool{
+		0: true,
+		1: false, 
+	}
+	return hashMap[n % 2]
+}
+
 func main() {
-	fmt.Printf("%t\n", fn4(10))
-	fmt.Printf("%t\n", fn4(11))
+	fmt.Printf("%t\n", fn5(10))
+	fmt.Printf("%t\n", fn5(11))
 }

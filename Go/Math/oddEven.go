@@ -9,7 +9,17 @@ func fn1(n int) string {
 	return "Odd"
 }
 
+func fn2(n int) string {
+	var str string = "EOVDEDN"
+	var result string
+
+	for i := n & 1; i < len(str); i+=2 {
+		result += string(str[i])
+	}
+	return result
+}
+
 func main() {
-	fmt.Printf("%s\n", fn1(10))
-	fmt.Printf("%s\n", fn1(11))
+	fmt.Printf("%s\n", fn2(10))
+	fmt.Printf("%s\n", fn2(11))
 }

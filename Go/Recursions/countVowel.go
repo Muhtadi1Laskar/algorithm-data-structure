@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 func checkVowel(c byte) int {
 	var vowels string = "aeiou"
 
@@ -18,9 +16,4 @@ func countVowels(str string, n int) int {
 		return checkVowel(str[0])
 	}
 	return countVowels(str, n-1) + checkVowel(str[n-1])
-}
-
-func main() {
-	var str string = "computing"
-	fmt.Println(countVowels(str, len(str)))
 }

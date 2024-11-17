@@ -21,6 +21,6 @@ func countVowels(str string, n int) int {
 }
 
 func main() {
-	var str string = "educativeio"
+	var str string = "computing"
 	fmt.Println(countVowels(str, len(str)))
 }

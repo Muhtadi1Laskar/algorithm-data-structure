@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"math/big"
 )
 
@@ -38,11 +37,4 @@ func fibIter(n int) *big.Int {
 		next.Add(temp, next)
 	}
 	return next
-}
-
-func main() {
-	number := 200
-	memo := make(map[int]*big.Int)
-
-	fmt.Println(fibMemo(number, memo))
 }

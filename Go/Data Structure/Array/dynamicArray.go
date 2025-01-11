@@ -111,10 +111,10 @@ func main() {
 
 	array.Insert(9, "Machine Code")
 
-	// array.Delete(9)
-	// array.Delete(8)
-	// array.Delete(7)
-	// array.Delete(6)
+	array.Delete(9)
+	array.Delete(8)
+	array.Delete(7)
+	array.Delete(6)
 
 	fmt.Println(array.arr, array.size, array.len)
 

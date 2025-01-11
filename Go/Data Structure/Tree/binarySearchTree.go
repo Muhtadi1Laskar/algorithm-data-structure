@@ -189,5 +189,4 @@ func main() {
 
 	maxValue, parentValue := bst.FindMax()
 	fmt.Println(maxValue, parentValue)
-	
 }

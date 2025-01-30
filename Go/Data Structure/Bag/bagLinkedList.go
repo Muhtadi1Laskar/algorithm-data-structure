@@ -62,6 +62,19 @@ func (b *LinkedList) Delete(index int) {
 	return
 }
 
+func (b *LinkedList) Greatest() *Node {
+	current := b.head
+	max := b.head
+
+	for current != nil {
+		if len(max.value) < len(current.value) {
+			max = current
+		}
+		current = current.next
+	}
+	return max
+}
+
 func (b *LinkedList) Log() string {
 	if b.isEmpty() {
 		return "The bag is empty"
@@ -85,9 +98,12 @@ func main() {
 	bag.Push("Mark")
 	bag.Push("Randall")
 	bag.Push("William")
+	bag.Push("Chris Jackson")
 
 	fmt.Println(bag.Log())
 
 	bag.Delete(2)
 	fmt.Println(bag.Log())
+
+	fmt.Println(bag.Greatest().value)
 }

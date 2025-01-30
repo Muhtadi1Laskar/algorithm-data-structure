@@ -43,6 +43,17 @@ func (b *Bag) Remove(item string) {
 	}
 }
 
+func (b *Bag) Greatest() string {
+	max := b.arr[0]
+
+	for i := 0; i < len(b.arr); i++ {
+		if max < b.arr[i] {
+			max = b.arr[i]
+		}
+	}
+	return max
+}
+
 // func main() {
 // 	arr := newBag();
 // 	arr.Add("Saitama");

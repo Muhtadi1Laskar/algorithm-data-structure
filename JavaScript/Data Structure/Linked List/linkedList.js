@@ -52,9 +52,15 @@ class LinkedList {
         }
         const newNode = new Node(value);
         let previousNode = this.traverse(index - 1);
+
         newNode.next = previousNode.next;
         previousNode.next = newNode;
         this.len++;
+
+        if(!newNode.next) {
+            this.tail = newNode;
+        }
+
         return;
     }
 
@@ -75,8 +81,14 @@ class LinkedList {
         }
         let previousNode = this.traverse(index - 1);
         let currentNode = previousNode.next;
+
         previousNode.next = currentNode.next;
         this.len--;
+
+        if(!previousNode.next) {
+            this.tail = previousNode;
+        }
+
         return;
     }
 
@@ -132,6 +144,6 @@ linkedList.insert(10, 'x64 Assembly');
 
 console.log(linkedList.print());
 
-linkedList.delete(9);
+linkedList.delete(10);
 
 console.log(linkedList.print());

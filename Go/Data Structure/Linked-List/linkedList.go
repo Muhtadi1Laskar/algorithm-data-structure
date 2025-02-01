@@ -75,6 +75,10 @@ func (list *LinkedList) Insert(index int, data string) {
 	newNode.next = previousNode.next
 	previousNode.next = newNode
 	list.length++
+
+	if newNode.next == nil {
+		list.tail = newNode
+	}
 	return
 }
 
@@ -97,9 +101,12 @@ func (list *LinkedList) Delete(index int) *Node {
 	}
 
 	currentNode := previousNode.next
-
 	previousNode.next = currentNode.next
 	list.length--
+
+	if previousNode.next == nil {
+		list.tail = previousNode
+	}
 
 	return currentNode
 }

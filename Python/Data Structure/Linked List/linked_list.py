@@ -54,9 +54,14 @@ class LinkedList:
 
         new_node = Node(value)
         previous_node = self.traverse(index-1)
+
         new_node.next = previous_node.next
         previous_node.next = new_node
         self.length += 1
+
+        if not new_node.next:
+            self.tail = new_node
+
         return None
     
     def delete(self, index):
@@ -69,9 +74,13 @@ class LinkedList:
             return None
         
         previous_node = self.traverse(index-1)
+
         unwanted_node = previous_node.next
         previous_node.next = unwanted_node.next
         self.length -= 1
+
+        if not previous_node:
+            self.tail = previous_node
 
         return None
     

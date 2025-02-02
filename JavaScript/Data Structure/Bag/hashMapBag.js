@@ -25,6 +25,17 @@ class Bag {
             this.bag[value] = 1;
         }
     }
+
+    remove(value) {
+        if(this.find(value)) {
+            this.count--;
+            if(this.bag[value] > 1) {
+                this.bag[value]--;
+            } else {
+                delete this.bag[value];
+            }
+        }
+    }
 }
 
 const bag = new Bag();
@@ -39,4 +50,15 @@ bag.add("Ruby on Rails");
 bag.add("Ruby on Rails");
 bag.add("Ruby on Rails");
 
-console.log(bag.getGreatest());
+
+console.log(bag.bag);
+
+bag.remove("Ruby on Rails");
+bag.remove("Ruby on Rails");
+bag.remove("Ruby on Rails");
+bag.remove("Ruby on Rails");
+bag.remove("Ruby on Rails");
+bag.remove("React");
+
+
+console.log(bag.bag);

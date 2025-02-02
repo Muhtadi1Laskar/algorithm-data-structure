@@ -91,19 +91,19 @@ func (b *LinkedList) Log() string {
 	return formattedStr
 }
 
-func main() {
-	bag := NewListBag()
+// func main() {
+// 	bag := NewListBag()
 
-	bag.Push("James")
-	bag.Push("Mark")
-	bag.Push("Randall")
-	bag.Push("William")
-	bag.Push("Chris Jackson")
+// 	bag.Push("James")
+// 	bag.Push("Mark")
+// 	bag.Push("Randall")
+// 	bag.Push("William")
+// 	bag.Push("Chris Jackson")
 
-	fmt.Println(bag.Log())
+// 	fmt.Println(bag.Log())
 
-	bag.Delete(2)
-	fmt.Println(bag.Log())
+// 	bag.Delete(2)
+// 	fmt.Println(bag.Log())
 
-	fmt.Println(bag.Greatest().value)
-}
+// 	fmt.Println(bag.Greatest().value)
+// }

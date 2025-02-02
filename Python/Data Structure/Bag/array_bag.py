@@ -32,7 +32,6 @@ class Bag:
         
         idx = index
         while idx < self.len-1:
-            print(self.bag[idx])
             self.bag[idx] = self.bag[idx+1] 
             idx += 1
         self.bag[self.len-1] = ""

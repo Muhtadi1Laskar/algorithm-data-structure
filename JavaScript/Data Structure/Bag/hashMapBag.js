@@ -13,13 +13,13 @@ class Bag {
     }
 
     getGreatest() {
-        return this.isEmpty ? undefined : Object.keys(this.bag).sort((a, b) => a - b)[0];
+        return this.isEmpty() ? undefined : Object.keys(this.bag).sort((a, b) => a - b).pop();
     }
 
     add(value) {
         this.count++;
 
-        if(this.find(value)) {
+        if (this.find(value)) {
             this.bag[value]++;
         } else {
             this.bag[value] = 1;
@@ -34,5 +34,9 @@ bag.add("React");
 bag.add("Flask");
 bag.add("Django");
 bag.add("Ruby on Rails");
+bag.add("Ruby on Rails");
+bag.add("Ruby on Rails");
+bag.add("Ruby on Rails");
+bag.add("Ruby on Rails");
 
-console.log(bag.bag);
+console.log(bag.getGreatest());

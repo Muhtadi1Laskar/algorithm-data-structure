@@ -24,7 +24,7 @@ func (b *Bags) greatest() string {
 	}
 	keys := make([]string, len(b.bag))
 
-	for k, _ := range b.bag {
+	for k := range b.bag {
 		keys = append(keys, k)
 	}
 	sort.Strings(keys)

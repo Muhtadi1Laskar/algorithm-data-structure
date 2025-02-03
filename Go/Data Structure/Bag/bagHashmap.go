@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"sort"
 )
 
 type Bags struct {
@@ -15,6 +16,20 @@ func newBags() *Bags {
 
 func (b *Bags) isEmpty() bool {
 	return b.length == 0
+}
+
+func (b *Bags) greatest() string {
+	if b.isEmpty() {
+		return "empty"
+	}
+	keys := make([]string, len(b.bag))
+
+	for k, _ := range b.bag {
+		keys = append(keys, k)
+	}
+	sort.Strings(keys)
+
+	return keys[len(keys)-1]
 }
 
 func (b *Bags) find(value string) bool {
@@ -57,6 +72,9 @@ func main() {
 	bag.add("Solid.js")
 	bag.add("Ruby on Rails")
 	bag.add("Angular")
+	bag.add("Angular")
+	bag.add("Angular")
+	bag.add("Angular")
 
 	fmt.Printf("%+v\n", bag.bag)
 
@@ -64,6 +82,9 @@ func main() {
 	bag.remove("React")
 	bag.remove("React")
 	bag.remove("React")
+	bag.add("Ruby on Rails")
 
 	fmt.Printf("%+v\n", bag.bag)
+
+	fmt.Printf("%s\n", bag.greatest())
 }

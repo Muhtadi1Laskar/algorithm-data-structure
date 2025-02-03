@@ -33,10 +33,8 @@ func (b *Bags) greatest() string {
 }
 
 func (b *Bags) find(value string) bool {
-	if _, exists := b.bag[value]; exists {
-		return true
-	}
-	return false
+	_, exists := b.bag[value]
+	return exists
 }
 
 func (b *Bags) add(value string) {

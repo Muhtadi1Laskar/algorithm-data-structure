@@ -11,7 +11,7 @@ type Bags struct {
 }
 
 func newBags() *Bags {
-	return &Bags{ bag: make(map[string]int) }
+	return &Bags{bag: make(map[string]int)}
 }
 
 func (b *Bags) isEmpty() bool {
@@ -39,7 +39,7 @@ func (b *Bags) find(value string) bool {
 
 func (b *Bags) add(value string) {
 	b.length++
-	if(b.find(value)) {
+	if b.find(value) {
 		b.bag[value]++
 	} else {
 		b.bag[value] = 1
@@ -47,9 +47,9 @@ func (b *Bags) add(value string) {
 }
 
 func (b *Bags) remove(value string) {
-	if(b.find(value)) {
+	if b.find(value) {
 		b.length--
-		if(b.bag[value] > 1) {
+		if b.bag[value] > 1 {
 			b.bag[value]--
 		} else {
 			delete(b.bag, value)

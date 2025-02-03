@@ -33,6 +33,17 @@ func (b *Bags) add(value string) {
 	}
 }
 
+func (b *Bags) remove(value string) {
+	if(b.find(value)) {
+		b.length--
+		if(b.bag[value] > 1) {
+			b.bag[value]--
+		} else {
+			delete(b.bag, value)
+		}
+	}
+}
+
 func main() {
 	bag := newBags()
 
@@ -46,6 +57,13 @@ func main() {
 	bag.add("Solid.js")
 	bag.add("Ruby on Rails")
 	bag.add("Angular")
+
+	fmt.Printf("%+v\n", bag.bag)
+
+	bag.remove("React")
+	bag.remove("React")
+	bag.remove("React")
+	bag.remove("React")
 
 	fmt.Printf("%+v\n", bag.bag)
 }

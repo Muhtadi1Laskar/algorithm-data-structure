@@ -27,9 +27,9 @@ class Bag {
     }
 
     remove(value) {
-        if(this.find(value)) {
+        if (this.find(value)) {
             this.count--;
-            if(this.bag[value] > 1) {
+            if (this.bag[value] > 1) {
                 this.bag[value]--;
             } else {
                 delete this.bag[value];

@@ -35,7 +35,7 @@ func (li *LinkedList) Append(value string) {
 		li.length++
 		return
 	}
-
+          
 	currentNode := li.head
 	for currentNode.next != nil {
 		currentNode = currentNode.next

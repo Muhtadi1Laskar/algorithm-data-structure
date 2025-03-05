@@ -29,6 +29,19 @@ class LinkedList {
         return;
     }
 
+    greatest() {
+        let currentNode = this.head;
+        let max = this.head;
+
+        while(currentNode) {
+            if(max.value.length < currentNode.value.length) {
+                max = currentNode;
+            } 
+            currentNode = currentNode.next;
+        }
+        return max.value;
+    }
+
     print() {
         let result = [];
         let currentNode = this.head;
@@ -51,3 +64,5 @@ list.push("Odin");
 list.push("Assembly");
 
 console.log(list.print());
+
+console.log(list.greatest());

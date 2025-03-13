@@ -14,14 +14,14 @@ class LinkedList {
     push(value) {
         const newNode = new Node(value);
 
-        if(!this.head) {
+        if (!this.head) {
             this.head = newNode;
             this.length += 1;
             return;
         }
         let currentNode = this.head;
 
-        while(currentNode.next) {
+        while (currentNode.next) {
             currentNode = currentNode.next;
         }
         currentNode.next = newNode;
@@ -33,10 +33,10 @@ class LinkedList {
         let currentNode = this.head;
         let max = this.head;
 
-        while(currentNode) {
-            if(max.value.length < currentNode.value.length) {
+        while (currentNode) {
+            if (max.value.length < currentNode.value.length) {
                 max = currentNode;
-            } 
+            }
             currentNode = currentNode.next;
         }
         return max.value;
@@ -46,7 +46,7 @@ class LinkedList {
         let result = [];
         let currentNode = this.head;
 
-        for(;currentNode; currentNode = currentNode.next) {
+        for (; currentNode; currentNode = currentNode.next) {
             result.push(currentNode.value);
         }
         return result.join(" ---> ")

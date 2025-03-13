@@ -1,4 +1,4 @@
-const bubbleSort = (array) => {
+export const bubbleSort = (array) => {
     for (let i = 0; i < array.length; i++) {
         for (let j = i + 1; j < array.length; j++) {
             if (array[i] > array[j]) {
@@ -11,6 +11,4 @@ const bubbleSort = (array) => {
     return array;
 }
 
-let array = [5, 4, 3, 2, 1];
-
-console.log(bubbleSort(array));
+// export default bubbleSort;

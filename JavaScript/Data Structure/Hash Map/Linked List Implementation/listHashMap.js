@@ -15,9 +15,9 @@ class LinkedList {
 
     insert(key, value) {
         let currentNode = this.head;
-        
-        while(currentNode) {
-            if(currentNode.key === key) {
+
+        while (currentNode) {
+            if (currentNode.key === key) {
                 currentNode.value = value;
                 return;
             }
@@ -31,8 +31,8 @@ class LinkedList {
     find(key) {
         let currentNode = this.head;
 
-        while(currentNode) {
-            if(currentNode.key === key) {
+        while (currentNode) {
+            if (currentNode.key === key) {
                 return currentNode.value;
             }
             currentNode = currentNode.next;
@@ -44,9 +44,9 @@ class LinkedList {
         let currentNode = this.head;
         let prev = null;
 
-        while(currentNode) {
-            if(currentNode.key === key) {
-                if(prev) {
+        while (currentNode) {
+            if (currentNode.key === key) {
+                if (prev) {
                     prev.next = currentNode.next;
                 } else {
                     this.head = currentNode.next;
@@ -61,7 +61,7 @@ class LinkedList {
         const result = [];
         let currentNode = this.head;
 
-        while(currentNode) {
+        while (currentNode) {
             result.push([currentNode.key, currentNode.value]);
             currentNode = currentNode.next;
         }
@@ -70,7 +70,7 @@ class LinkedList {
 }
 
 class HashMap {
-    constructor(size=10) {
+    constructor(size = 10) {
         this.size = size;
         this.array = Array.from({ length: size }, () => new LinkedList())
     }
@@ -95,11 +95,11 @@ class HashMap {
     }
 
     print() {
-        for(let i = 0; i < this.array.length; i++) {
+        for (let i = 0; i < this.array.length; i++) {
             let currentNode = this.array[i].head;
 
             process.stdout.write(`Bucket ${i}: `);
-            while(currentNode) {
+            while (currentNode) {
                 process.stdout.write(`(${currentNode.key}: ${currentNode.value}) -> `);
                 currentNode = currentNode.next;
             }
@@ -123,7 +123,7 @@ const data = [
     ['Occupation', 'Pirate'],
     ['Age', 20],
     ['Favourite Food', 'Meat'],
-    ['Devil Fruit User', true], 
+    ['Devil Fruit User', true],
     ['Devil Fruit Name', "Gomu Gomu No Mi"]
 ];
 
@@ -135,7 +135,7 @@ for (let i = 0; i < data.length; i++) {
 
 hashMap.print();
 
-for(let i = 0; i < data.length; i++) {
+for (let i = 0; i < data.length; i++) {
     const [key] = data[i];
     console.log(hashMap.get(key));
 }

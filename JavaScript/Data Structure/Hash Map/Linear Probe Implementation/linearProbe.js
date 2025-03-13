@@ -27,12 +27,12 @@ class HashMap {
     get(key) {
         const hashedKey = HashMap.hash(key);
         let index = hashedKey % this.size;
-        
-        while(this.array[index] !== null && this.array[index][0] !== key) {
+
+        while (this.array[index] !== null && this.array[index][0] !== key) {
             index = (index + 1) % this.size;
         }
 
-        if(this.array[index] === null) {
+        if (this.array[index] === null) {
             return null
         }
         return this.array[index][1];
@@ -46,7 +46,7 @@ const data = [
     ['Occupation', 'Pirate'],
     ['Age', 20],
     ['Favourite Food', 'Meat'],
-    ['Devil Fruit User', true], 
+    ['Devil Fruit User', true],
     ['Devil Fruit Name', "Gomu Gomu No Mi"]
 ];
 
@@ -55,7 +55,7 @@ for (let i = 0; i < data.length; i++) {
     hashMap.set(key, value);
 }
 
-for(let i = 0; i < data.length; i++) {
+for (let i = 0; i < data.length; i++) {
     const [key, value] = data[i];
     console.log(hashMap.get(key));
 }

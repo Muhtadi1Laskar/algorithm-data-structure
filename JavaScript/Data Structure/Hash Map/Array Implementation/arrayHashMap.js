@@ -1,5 +1,5 @@
 class HashMap {
-    constructor(size=10) {
+    constructor(size = 10) {
         this.size = size;
         this.array = Array.from({ length: size }, () => []);
     }
@@ -18,8 +18,8 @@ class HashMap {
         const index = hashedKey % this.size;
         const selectedBin = this.array[index];
 
-        for(let i = 0; i < selectedBin.length; i++) {
-            if(selectedBin[i] === key) {
+        for (let i = 0; i < selectedBin.length; i++) {
+            if (selectedBin[i] === key) {
                 selectedBin[i] = [key, value];
                 return this;
             }
@@ -33,8 +33,8 @@ class HashMap {
         let index = hashedKey % this.size;
         const selectedBin = this.array[index];
 
-        for(let i = 0; i < selectedBin.length; i++) {
-            if(selectedBin[i][0] == key) {
+        for (let i = 0; i < selectedBin.length; i++) {
+            if (selectedBin[i][0] == key) {
                 return selectedBin[i][1];
             }
         }
@@ -49,7 +49,7 @@ const data = [
     ['Occupation', 'Pirate'],
     ['Age', 20],
     ['Favourite Food', 'Meat'],
-    ['Devil Fruit User', true], 
+    ['Devil Fruit User', true],
     ['Devil Fruit Name', "Gomu Gomu No Mi"]
 ];
 

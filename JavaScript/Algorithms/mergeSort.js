@@ -3,8 +3,8 @@ const merge = (left, right) => {
     let i = 0;
     let j = 0;
 
-    while(i < left.length && j < right.length) {
-        if(left[i] <= right[j]) {
+    while (i < left.length && j < right.length) {
+        if (left[i] <= right[j]) {
             merged.push(left[i]);
             i += 1;
         }
@@ -13,11 +13,11 @@ const merge = (left, right) => {
             j += 1;
         }
     }
-    while(i < left.length) {
+    while (i < left.length) {
         merged.push(left[i]);
         i++;
     }
-    while(j < right.length) {
+    while (j < right.length) {
         merged.push(right[j]);
         j++;
     }
@@ -25,7 +25,7 @@ const merge = (left, right) => {
 }
 
 const mergeSort = (array) => {
-    if(array.length <= 1) {
+    if (array.length <= 1) {
         return array;
     }
     let mid = Math.floor(array.length / 2);

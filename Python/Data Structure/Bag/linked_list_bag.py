@@ -2,7 +2,8 @@ class Node:
     def __init__(self, value):
         self.value = value
         self.next = None
-    
+
+
 class Bag:
     def __init__(self):
         self.head = None
@@ -11,7 +12,7 @@ class Bag:
 
     def is_empty(self):
         return not self.head
-    
+
     def push(self, value):
         new_node = Node(value)
 
@@ -29,30 +30,30 @@ class Bag:
     def remove(self, index):
         if self.is_empty() or index < 0 or index > self.len:
             return None
-        
+
         if index == 1:
             node_to_delete = self.head
             self.head = node_to_delete.next
             self.len -= 1
             return
-        
+
         previous_node = self.head
-        for i in range(1, index-1):
+        for i in range(1, index - 1):
             previous_node = previous_node.next
-        
+
         node_to_remove = previous_node.next
         previous_node.next = node_to_remove.next
         self.len -= 1
         return
-    
+
     def search(self, index):
         if self.is_empty() or index < 0 or index > self.len:
             return None
-        
+
         current_node = self.head
         for i in range(1, index):
             current_node = current_node.next
-        
+
         return current_node.value
 
     def log(self):
@@ -64,7 +65,7 @@ class Bag:
         while current_node:
             result.append(current_node.value)
             current_node = current_node.next
-        
+
         return " ---> ".join(result)
 
 

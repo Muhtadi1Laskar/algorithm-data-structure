@@ -1,8 +1,8 @@
 const linearSearch = (array, item) => {
     let idx = 0;
 
-    while(idx < array.length) {
-        if(array[idx] === item) {
+    while (idx < array.length) {
+        if (array[idx] === item) {
             return idx;
         }
         idx++;

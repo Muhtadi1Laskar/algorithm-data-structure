@@ -1,6 +1,6 @@
 package main
 
-func combSort(arr []int) {
+func CombSort(arr []int) {
 	n := len(arr)
 	gap := n
 	swapped := true

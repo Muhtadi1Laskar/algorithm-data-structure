@@ -80,7 +80,7 @@ func (arr *DynamicArray) Shrink() {
 		newSize := int(arr.size / 2)
 		newArray := make([]string, newSize)
 
-		for i := 0; i < arr.len; i++ {
+		for i := range arr.len {
 			newArray[i] = arr.arr[i]
 		}
 		arr.arr = newArray

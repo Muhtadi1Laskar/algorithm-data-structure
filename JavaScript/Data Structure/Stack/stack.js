@@ -19,7 +19,7 @@ class Stack {
     push(value) {
         const newItem = new Node(value);
 
-        if (this.isEmpty()) {
+        if(this.isEmpty()) {
             this.firstItem = newItem;
             this.lastItem = this.firstItem;
             this.len += 1;
@@ -32,7 +32,7 @@ class Stack {
     }
 
     pop() {
-        if (this.len < 0) {
+        if(this.len < 0) {
             return "The stack is empty";
         }
         const item = this.firstItem;
@@ -49,7 +49,7 @@ class Stack {
         let stack = [];
         let currentNode = this.firstItem;
 
-        while (currentNode) {
+        while(currentNode) {
             stack.push(currentNode.value);
             currentNode = currentNode.next;
         }

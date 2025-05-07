@@ -11,5 +11,4 @@ const removeDuplicates = (str) => {
     return str[0] + removeDuplicates(str.slice(1));
 }
 
-
 console.log(removeDuplicates("Hello Worlldd"));

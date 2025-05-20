@@ -18,6 +18,7 @@ class LinkedList:
         return
 
     def append(self, data):
+        
         new_node = Node(data)
 
         if self.is_empty():

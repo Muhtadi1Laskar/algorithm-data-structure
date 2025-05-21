@@ -30,6 +30,7 @@ class LinkedList:
         while current_node.next:
             current_node = current_node.next
         
+        
         current_node.next = new_node
         self.length += 1
         return

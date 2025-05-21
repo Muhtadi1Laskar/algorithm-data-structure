@@ -16,7 +16,6 @@ class LinkedList:
         self.head = new_node
         self.length += 1
         return
-    
 
     def append(self, data):
         new_node = Node(data)

@@ -35,6 +35,7 @@ class LinkedList:
         return
     
     def insert(self, data, index):
+        
         if index <= 0 or index > self.length + 1:
             print("Index out of range")
             return

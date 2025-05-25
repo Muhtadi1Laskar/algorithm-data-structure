@@ -41,6 +41,7 @@ class LinkedList:
         
         if index == 1:
             self.pre_append(data)
+            
             return
         
         prev_node = self.head

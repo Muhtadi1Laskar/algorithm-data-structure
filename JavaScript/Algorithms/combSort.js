@@ -1,22 +1,23 @@
-import { bubbleSort } from './bubbleSort.js';
-
 const combSort = (array) => {
-    let l = 0;
-    let r = array.length - 1;
     let shrinkFactor = 1.3;
-    let gap = r - l + 1;
+    let gap = array.length;
+    let swapped = true;
 
-    for (; ;) {
+    while(gap > 1 || swapped) {
         gap = Math.floor(gap / shrinkFactor);
 
-        if (gap === 1) {
-            return bubbleSort(array);
+        if(gap < 1) {
+            gap = 1;
         }
-        for (let i = l; i <= r - gap; i++) {
-            [array[i], array[i + 1]] = [array[i + 1], array[i]];
+
+        swapped = false;
+
+        for(let i = 0; i + gap < array.length; i++) {
+            if (array[i] > array[i + gap]) {
+                [array[i], array[i + gap]] = [array[i + gap], array[i]];
+                swapped = true;
+            }
         }
     }
     return array;
 }
-
-console.log(combSort([5, 4, -3, 2, 1]))

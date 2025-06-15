@@ -63,7 +63,7 @@ class BinarySearchTree {
         let queue = [currentNode];
 
         while (queue.length > 0) {
-            currentNode = queue.pop();
+            currentNode = queue.shift();
             list.push(currentNode.value);
 
             if (currentNode.left) {

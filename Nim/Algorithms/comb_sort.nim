@@ -12,7 +12,7 @@ proc comb_sort(arr: var seq[int]): seq[int] =
         
         swapped = false
 
-        for i in 0..<n-gap:
+        for i in 0..<(n-gap):
             if arr[i] > arr[i+gap]:
                 var temp: int = arr[i]
                 arr[i] = arr[i+gap]

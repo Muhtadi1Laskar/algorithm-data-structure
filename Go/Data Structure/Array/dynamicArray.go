@@ -20,7 +20,6 @@ func (arr *DynamicArray) Push(item string) {
 	}
 	arr.arr[arr.len] = item
 	arr.len++
-	return
 }
 
 func (arr *DynamicArray) Insert(index int, item string) {
@@ -34,7 +33,6 @@ func (arr *DynamicArray) Insert(index int, item string) {
 	}
 	arr.arr[index] = item
 	arr.len++
-	return
 }
 
 func (arr *DynamicArray) Delete(index int) {
@@ -48,7 +46,6 @@ func (arr *DynamicArray) Delete(index int) {
 	}
 	arr.arr[arr.len-1] = ""
 	arr.len--
-	return
 }
 
 func (arr *DynamicArray) GetLen() int {

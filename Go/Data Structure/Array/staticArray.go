@@ -9,7 +9,7 @@ type Array struct {
 
 const size int = 10
 
-func newArray() *Array {
+func NewArray() *Array {
 	return &Array{
 		array: make([]int, size),
 		len:   0,
@@ -23,8 +23,6 @@ func (array *Array) Push(item int) {
 	}
 	array.array[array.len] = item
 	array.len++
-
-	return
 }
 
 func (array *Array) Delete(index int) []int {
@@ -54,12 +52,12 @@ func (array *Array) GetLength() int {
 	return array.len
 }
 
-func double(num int) int {
+func Double(num int) int {
 	return num * num
 }
 
 // func main() {
-// 	array := newArray();
+// 	array := NewArray();
 
 // 	for i := 1; i <= 10; i++ {
 // 		array.Push(i);
@@ -68,7 +66,7 @@ func double(num int) int {
 // 	fmt.Println(array.array);
 // 	fmt.Println(array.len);
 
-// 	fmt.Println(array.Traverse(double));
+// 	fmt.Println(array.Traverse(Double));
 
 // 	fmt.Println(array.Delete(0));
 // 	fmt.Println(array.Delete(1));

@@ -11,6 +11,19 @@ type
 proc new_linked_list(): LinkedList =
     LinkedList(head: nil)
 
+proc pre_append(self: LinkedList, item: string) =
+    let new_node = Node(value: item, next: nil)
+
+    if self.head.isNil:
+        self.head = new_node
+        self.length += 1
+        return
+
+    new_node.next = self.head
+    self.head = new_node
+    self.length += 1
+
+
 proc append(self: LinkedList, item: string) = 
     let new_node = Node(value: item, next: nil)
 
@@ -48,4 +61,9 @@ when isMainModule:
     list.append("Odin")
 
     echo  list.log()
+
+    list.pre_append("Assembly")
+    list.pre_append("Machine Code")
+
+    echo list.log()
 

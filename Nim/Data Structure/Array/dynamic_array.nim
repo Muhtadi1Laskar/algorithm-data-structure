@@ -4,23 +4,13 @@ type
         data: seq[int]
         length: int
 
-proc new_array(size: int): DynamicArray =
-    result = DynamicArray(capacity: size, data: @[])
+proc new_array(capacity: int): DynamicArray = 
+    DynamicArray(capacity: capacity, data: newSeq[int](capacity), length: 0)
 
-proc push(self: DynamicArray, item: int) = 
-    if self.data.len >= self.capacity:
-        echo "No more capacity"
+
+proc push(self: var DynamicArray, item: int) = 
+    if self.length >= self.capacity:
         return
-
-    self.data.add(item)
-
-proc toString(self: DynamicArray): string =
-  result = $self.data
-
-when isMainModule:
-    let arr = new_array(10)
-
-    for i in 0 .. 50:
-        arr.push(i)
-
-    echo arr.toString()
+    
+    self.data[self.length] = item
+    self.length += 1

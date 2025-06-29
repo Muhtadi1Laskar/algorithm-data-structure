@@ -35,7 +35,14 @@ proc delete(self: Array, index: int): seq[int] =
 
 proc get_length(self: Array): int = 
     return self.length
+
+proc traverse(self: Array, fn: proc (x: int): int): seq[int] =
+    result = @[]
+    for i in 0 ..< self.length:
+        result.add fn(self.array[i])
     
+proc double(x: int): int = 
+    x * x
 
 when isMainModule:
     let arr = new_array()
@@ -45,3 +52,7 @@ when isMainModule:
 
     
     echo arr.array
+
+    let new_arrays = arr.traverse(double)
+
+    echo new_arrays

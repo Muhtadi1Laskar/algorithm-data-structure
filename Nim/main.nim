@@ -61,6 +61,9 @@ proc shrink(self: var DynamicArray) =
         self.capacity = new_size
         self.data = new_array
 
+proc get_length(self: var DynamicArray): int = 
+    return self.length
+
 proc toString(self: var DynamicArray): string = 
     result = $self.data
 

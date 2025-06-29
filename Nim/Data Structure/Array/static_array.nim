@@ -32,6 +32,9 @@ proc delete(self: Array, index: int): seq[int] =
 
     for i in 0 ..< self.length:
         result.add self.array[i]
+
+proc get_length(self: Array): int = 
+    return self.length
     
 
 when isMainModule:

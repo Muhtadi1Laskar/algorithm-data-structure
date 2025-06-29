@@ -15,8 +15,24 @@ proc push(self: Array, item: int) =
         return
     self.array[self.length] = item
     self.length += 1
+    return
 
+proc delete(self: Array, index: int): seq[int] = 
+    if index < 0 or index >= self.length: 
+        echo "Index out of range"
+        return @[]
 
+    for i in index ..< self.length - 1:
+        self.array[i] = self.array[i + 1]
+    
+    self.length -= 1
+    self.array[self.length] = 0
+
+    result = @[]
+
+    for i in 0 ..< self.length:
+        result.add self.array[i]
+    
 
 when isMainModule:
     let arr = new_array()

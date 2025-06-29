@@ -36,7 +36,6 @@ func (b *LinkedList) Push(item string) {
 	b.tail.next = newNode
 	b.tail = newNode
 	b.length += 1
-	return
 }
 
 func (b *LinkedList) Delete(index int) {
@@ -59,7 +58,6 @@ func (b *LinkedList) Delete(index int) {
 	currentNode := previousNode.next
 	previousNode.next = currentNode.next
 	b.length--
-	return
 }
 
 func (b *LinkedList) Greatest() *Node {

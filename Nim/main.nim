@@ -50,6 +50,17 @@ proc delete(self: var DynamicArray, index: int) =
     self.data[self.length-1] = 0
     self.length -= 1
 
+proc shrink(self: var DynamicArray) = 
+    if self.length < self.capacity div 2:
+        let new_size = self.capacity div 2
+        var new_array = newSeq[int](new_size)
+
+        for i in 0 ..< self.length:
+            new_array[i] = self.data[i]
+        
+        self.capacity = new_size
+        self.data = new_array
+
 proc toString(self: var DynamicArray): string = 
     result = $self.data
 
@@ -68,5 +79,33 @@ when isMainModule:
   echo arr.toString()
 
   arr.delete(0)
+  arr.delete(0)
+  arr.delete(0)
+  arr.delete(0)
+  arr.delete(0)
+  arr.delete(0)
+  arr.delete(0)
+  arr.delete(0)
+  arr.delete(0)
+  arr.delete(0)
+  arr.delete(0)
+  arr.delete(0)
+  arr.delete(0)
+  arr.delete(0)
+  arr.delete(0)
+  arr.delete(0)
+  arr.delete(0)
+  arr.delete(0)
+  arr.delete(0)
+  arr.delete(0)
+  arr.delete(0)
+  arr.delete(0)
 
   echo arr.toString()
+
+  arr.shrink()
+
+  echo arr.toString()
+
+  echo arr.length
+  echo arr.data.len

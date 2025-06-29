@@ -39,5 +39,16 @@ proc insert(self: var DynamicArray, index: int, item: int) =
   self.data[index] = item
   self.length += 1
 
+proc delete(self: var DynamicArray, index: int) = 
+    if index < 0 or index > self.length:
+        echo "Index out of range"
+        return
+    
+    for i in index..<self.length-1:
+        self.data[i] = self.data[i+1]
+    
+    self.data[self.length-1] = 0
+    self.length -= 1
+
 proc toString(self: var DynamicArray): string = 
     result = $self.data

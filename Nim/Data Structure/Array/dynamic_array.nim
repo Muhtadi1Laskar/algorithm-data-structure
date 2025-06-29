@@ -25,5 +25,19 @@ proc push(self: var DynamicArray, item: int) =
     self.data[self.length] = item
     self.length += 1
 
+proc insert(self: var DynamicArray, index: int, item: int) =
+  if index < 0 or index > self.length:
+    echo "Index out of Range"
+    return
+  
+  if self.length == self.capacity:
+    self.resize()
+  
+  for i in countdown(self.length, index + 1):
+    self.data[i] = self.data[i-1]
+  
+  self.data[index] = item
+  self.length += 1
+
 proc toString(self: var DynamicArray): string = 
     result = $self.data

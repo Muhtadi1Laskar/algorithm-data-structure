@@ -44,15 +44,3 @@ proc traverse(self: Array, fn: proc (x: int): int): seq[int] =
 proc double(x: int): int = 
     x * x
 
-when isMainModule:
-    let arr = new_array()
-
-    for i in 1..10:
-        arr.push(i)
-
-    
-    echo arr.array
-
-    let new_arrays = arr.traverse(double)
-
-    echo new_arrays

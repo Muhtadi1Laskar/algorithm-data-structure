@@ -61,6 +61,12 @@ proc shrink(self: var DynamicArray) =
         self.capacity = new_size
         self.data = new_array
 
+proc search(self: var DynamicArray, item: int): int =
+    for i in 0 ..< self.length:
+        if self.data[i] == item:
+            return i
+    return -1
+
 proc get_length(self: var DynamicArray): int = 
     return self.length
 

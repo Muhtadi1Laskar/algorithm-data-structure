@@ -11,12 +11,16 @@ type
 proc new_linked_list(): LinkedList =
     LinkedList(head: nil)
 
+proc add_head(self: LinkedList, node: Node) = 
+    self.head = node
+    self.length += 1
+    return
+
 proc pre_append(self: LinkedList, item: string) =
     let new_node = Node(value: item, next: nil)
 
     if self.head.isNil:
-        self.head = new_node
-        self.length += 1
+        self.add_head(new_node)
         return
 
     new_node.next = self.head
@@ -28,8 +32,7 @@ proc append(self: LinkedList, item: string) =
     let new_node = Node(value: item, next: nil)
 
     if self.head.isNil:
-        self.head = new_node
-        self.length += 1
+        self.add_head(new_node)
         return
 
     var current_node = self.head

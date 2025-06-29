@@ -1,3 +1,5 @@
+import strutils 
+
 type
     Node = ref object
         value: string
@@ -43,15 +45,15 @@ proc append(self: LinkedList, item: string) =
     current_node.next = new_node
     self.length += 1
 
-proc log(self: LinkedList): seq[string] = 
+proc log(self: LinkedList): string = 
     var result: seq[string] = @[]
     var current_node = self.head
 
     while not current_node.isNil:
         result.add(current_node.value)
         current_node = current_node.next
-    
-    return result
+
+    return join(result, " ---> ")
 
 when isMainModule:
     let list = new_linked_list()

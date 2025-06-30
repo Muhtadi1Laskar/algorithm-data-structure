@@ -17,6 +17,17 @@ proc search(self: var Bag, item: string): string =
 
     return "Not available"
 
+proc remove(self: var Bag, index: int) = 
+    if index < 0 or index > self.length:
+        echo "Index out of range"
+        return 
+
+    for i in index ..< self.length-1:
+        self.bag[i] = self.bag[i+1]
+    
+    self.bag[self.length-1] = ""
+    self.length -= 1
+
 proc log(self: var Bag) = 
     for i in 0..<self.length:
         echo self.bag[i]
@@ -39,3 +50,7 @@ when isMainModule:
     bags.log()
 
     echo bags.search("Mike")
+
+    bags.remove(5)
+
+    echo bags.to_string()

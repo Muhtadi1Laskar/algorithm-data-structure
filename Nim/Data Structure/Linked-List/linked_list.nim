@@ -43,6 +43,24 @@ proc append(self: LinkedList, item: string) =
     current_node.next = new_node
     self.length += 1
 
+proc search(self: LinkedList, index: int): string = 
+    if index <= 0 or index > self.length:
+        echo "Index out of range"
+        return ""
+
+    if self.head.isNil:
+        echo "The list is empty"
+        return ""
+
+    var current_node = self.head
+    var i: int = 1
+
+    while i < index and not current_node.isNil:
+        current_node = current_node.next
+        i += 1
+
+    return current_node.value  
+
 proc log(self: LinkedList): string = 
     var result: seq[string] = @[]
     var current_node = self.head

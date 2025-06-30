@@ -10,6 +10,10 @@ proc push(self: var Bag, item: string) =
     self.bag.add(item)
     self.length += 1
 
+proc log(self: var Bag) = 
+    for i in 0..<self.length:
+        echo self.bag[i]
+
 proc get_len(self: var Bag): int = 
     return self.length
 
@@ -24,3 +28,5 @@ when isMainModule:
         bags.push(data[i])
     
     echo bags.to_string()
+
+    bags.log()

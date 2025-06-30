@@ -52,6 +52,8 @@ proc delete(self: BagLinkedList, index: int) =
     self.length -= 1
     return
 
+proc get_len(self: BagLinkedList): int = 
+    return self.length
 
 proc log(self: BagLinkedList): string = 
     if self.head.isNil:

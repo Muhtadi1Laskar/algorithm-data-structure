@@ -30,6 +30,29 @@ proc append(self: BagLinkedList, item: string) =
     current_node.next = new_node
     self.length += 1
 
+proc delete(self: BagLinkedList, index: int) = 
+    if index < 0 or index > self.length + 1:
+        echo "Index out of range"
+        return
+
+    if index == 1:
+        let current_node = self.head.next
+        self.head = current_node
+        self.length -= 1
+        return
+
+    var previous_node = self.head
+
+    for i in 1 ..< index-1:
+        if not previous_node.isNil:
+            previous_node = previous_node.next
+    
+    var current_node = previous_node.next
+    previous_node.next = current_node.next
+    self.length -= 1
+    return
+
+
 proc log(self: BagLinkedList): string = 
     if self.head.isNil:
         echo "The list is empty"
@@ -52,6 +75,10 @@ when isMainModule:
     for i in 0..<data.len:
         list.append(data[i])
     
+    echo list.log()
+
+    list.delete(5)
+
     echo list.log()
     
 

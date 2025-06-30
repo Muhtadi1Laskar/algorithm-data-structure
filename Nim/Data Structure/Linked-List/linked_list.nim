@@ -4,7 +4,6 @@ type
     Node = ref object
         value: string
         next: Node
-
 type
     LinkedList = ref object
         head: Node

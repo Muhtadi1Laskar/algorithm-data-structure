@@ -10,6 +10,13 @@ proc push(self: var Bag, item: string) =
     self.bag.add(item)
     self.length += 1
 
+proc search(self: var Bag, item: string): string = 
+    for i in 0..<self.length:
+        if self.bag[i] == item:
+            return self.bag[i]
+
+    return "Not available"
+
 proc log(self: var Bag) = 
     for i in 0..<self.length:
         echo self.bag[i]
@@ -30,3 +37,5 @@ when isMainModule:
     echo bags.to_string()
 
     bags.log()
+
+    echo bags.search("Mike")

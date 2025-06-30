@@ -52,6 +52,22 @@ proc delete(self: BagLinkedList, index: int) =
     self.length -= 1
     return
 
+proc search(self: BagLinkedList, index: int): string = 
+    if index < 0 or index > self.length + 1:
+        echo "Index out of range"
+        return " "
+    
+    var current_node = self.head
+    var idx: int = 1
+
+    while not current_node.isNil:
+        if idx == index:
+            return current_node.value
+        current_node = current_node.next
+        idx += 1
+
+    return " "
+
 proc get_len(self: BagLinkedList): int = 
     return self.length
 
@@ -82,5 +98,7 @@ when isMainModule:
     list.delete(5)
 
     echo list.log()
+
+    echo list.search(data.len-3);
     
 

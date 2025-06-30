@@ -10,6 +10,9 @@ proc push(self: var Bag, item: string) =
     self.bag.add(item)
     self.length += 1
 
+proc get_len(self: var Bag): int = 
+    return self.length
+
 proc to_string(self: var Bag): string = 
     result = $self.bag
 

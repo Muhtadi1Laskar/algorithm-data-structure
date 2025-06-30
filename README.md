@@ -32,7 +32,7 @@ This repository aims to help developers and learners dive deeper into the world 
 - **Julia**
 - **Python**
 - **Ruby**
--- **Nim**
+- **Nim**
 
 ## What You'll Find
 

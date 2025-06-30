@@ -54,11 +54,10 @@ proc insert(self: LinkedList, item: string, index: int) =
 
     let new_node = Node(value: item, next: nil)
     var previous_node = self.head
-    var i: int = 1
 
-    while i < index-1 and not previous_node.isNil:
-        previous_node = previous_node.next
-        i += 1
+    for i in 1..<index-1:
+        if not previous_node.isNil:
+            previous_node = previous_node.next
     
     new_node.next = previous_node.next
     previous_node.next = new_node
@@ -76,11 +75,10 @@ proc search(self: LinkedList, index: int): string =
         return ""
 
     var current_node = self.head
-    var i: int = 1
-
-    while i < index and not current_node.isNil:
-        current_node = current_node.next
-        i += 1
+    
+    for i in 1..<index:
+        if not current_node.isNil:
+            current_node = current_node.next
 
     return current_node.value  
 

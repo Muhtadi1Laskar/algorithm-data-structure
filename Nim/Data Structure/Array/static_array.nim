@@ -4,8 +4,7 @@ type
     Array = ref object
         array: array[size, int]
         length: int
-
-
+        
 proc new_array(): Array = 
     Array(length: 0)
 

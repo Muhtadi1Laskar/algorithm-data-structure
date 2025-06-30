@@ -7,7 +7,6 @@ type
 proc new_array(capacity: int): DynamicArray = 
     DynamicArray(capacity: capacity, data: newSeq[int](capacity), length: 0)
 
-
 proc resize(self: var DynamicArray) = 
     let new_size = 2 * self.capacity
     var new_array = newSeq[int](new_size)

@@ -71,8 +71,3 @@ The algorithms in this repository cover a broad range of categories, from sortin
   - Matrix Multiplication, Closest Pair of Points, etc.
 - **Mathematical Algorithms**
   - Prime Number Generation (Sieve of Eratosthenes), Greatest Common Divisor (GCD), etc.
-
-
-
-
-

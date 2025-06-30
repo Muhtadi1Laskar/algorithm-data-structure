@@ -64,6 +64,27 @@ proc insert(self: LinkedList, item: string, index: int) =
     self.length += 1
     return
 
+proc delete(self: LinkedList, index: int) = 
+    if index < 0 or index > self.length + 1:
+        echo "Index out of range"
+        return
+
+    if index == 1:
+        let current_node = self.head
+        self.head = current_node.next
+        self.length -= 1
+        return
+
+    var previous_node = self.head
+
+    for i in 1..<index-1:
+        previous_node = previous_node.next
+    
+    var current_node = previous_node.next
+    previous_node.next = current_node.next
+    self.length -= 1
+
+    return
 
 proc search(self: LinkedList, index: int): string = 
     if index <= 0 or index > self.length:
@@ -116,4 +137,9 @@ when isMainModule:
     list.insert("Nim", 10)
 
     echo list.log()
+
+    list.delete(10)
+
+    echo list.log()
+
 

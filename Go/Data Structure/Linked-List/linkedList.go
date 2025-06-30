@@ -36,7 +36,6 @@ func (list *LinkedList) PreAppend(data string) {
 	newNode.next = list.head
 	list.head = newNode
 	list.length++
-	return
 }
 
 func (list *LinkedList) Append(data string) {
@@ -51,7 +50,6 @@ func (list *LinkedList) Append(data string) {
 	list.tail.next = newNode
 	list.tail = newNode
 	list.length += 1
-	return
 }
 
 func (list *LinkedList) Insert(index int, data string) {
@@ -79,7 +77,6 @@ func (list *LinkedList) Insert(index int, data string) {
 	if newNode.next == nil {
 		list.tail = newNode
 	}
-	return
 }
 
 func (list *LinkedList) Delete(index int) *Node {

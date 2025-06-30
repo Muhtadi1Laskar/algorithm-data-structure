@@ -43,6 +43,29 @@ proc append(self: LinkedList, item: string) =
     current_node.next = new_node
     self.length += 1
 
+proc insert(self: LinkedList, item: string, index: int) = 
+    if index < 0 or index > self.length + 1:
+        echo "Index out of range"
+        return
+
+    if index == 1:
+        self.pre_append(item)
+        return
+
+    let new_node = Node(value: item, next: nil)
+    var previous_node = self.head
+    var i: int = 1
+
+    while i < index-1 and not previous_node.isNil:
+        previous_node = previous_node.next
+        i += 1
+    
+    new_node.next = previous_node.next
+    previous_node.next = new_node
+    self.length += 1
+    return
+
+
 proc search(self: LinkedList, index: int): string = 
     if index <= 0 or index > self.length:
         echo "Index out of range"
@@ -85,6 +108,14 @@ when isMainModule:
 
     list.pre_append("Assembly")
     list.pre_append("Machine Code")
+
+    echo list.log()
+
+    list.insert("Ruby", 9)
+
+    echo list.log()
+
+    list.insert("Nim", 10)
 
     echo list.log()
 

@@ -1,3 +1,5 @@
+import strutils 
+
 type 
     Node = ref object
         value: string
@@ -9,10 +11,10 @@ type
         length: int
 
 
-func newLinkedListBag(): BagLinkedList = 
+proc newLinkedListBag(): BagLinkedList = 
     return BagLinkedList(head: nil)
 
-func append(self: BagLinkedList, item: string) =
+proc append(self: BagLinkedList, item: string) =
     let new_node = Node(value: item, next: nil)
 
     if self.head.isNil:
@@ -28,6 +30,20 @@ func append(self: BagLinkedList, item: string) =
     current_node.next = new_node
     self.length += 1
 
+proc log(self: BagLinkedList): string = 
+    if self.head.isNil:
+        echo "The list is empty"
+        return ""
+
+    var result: seq[string] = @[]
+    var current_node = self.head
+
+    while not current_node.isNil:
+        result.add(current_node.value)
+        current_node = current_node.next
+    
+    return join(result, " ---> ")
+
 when isMainModule:
     let list = newLinkedListBag()
 
@@ -36,6 +52,6 @@ when isMainModule:
     for i in 0..<data.len:
         list.append(data[i])
     
-    echo list.head.value
+    echo list.log()
     
 

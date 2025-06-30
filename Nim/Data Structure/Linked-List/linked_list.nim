@@ -28,7 +28,6 @@ proc pre_append(self: LinkedList, item: string) =
     self.head = new_node
     self.length += 1
 
-
 proc append(self: LinkedList, item: string) = 
     let new_node = Node(value: item, next: nil)
 

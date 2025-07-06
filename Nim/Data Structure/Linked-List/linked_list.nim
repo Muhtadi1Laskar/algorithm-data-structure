@@ -1,145 +1,55 @@
-import strutils 
-
 type
     Node = ref object
+        left: Node
+        right: Node
         value: string
-        next: Node
+
 type
-    LinkedList = ref object
-        head: Node
-        length: int
+    BinarySearchTree = ref object
+        root: Node
 
-proc new_linked_list(): LinkedList =
-    LinkedList(head: nil)
+proc new_bst(): BinarySearchTree =
+    return BinarySearchTree(root: Node(left: nil, right: nil))
 
-proc add_head(self: LinkedList, node: Node) = 
-    self.head = node
-    self.length += 1
-    return
+proc insert(bst: BinarySearchTree, node: Node, value: string) = 
+    if value.len < node.value.len:
+        if node.left.isNil:
+            node.left = Node(value: value)
+        else:
+            bst.insert(node.left, value)
+    else:
+        if node.right.isNil:
+            node.right = Node(value: value)
+        else:
+            bst.insert(node.right, value)
 
-proc pre_append(self: LinkedList, item: string) =
-    let new_node = Node(value: item, next: nil)
+proc Insert(bst: BinarySearchTree, value: string) = 
+    if bst.root.isNil:
+        bst.root = Node(value: value)
+    else:
+        bst.insert(bst.root, value)
 
-    if self.head.isNil:
-        self.add_head(new_node)
-        return
-
-    new_node.next = self.head
-    self.head = new_node
-    self.length += 1
-
-proc append(self: LinkedList, item: string) = 
-    let new_node = Node(value: item, next: nil)
-
-    if self.head.isNil:
-        self.add_head(new_node)
-        return
-
-    var current_node = self.head
-
-    while not current_node.next.isNil:
-        current_node = current_node.next
-    
-    current_node.next = new_node
-    self.length += 1
-
-proc insert(self: LinkedList, item: string, index: int) = 
-    if index < 0 or index > self.length + 1:
-        echo "Index out of range"
-        return
-
-    if index == 1:
-        self.pre_append(item)
-        return
-
-    let new_node = Node(value: item, next: nil)
-    var previous_node = self.head
-
-    for i in 1..<index-1:
-        if not previous_node.isNil:
-            previous_node = previous_node.next
-    
-    new_node.next = previous_node.next
-    previous_node.next = new_node
-    self.length += 1
-    return
-
-proc delete(self: LinkedList, index: int) = 
-    if index < 0 or index > self.length + 1:
-        echo "Index out of range"
-        return
-
-    if index == 1:
-        let current_node = self.head
-        self.head = current_node.next
-        self.length -= 1
-        return
-
-    var previous_node = self.head
-
-    for i in 1..<index-1:
-        previous_node = previous_node.next
-    
-    var current_node = previous_node.next
-    previous_node.next = current_node.next
-    self.length -= 1
-
-    return
-
-proc search(self: LinkedList, index: int): string = 
-    if index <= 0 or index > self.length:
-        echo "Index out of range"
-        return ""
-
-    if self.head.isNil:
-        echo "The list is empty"
-        return ""
-
-    var current_node = self.head
-    
-    for i in 1..<index:
-        if not current_node.isNil:
-            current_node = current_node.next
-
-    return current_node.value  
-
-proc log(self: LinkedList): string = 
-    var result: seq[string] = @[]
-    var current_node = self.head
-
+proc search(bst: BinarySearchTree, value: string): string = 
+    var current_node = bst.root
     while not current_node.isNil:
-        result.add(current_node.value)
-        current_node = current_node.next
-
-    return join(result, " ---> ")
+        if value.len < current_node.value.len:
+            current_node = current_node.left
+        elif value.len > current_node.value.len:
+            current_node = current_node.right
+        else:
+            return current_node.value
+    
+    return "No data found"
+                
 
 when isMainModule:
-    let list = new_linked_list()
+    let bst = BinarySearchTree()
 
-    list.append("C")
-    list.append("JavaScript")
-    list.append("Python")
-    list.append("Haskell")
-    list.append("Clojure")
-    list.append("Odin")
+    bst.Insert("C")
+    bst.Insert("JavaScript")
+    bst.Insert("Python")
+    bst.Insert("Odin")
+    bst.Insert("Haskell")
+    bst.Insert("Machine Code")
 
-    echo  list.log()
-
-    list.pre_append("Assembly")
-    list.pre_append("Machine Code")
-
-    echo list.log()
-
-    list.insert("Ruby", 9)
-
-    echo list.log()
-
-    list.insert("Nim", 10)
-
-    echo list.log()
-
-    list.delete(10)
-
-    echo list.log()
-
-
+    echo bst.search("Python")

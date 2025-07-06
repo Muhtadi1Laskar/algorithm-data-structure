@@ -43,7 +43,7 @@ proc search(bst: BinarySearchTree, value: string): string =
                 
 
 when isMainModule:
-    let bst = BinarySearchTree()
+    let bst = new_bst()
 
     bst.Insert("C")
     bst.Insert("JavaScript")

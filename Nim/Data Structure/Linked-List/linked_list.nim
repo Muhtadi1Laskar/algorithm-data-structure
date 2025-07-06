@@ -9,7 +9,7 @@ type
         root: Node
 
 proc new_bst(): BinarySearchTree =
-    return BinarySearchTree(root: Node(left: nil, right: nil))
+    return BinarySearchTree(root: nil)
 
 proc insert(bst: BinarySearchTree, node: Node, value: string) = 
     if value.len < node.value.len:

@@ -12,7 +12,7 @@ proc new_bst(): BinarySearchTree =
     return BinarySearchTree(root: nil)
 
 proc insert(bst: BinarySearchTree, node: Node, value: string) = 
-    if value.len < node.value.len:
+    if value < node.value:
         if node.left.isNil:
             node.left = Node(value: value)
         else:
@@ -32,9 +32,9 @@ proc Insert(bst: BinarySearchTree, value: string) =
 proc search(bst: BinarySearchTree, value: string): string = 
     var current_node = bst.root
     while not current_node.isNil:
-        if value.len < current_node.value.len:
+        if value < current_node.value:
             current_node = current_node.left
-        elif value.len > current_node.value.len:
+        elif value > current_node.value:
             current_node = current_node.right
         else:
             return current_node.value

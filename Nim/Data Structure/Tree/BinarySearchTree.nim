@@ -1,5 +1,3 @@
-import strutils
-
 type
     Node = ref object
         left: Node
@@ -11,7 +9,7 @@ type
         root: Node
 
 proc new_bst(): BinarySearchTree =
-    return BinarySearchTree(root: Node(left: nil, right: nil))
+    return BinarySearchTree(root: nil)
 
 proc insert(bst: BinarySearchTree, node: Node, value: string) = 
     if value.len < node.value.len:
@@ -31,8 +29,26 @@ proc Insert(bst: BinarySearchTree, value: string) =
     else:
         bst.insert(bst.root, value)
 
+proc search(bst: BinarySearchTree, value: string): string = 
+    var current_node = bst.root
+    while not current_node.isNil:
+        if value.len < current_node.value.len:
+            current_node = current_node.left
+        elif value.len > current_node.value.len:
+            current_node = current_node.right
+        else:
+            return current_node.value
+    
+    return "No data found"
+
+proc traversal(bst: BinarySearchTree, node: Node) = 
+    if not node.isNil:
+        bst.traversal(node.left)
+        echo node.value
+        bst.traversal(node.right)              
+
 when isMainModule:
-    let bst = BinarySearchTree()
+    let bst = new_bst()
 
     bst.Insert("C")
     bst.Insert("JavaScript")
@@ -41,4 +57,6 @@ when isMainModule:
     bst.Insert("Haskell")
     bst.Insert("Machine Code")
 
-    echo bst.root.right.value
+    echo bst.search("Python"), "\n"
+
+    bst.traversal(bst.root)

@@ -40,7 +40,12 @@ proc search(bst: BinarySearchTree, value: string): string =
             return current_node.value
     
     return "No data found"
-                
+
+proc traversal(bst: BinarySearchTree, node: Node) = 
+    if not node.isNil:
+        bst.traversal(node.left)
+        echo node.value
+        bst.traversal(node.right)              
 
 when isMainModule:
     let bst = new_bst()
@@ -52,4 +57,6 @@ when isMainModule:
     bst.Insert("Haskell")
     bst.Insert("Machine Code")
 
-    echo bst.search("Python")
+    echo bst.search("Python"), "\n"
+
+    bst.traversal(bst.root)

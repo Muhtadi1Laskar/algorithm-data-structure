@@ -53,7 +53,7 @@ proc traversal(bst: BinarySearchTree, node: Node = bst.root, visited_area: strin
 
 proc traverse_in_insertion_order(bst: BinarySearchTree) = 
     for item in bst.insertion_order:
-        echo item      
+        echo item        
 
 proc breadth_first_search(bst: BinarySearchTree): seq[string] = 
     if bst.root.isNil:
@@ -65,16 +65,53 @@ proc breadth_first_search(bst: BinarySearchTree): seq[string] =
 
     while queue.len > 0:
         var current_node = queue[0]
-        queue = queue[0 ..< queue.len]
-
+        queue = queue[1 ..< queue.len]
         list.add(current_node.value)
 
-        if not current_node.left.isNil:
+        if not current_node.left.isNil:     
             queue.add(current_node.left)
         if not current_node.right.isNil:
             queue.add(current_node.right)
-
+    
     return list
+
+proc traverse_in_order(bst: BinarySearchTree, node: Node, list: var seq[string]): seq[string] = 
+    if node.isNil:
+        return list
+    discard bst.traverse_in_order(node.left, list)
+    list.add(node.value)
+    discard bst.traverse_in_order(node.right, list)
+    return list
+
+proc traverse_pre_order(bst: BinarySearchTree, node: Node, list: var seq[string]): seq[string] = 
+    if node.isNil:
+        return list
+    list.add(node.value)
+    discard bst.traverse_pre_order(node.left, list)
+    discard bst.traverse_pre_order(node.right, list)
+    return list
+
+proc traverse_post_order(bst: BinarySearchTree, node: Node, list: var seq[string]): seq[string] = 
+    if node.isNil:
+        return list
+    discard bst.traverse_post_order(node.left, list)
+    discard bst.traverse_post_order(node.right, list)
+    list.add(node.value)
+    return list
+
+proc depth_first_search(bst: BinarySearchTree, traverse_type: string): seq[string] = 
+    var list: seq[string] = @[]
+
+    case traverse_type:
+    of "in order":
+        return bst.traverse_in_order(bst.root, list)
+    of "pre order":
+        return bst.traverse_pre_order(bst.root, list)
+    of "post order":
+        return bst.traverse_post_order(bst.root, list)
+    else:
+        echo "Invalid order name"
+        return @[]
 
 when isMainModule:
     let bst = new_bst()
@@ -98,3 +135,7 @@ when isMainModule:
 
     echo " "
     echo bst.breadth_first_search()
+
+    echo bst.depth_first_search("in order"), "\n"
+    echo bst.depth_first_search("pre order"), "\n"
+    echo bst.depth_first_search("post order"), "\n"

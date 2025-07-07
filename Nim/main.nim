@@ -53,7 +53,27 @@ proc traversal(bst: BinarySearchTree, node: Node = bst.root, visited_area: strin
 
 proc traverse_in_insertion_order(bst: BinarySearchTree) = 
     for item in bst.insertion_order:
-        echo item             
+        echo item        
+
+proc breadth_first_search(bst: BinarySearchTree): seq[string] = 
+    if bst.root.isNil:
+        echo "The tree is empty"
+        return @[]
+
+    var list: seq[string] = @[]
+    var queue: seq[Node] = @[bst.root]
+
+    while queue.len > 0:
+        var current_node = queue[0]
+        queue = queue[1 ..< queue.len]
+        list.add(current_node.value)
+
+        if not current_node.left.isNil:     
+            queue.add(current_node.left)
+        if not current_node.right.isNil:
+            queue.add(current_node.right)
+    
+    return list
 
 when isMainModule:
     let bst = new_bst()
@@ -74,3 +94,6 @@ when isMainModule:
 
     echo " "
     bst.traverse_in_insertion_order()
+
+    echo " "
+    echo bst.breadth_first_search()

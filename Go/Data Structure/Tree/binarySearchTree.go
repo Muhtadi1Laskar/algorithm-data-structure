@@ -177,6 +177,8 @@ func main() {
 	bst.Insert("Odin")
 	bst.Insert("Haskell")
 	bst.Insert("Machine Code")
+	bst.Insert("Nim")
+	bst.Insert("Ruby")
 
 	fmt.Println(bst.Search("Haskell"))
 	fmt.Println(bst.BreadthFirstSearch())

@@ -46,6 +46,25 @@ proc traversal[T](bst: BinarySearchTree[T], node: Node[T] = bst.root) =
         echo node.value
         bst.traversal(node.right)
 
+proc breadth_first_search[T](bst: BinarySearchTree[T]): seq[T] = 
+    if bst.root.isNil:
+        echo "The tree is empty"
+        return @[]
+    var list: seq[T] = @[]
+    var queue: seq[Node[T]] = @[bst.root]
+
+    while queue.len > 0:
+        var current_node = queue[0]
+        queue = queue[1 ..< queue.len]
+        list.add(current_node.value)
+
+        if not current_node.left.isNil:
+            queue.add(current_node.left)
+        if not current_node.right.isNil:
+            queue.add(current_node.right)
+    
+    return list
+
 when isMainModule:
     let bst = new_bst[string]()
 
@@ -65,3 +84,6 @@ when isMainModule:
 
     echo " "
     echo bst.search("Odin")
+
+    echo " "
+    echo bst.breadth_first_search()

@@ -29,6 +29,17 @@ proc insert[T](bst: BinarySearchTree[T], value: T) =
     else:
         bst.insert_helper(bst.root, value)
 
+proc search[T](bst: BinarySearchTree[T], value: T): T = 
+    var current_node = bst.root
+
+    while not current_node.isNil:
+        if value < current_node.value:
+            current_node = current_node.left
+        elif value > current_node.value:
+            current_node = current_node.right
+        else:
+            return current_node.value
+
 proc traversal[T](bst: BinarySearchTree[T], node: Node[T] = bst.root) = 
     if not node.isNil:
         bst.traversal(node.left)
@@ -36,7 +47,7 @@ proc traversal[T](bst: BinarySearchTree[T], node: Node[T] = bst.root) =
         bst.traversal(node.right)
 
 when isMainModule:
-    let bst = new_bst[int]()
+    let bst = new_bst[string]()
 
     bst.insert("C")
     bst.insert("JavaScript")
@@ -51,3 +62,6 @@ when isMainModule:
     #     bst.insert(i)
 
     bst.traversal(bst.root)
+
+    echo " "
+    echo bst.search("Odin")

@@ -65,6 +65,28 @@ proc breadth_first_search[T](bst: BinarySearchTree[T]): seq[T] =
     
     return list
 
+proc traverse_in_order[T](bst: BinarySearchTree[T], node: Node[T], list: var seq[T]): seq[T] = 
+    if node.isNil:
+        return list
+    discard bst.traverse_in_order(node.left, list)
+    list.add(node.value)
+    discard bst.traverse_in_order(node.right, list)
+    return list
+
+proc depth_first_search[T](bst: BinarySearchTree[T], traverse_type: string): seq[T] = 
+    var list: seq[T] = @[]
+
+    case traverse_type:
+    of "in order":
+        return bst.traverse_in_order(bst.root, list)
+    of "pre order":
+        return bst.traverse_pre_order(bst.root, list)
+    of "post order":
+        return bst.traverse_post_order(bst.root, list)
+    else:
+        echo "Invalid order name"
+        return @[]
+
 when isMainModule:
     let bst = new_bst[string]()
 
@@ -87,3 +109,8 @@ when isMainModule:
 
     echo " "
     echo bst.breadth_first_search()
+
+
+    echo bst.depth_first_search("in order"), "\n"
+    echo bst.depth_first_search("pre order"), "\n"
+    echo bst.depth_first_search("post order"), "\n"

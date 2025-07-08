@@ -1,56 +1,45 @@
-import strutils
-
 type
     Node[T] = ref object
+        left: Node[T]
+        right: Node[T]
         value: T
-        next: Node[T]
 
 type 
-    LinkedList[T] = ref object
-        head: Node[T]
-        length: int
+    BinarySearchTree[T] = ref object
+        root: Node[T]
 
-proc new_linked_list[T](): LinkedList[T] = 
-    return LinkedList[T](head: nil, length: 0)
+proc new_bst[T](): BinarySearchTree[T] = 
+    return BinarySearchTree[T](root: nil)
 
-proc append[T](self: LinkedList[T], value: T) = 
-    var new_node = Node[T](value: value)
+proc insert_helper[T](bst: BinarySearchTree[T], node: Node[T], value: T) = 
+    if value < node.value:
+        if node.left.isNil:
+            node.left = Node[T](value: value)
+        else:
+            bst.insert_helper(node.left, value)
+    else:
+        if node.right.isNil:
+            node.right = Node[T](value: value)
+        else:
+            bst.insert_helper(node.right, value)
 
-    if self.head.isNil:
-        self.head = new_node
-        self.length += 1
-        return
+proc Insert[T](bst: BinarySearchTree[T], value: T) = 
+    if bst.root.isNil:
+        bst.root = Node[T](value: value)
+    else:
+        bst.insert_helper(bst.root, value)
 
-    var current_node = self.head
-
-    while not current_node.next.isNil:
-        current_node = current_node.next
-
-    current_node.next = new_node
-    self.length += 1
-    return
-
-proc log[T](self: LinkedList[T]): string = 
-    var result: seq[string] = @[]
-    var current_node = self.head
-
-    while not current_node.isNil:
-        result.add($current_node.value)
-        current_node = current_node.next
-
-    return join(result, " ---> ")
 
 when isMainModule:
-    let list = new_linked_list[int]()
-    
-    # list.append("C")
-    # list.append("JavaScript")
-    # list.append("Python")
-    # list.append("Haskell")
-    # list.append("Clojure")
-    # list.append("Odin")
+    let bst = new_bst[string]()
 
-    for i in 1 ..< 10:
-        list.append(i)
+    bst.Insert("C")
+    bst.Insert("JavaScript")
+    bst.Insert("Python")
+    bst.Insert("Odin")
+    bst.Insert("Haskell")
+    bst.Insert("Machine Code")
+    bst.Insert("Nim")
+    bst.Insert("Ruby")
 
-    echo  list.log()
+    echo bst.root.right.value

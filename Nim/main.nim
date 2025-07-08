@@ -81,6 +81,14 @@ proc traverse_pre_order[T](bst: BinarySearchTree[T], node: Node[T], list: var se
     discard bst.traverse_pre_order(node.right, list)
     return list
 
+proc traverse_post_order[T](bst: BinarySearchTree[T], node: Node[T], list: var seq[T]): seq[T] =
+    if node.isNil:
+        return list
+    discard bst.traverse_post_order(node.left, list)
+    discard bst.traverse_post_order(node.right, list)
+    list.add(node.value)
+    return list
+
 proc depth_first_search[T](bst: BinarySearchTree[T], traverse_type: string): seq[T] = 
     var list: seq[T] = @[]
 

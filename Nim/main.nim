@@ -29,6 +29,11 @@ proc Insert[T](bst: BinarySearchTree[T], value: T) =
     else:
         bst.insert_helper(bst.root, value)
 
+proc traversal[T](bst: BinarySearchTree[T], node: Node[T] = bst.root) = 
+    if not node.isNil:
+        bst.traversal(node.left)
+        echo node.value
+        bst.traversal(node.right)
 
 when isMainModule:
     let bst = new_bst[string]()
@@ -42,4 +47,4 @@ when isMainModule:
     bst.Insert("Nim")
     bst.Insert("Ruby")
 
-    echo bst.root.right.value
+    bst.traversal(bst.root)

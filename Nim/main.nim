@@ -23,7 +23,7 @@ proc insert_helper[T](bst: BinarySearchTree[T], node: Node[T], value: T) =
         else:
             bst.insert_helper(node.right, value)
 
-proc Insert[T](bst: BinarySearchTree[T], value: T) = 
+proc insert[T](bst: BinarySearchTree[T], value: T) = 
     if bst.root.isNil:
         bst.root = Node[T](value: value)
     else:
@@ -36,15 +36,18 @@ proc traversal[T](bst: BinarySearchTree[T], node: Node[T] = bst.root) =
         bst.traversal(node.right)
 
 when isMainModule:
-    let bst = new_bst[string]()
+    let bst = new_bst[int]()
 
-    bst.Insert("C")
-    bst.Insert("JavaScript")
-    bst.Insert("Python")
-    bst.Insert("Odin")
-    bst.Insert("Haskell")
-    bst.Insert("Machine Code")
-    bst.Insert("Nim")
-    bst.Insert("Ruby")
+    bst.insert("C")
+    bst.insert("JavaScript")
+    bst.insert("Python")
+    bst.insert("Odin")
+    bst.insert("Haskell")
+    bst.insert("Machine Code")
+    bst.insert("Nim")
+    bst.insert("Ruby")
+
+    # for i in 0 ..< 10:
+    #     bst.insert(i)
 
     bst.traversal(bst.root)

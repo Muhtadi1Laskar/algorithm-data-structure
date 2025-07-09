@@ -40,11 +40,13 @@ proc search[T](bst: BinarySearchTree[T], value: T): T =
         else:
             return current_node.value
 
-proc traversal[T](bst: BinarySearchTree[T], node: Node[T] = bst.root) = 
-    if not node.isNil:
-        bst.traversal(node.left)
-        echo node.value
-        bst.traversal(node.right)
+proc traversal[T](bst: BinarySearchTree[T]) = 
+    proc walk(node: Node[T]) = 
+        if not node.isNil:
+            walk(node.left)
+            echo node.value 
+            walk(node.right)
+    walk(bst.root)
 
 proc breadth_first_search[T](bst: BinarySearchTree[T]): seq[T] = 
     if bst.root.isNil:
@@ -118,7 +120,7 @@ when isMainModule:
     # for i in 0 ..< 10:
     #     bst.insert(i)
 
-    bst.traversal(bst.root)
+    bst.traversal()
 
     echo " "
     echo bst.search("Odin")

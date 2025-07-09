@@ -36,8 +36,9 @@ proc insert[T](bst: BinarySearchTree[T], value: T) =
     else:
         bst.insert_helper(bst.root, value)
 
-proc search[T](bst: BinarySearchTree[T], value: T): int = 
+proc search[T](bst: BinarySearchTree[T], value: T): Table[string, int] = 
     var current_node = bst.root
+    var result: Table[string, int] = initTable[string, int]()
 
     while not current_node.isNil:
         if value.name < current_node.value.name:
@@ -45,7 +46,8 @@ proc search[T](bst: BinarySearchTree[T], value: T): int =
         elif value.name > current_node.value.name:
             current_node = current_node.right
         else:
-            return current_node.value.number
+            result[current_node.value.name] = current_node.value.number 
+            return result
 
 proc traversal[T](bst: BinarySearchTree[T], node: Node[T] = bst.root) = 
     if not node.isNil:
@@ -120,12 +122,12 @@ when isMainModule:
     bst.insert(Contact(name: "Usopp", number: 01775900737))
     bst.insert(Contact(name: "Chopper", number: 01775900737))
     bst.insert(Contact(name: "Robin", number: 01775900737))
-    bst.insert(Contact(name: "Franku", number: 01775900737))
+    bst.insert(Contact(name: "Franky", number: 01775900737))
 
     # bst.traversal(bst.root)
 
     echo " "
-    echo bst.search(Contact(name: "Zoro"))
+    echo bst.search(Contact(name: "Luffy"))
 
     echo " "
     # for i in bst.breadth_first_search():

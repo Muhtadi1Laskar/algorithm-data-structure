@@ -155,6 +155,24 @@ class BinarySearchTree {
         }
     }
 
+    iterativeDFS() {
+        const stack = [];
+        const result = [];
+        let currentNode = this.root;
+
+        while(currentNode !== null || stack.length > 0) {
+            while(currentNode !== null) {
+                stack.push(currentNode)
+                currentNode = currentNode.left;
+            }
+            currentNode = stack.pop();
+            
+            result.push(currentNode.value);
+            currentNode = currentNode.right;
+        }
+        return result;
+    }
+
     height() {
         return this._height(this.root);
     }
@@ -187,3 +205,5 @@ console.log(bst.dfsInOrder());
 console.log(bst.depth('Python'));
 
 console.log(bst.height());
+
+console.log(bst.iterativeDFS());

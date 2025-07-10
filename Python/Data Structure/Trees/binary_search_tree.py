@@ -95,6 +95,22 @@ class BinarySearchTree:
             li += self._postorder(node.right)
             li.append(node.value)
         return li
+
+    def iterative_dfs(self): 
+        result = []
+        stack = []
+        current_node = self.root
+
+        while current_node is not None or len(stack) > 0:
+            while current_node is not None:
+                stack.append(current_node)
+                current_node = current_node.left
+            current_node = stack.pop()
+            result.append(current_node.value)
+
+            current_node = current_node.right
+        
+        return result
     
     def sums(self, current_node):
         if current_node is None:
@@ -138,6 +154,7 @@ bst.insert('C')
 bst.insert('JavaScript')
 bst.insert('Python')
 bst.insert('Odin')
+bst.insert('Zig')
 bst.insert('Haskell')
 
 print(bst.preorder())
@@ -147,3 +164,5 @@ print(bst.preorder())
 # print(bst.sums(bst.root))
 
 print(bst.depth('Python'))
+
+print(bst.iterative_dfs())

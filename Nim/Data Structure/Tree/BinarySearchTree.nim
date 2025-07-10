@@ -105,6 +105,21 @@ proc depth_first_search[T](bst: BinarySearchTree[T], traverse_type: string): seq
         echo "Invalid order name"
         return @[]
 
+proc iterative_dfs[T](bst: BinarySearchTree[T]): seq[T] = 
+    var result: seq[T] = @[]
+    var stack: seq[Node[T]] = @[]
+    var current_node = bst.root
+
+    while not current_node.isNil or stack.len > 0:
+        while not current_node.isNil:
+            stack.add(current_node)
+            current_node = current_node.left
+        current_node = stack.pop()
+        result.add(current_node.value)
+
+        current_node = current_node.right
+    return result
+
 when isMainModule:
     let bst = new_bst[string]()
 
@@ -113,6 +128,7 @@ when isMainModule:
     bst.insert("Python")
     bst.insert("Odin")
     bst.insert("Haskell")
+    bst.insert("Zig")
     bst.insert("Machine Code")
     bst.insert("Nim")
     bst.insert("Ruby")
@@ -132,3 +148,5 @@ when isMainModule:
     echo bst.depth_first_search("in order"), "\n"
     echo bst.depth_first_search("pre order"), "\n"
     echo bst.depth_first_search("post order"), "\n"
+
+    echo bst.iterative_dfs()

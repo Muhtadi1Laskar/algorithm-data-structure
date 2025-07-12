@@ -8,8 +8,8 @@ proc new_array(capacity: int): DynamicArray =
     DynamicArray(capacity: capacity, data: newSeq[int](capacity), length: 0)
 
 proc resize(self: var DynamicArray) = 
-    let new_size = 2 * self.capacity
-    var new_array = newSeq[int](new_size)
+    let new_size: int = 2 * self.capacity
+    var new_array: seq[int] = newSeq[int](new_size)
 
     for i in 0..<self.data.len: 
         new_array[i] = self.data[i]

@@ -1,3 +1,5 @@
+import std/[strutils]
+
 type 
     Node[T] = ref object
         value: T
@@ -25,6 +27,16 @@ proc add[T](stack: Stack[T], value: T) =
     stack.length += 1
     return
 
+proc log[T](stack: Stack[T]): string = 
+    var stack_value: seq[string] = @[]
+    var current_node: Node[string] = stack.top
+
+    while not current_node.isNil:
+        stack_value.add(current_node.value)
+        current_node = current_node.next
+
+    return join(stack_value, " <---- ")
+
 
 when isMainModule:
     let stack: Stack[string] = new_stack[string]()
@@ -38,3 +50,5 @@ when isMainModule:
     stack.add("Robin")
     stack.add("Franky")
     stack.add("Brook")
+
+    echo stack.log()

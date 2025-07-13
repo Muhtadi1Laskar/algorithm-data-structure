@@ -56,7 +56,7 @@ proc breadth_first_search[T](bst: BinarySearchTree[T]): seq[T] =
     var queue: seq[Node[T]] = @[bst.root]
 
     while queue.len > 0:
-        var current_node = queue[0]
+        var current_node: Node[system.string] = queue[0]
         queue = queue[1 ..< queue.len]
         list.add(current_node.value)
 

@@ -39,8 +39,8 @@ proc to_string(self: var Bag): string =
     result = $self.bag
 
 when isMainModule:
-    var bags = new_bag()
-    let data = ["Jack", "Mike", "Jenny", "Randall", "Natasha", "Milley"]
+    var bags: Bag = new_bag()
+    let data: array[0..5, string] = ["Jack", "Mike", "Jenny", "Randall", "Natasha", "Milley"]
 
     for i in 0..<data.len:
         bags.push(data[i])

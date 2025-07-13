@@ -1,4 +1,4 @@
-import strutils, math, sequtils
+import sequtils
 
 type
   HashMap = ref object
@@ -6,7 +6,7 @@ type
     size: int
 
 proc hash(self: HashMap, key: string): int =
-  var hashs = 0
+  var hashs: int = 0
   for ch in key:
     hashs = ((hashs shl 5) - hashs) + ord(ch)
     hashs = hashs and 0xffffffff
@@ -16,8 +16,8 @@ proc new_hash_map(): HashMap =
   result = HashMap(arr: newSeqWith(16, newSeq[string]()), size: 16)
 
 proc set(self: HashMap, key: string, value: string) =
-  let index = self.hash(key) mod self.size
-  var bin = self.arr[index]
+  let index: int = self.hash(key) mod self.size
+  var bin: seq[string] = self.arr[index]
 
   for i in 0 ..< bin.len:
     if bin[i] == key:
@@ -30,8 +30,8 @@ proc set(self: HashMap, key: string, value: string) =
   self.arr[index] = bin
 
 proc get(self: HashMap, key: string): string =
-  let index = self.hash(key) mod self.size
-  let bin = self.arr[index]
+  let index: int = self.hash(key) mod self.size
+  let bin: seq[string] = self.arr[index]
 
   var i = 0
   while i < bin.len:
@@ -43,9 +43,9 @@ proc get(self: HashMap, key: string): string =
 
 
 when isMainModule:
-  let hash_map = new_hash_map()
+  let hash_map: HashMap = new_hash_map()
 
-  let data = [
+  let data: array[0..5, (string, string)] = [
     ("Name", "Luffy"),
     ("Occupation", "Pirate"),
     ("Age", "20"),

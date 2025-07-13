@@ -1,9 +1,9 @@
 proc binary_search(arr: seq[int], item: int): int = 
-    var l = 0
-    var r = arr.len - 1
+    var l: int = 0
+    var r: int = arr.len - 1
 
     while l <= r:
-        var mid = l + (r - l) div 2
+        var mid: int = l + (r - l) div 2
 
         if arr[mid] == item:
             return mid

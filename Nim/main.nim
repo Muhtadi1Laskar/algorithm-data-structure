@@ -19,6 +19,11 @@ proc pop[T](stack: Stack[T]) =
     if stack.top > -1:
         stack.top -= 1
 
+proc peak[T](stack: Stack[T]): string = 
+    if stack.top < -1:
+        return "The stack is empty"
+    return stack.stack[stack.top]
+
 when isMainModule:
     let stack: Stack[string] = new_stack[string]()
 
@@ -31,6 +36,7 @@ when isMainModule:
     echo stack.stack
 
     stack.pop()
+    echo stack.peak()
     stack.push("Flask")
 
     echo stack.stack

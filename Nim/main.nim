@@ -14,7 +14,7 @@ type
 proc new_stack[T](): Stack[T] = 
     return Stack[T](top: nil, length: 0)
 
-proc add[T](stack: Stack[T], value: T) = 
+proc push[T](stack: Stack[T], value: T) = 
     var new_node: Node[string] = Node[T](value: value)
 
     if stack.top.isNil:
@@ -26,6 +26,14 @@ proc add[T](stack: Stack[T], value: T) =
     stack.top = new_node
     stack.length += 1
     return
+
+proc remove[T](stack: Stack[T]) = 
+    if stack.top.isNil:
+        echo "The stack is empty"
+        return 
+
+    stack.top = stack.top.next
+    stack.length -= 1
 
 proc log[T](stack: Stack[T]): string = 
     var stack_value: seq[string] = @[]
@@ -41,14 +49,20 @@ proc log[T](stack: Stack[T]): string =
 when isMainModule:
     let stack: Stack[string] = new_stack[string]()
 
-    stack.add("Luffy")
-    stack.add("Zoro")
-    stack.add("Nami")
-    stack.add("Usopp")
-    stack.add("Sanji")
-    stack.add("Chopper")
-    stack.add("Robin")
-    stack.add("Franky")
-    stack.add("Brook")
+    stack.push("Luffy")
+    stack.push("Zoro")
+    stack.push("Nami")
+    stack.push("Usopp")
+    stack.push("Sanji")
+    stack.push("Chopper")
+    stack.push("Robin")
+    stack.push("Franky")
+    stack.push("Brook")
+
+    echo stack.log()
+
+    stack.remove()
+    stack.remove()
+    stack.remove()
 
     echo stack.log()

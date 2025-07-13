@@ -18,7 +18,7 @@ proc add_head(self: LinkedList, node: Node) =
     return
 
 proc pre_append(self: LinkedList, item: string) =
-    let new_node = Node(value: item, next: nil)
+    let new_node: Node = Node(value: item, next: nil)
 
     if self.head.isNil:
         self.add_head(new_node)
@@ -29,13 +29,13 @@ proc pre_append(self: LinkedList, item: string) =
     self.length += 1
 
 proc append(self: LinkedList, item: string) = 
-    let new_node = Node(value: item, next: nil)
+    let new_node: Node = Node(value: item, next: nil)
 
     if self.head.isNil:
         self.add_head(new_node)
         return
 
-    var current_node = self.head
+    var current_node: Node = self.head
 
     while not current_node.next.isNil:
         current_node = current_node.next
@@ -52,8 +52,8 @@ proc insert(self: LinkedList, item: string, index: int) =
         self.pre_append(item)
         return
 
-    let new_node = Node(value: item, next: nil)
-    var previous_node = self.head
+    let new_node: Node = Node(value: item, next: nil)
+    var previous_node: Node = self.head
 
     for i in 1..<index-1:
         if not previous_node.isNil:
@@ -70,17 +70,17 @@ proc delete(self: LinkedList, index: int) =
         return
 
     if index == 1:
-        let current_node = self.head
+        let current_node: Node = self.head
         self.head = current_node.next
         self.length -= 1
         return
 
-    var previous_node = self.head
+    var previous_node: Node = self.head
 
     for i in 1..<index-1:
         previous_node = previous_node.next
     
-    var current_node = previous_node.next
+    var current_node: Node = previous_node.next
     previous_node.next = current_node.next
     self.length -= 1
 
@@ -95,7 +95,7 @@ proc search(self: LinkedList, index: int): string =
         echo "The list is empty"
         return ""
 
-    var current_node = self.head
+    var current_node: Node = self.head
     
     for i in 1..<index:
         if not current_node.isNil:
@@ -104,17 +104,17 @@ proc search(self: LinkedList, index: int): string =
     return current_node.value  
 
 proc log(self: LinkedList): string = 
-    var result: seq[string] = @[]
-    var current_node = self.head
+    var arr: seq[string] = @[]
+    var current_node: Node = self.head
 
     while not current_node.isNil:
-        result.add(current_node.value)
+        arr.add(current_node.value)
         current_node = current_node.next
 
-    return join(result, " ---> ")
+    return join(arr, " ---> ")
 
 when isMainModule:
-    let list = new_linked_list()
+    let list: LinkedList = new_linked_list()
 
     list.append("C")
     list.append("JavaScript")

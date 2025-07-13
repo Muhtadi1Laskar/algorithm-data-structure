@@ -19,7 +19,7 @@ proc add_edge(self: Graph, u: string, v: string) =
     self.length += 1
 
 when isMainModule:
-    let graph = new_graph()
+    let graph: Graph = new_graph()
 
     graph.add_edge("A", "B")
     graph.add_edge("A", "C")

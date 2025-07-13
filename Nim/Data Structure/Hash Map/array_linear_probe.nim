@@ -1,7 +1,7 @@
-import strutils, math, sequtils
+import sequtils
 
-const EMPTY_KEY = "<empty>"
-const DELETED_KEY = "<deleted>"
+const EMPTY_KEY: string = "<empty>"
+const DELETED_KEY: string = "<deleted>"
 
 type
   Entry = object
@@ -14,7 +14,7 @@ type
     count: int
 
 proc hash(key: string, capacity: int): int =
-  var h = 0
+  var h: int = 0
   for ch in key:
     h = ((h shl 5) - h) + ord(ch)
     h = h and 0xffffffff
@@ -28,11 +28,11 @@ proc newHashMap(capacity = 16): HashMap =
   )
 
 proc set(self: HashMap, key, value: string) =
-  var idx = hash(key, self.capacity)
-  var i = 0
+  var idx: int = hash(key, self.capacity)
+  var i: int = 0
 
   while i < self.capacity:
-    let current = self.table[idx]
+    let current: Entry = self.table[idx]
 
     if current.key == EMPTY_KEY or current.key == DELETED_KEY or current.key == key:
       self.table[idx] = Entry(key: key, value: value)
@@ -45,11 +45,11 @@ proc set(self: HashMap, key, value: string) =
   echo "HashMap is full"
 
 proc get(self: HashMap, key: string): string =
-  var idx = hash(key, self.capacity)
-  var i = 0
+  var idx: int = hash(key, self.capacity)
+  var i: int = 0
 
   while i < self.capacity:
-    let current = self.table[idx]
+    let current: Entry = self.table[idx]
 
     if current.key == EMPTY_KEY:
       break
@@ -62,11 +62,11 @@ proc get(self: HashMap, key: string): string =
   return "Key not found"
 
 proc delete(self: HashMap, key: string) =
-  var idx = hash(key, self.capacity)
-  var i = 0
+  var idx: int = hash(key, self.capacity)
+  var i: int = 0
 
   while i < self.capacity:
-    let current = self.table[idx]
+    let current: Entry = self.table[idx]
     if current.key == EMPTY_KEY:
       break
     if current.key == key:
@@ -78,7 +78,7 @@ proc delete(self: HashMap, key: string) =
     inc i
 
 when isMainModule:
-  let hm = newHashMap()
+  let hm: HashMap = newHashMap()
 
   hm.set("name", "Luffy")
   hm.set("age", "20")

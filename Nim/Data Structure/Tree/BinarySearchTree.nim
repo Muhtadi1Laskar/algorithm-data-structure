@@ -106,7 +106,7 @@ proc depth_first_search[T](bst: BinarySearchTree[T], traverse_type: string): seq
         return @[]
 
 proc iterative_dfs[T](bst: BinarySearchTree[T]): seq[T] = 
-    var result: seq[T] = @[]
+    var arr: seq[T] = @[]
     var stack: seq[Node[T]] = @[]
     var current_node = bst.root
 
@@ -115,13 +115,13 @@ proc iterative_dfs[T](bst: BinarySearchTree[T]): seq[T] =
             stack.add(current_node)
             current_node = current_node.left
         current_node = stack.pop()
-        result.add(current_node.value)
+        arr.add(current_node.value)
 
         current_node = current_node.right
-    return result
+    return arr
 
 when isMainModule:
-    let bst = new_bst[string]()
+    let bst: BinarySearchTree[system.string] = new_bst[string]()
 
     bst.insert("C")
     bst.insert("JavaScript")

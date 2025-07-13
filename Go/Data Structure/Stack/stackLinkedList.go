@@ -33,7 +33,6 @@ func (s *StackList) Push(item string) {
 	newNode.next = s.top
 	s.top = newNode
 	s.length++
-	return
 }
 
 func (s *StackList) Log() string {
@@ -60,7 +59,6 @@ func (s *StackList) Pop() {
 	currentNode := s.top
 	s.top = currentNode.next
 	s.length--
-	return
 }
 
 func (s *StackList) Peak() string {

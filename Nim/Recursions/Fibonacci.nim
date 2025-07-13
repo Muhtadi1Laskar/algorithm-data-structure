@@ -23,12 +23,12 @@ proc fib_iter(n: int): int =
         return 1
 
     var
-        a = 0
-        b = 1
-        sum = 1 
+        a: int = 0
+        b: int = 1
+        sum: int = 1 
 
     for i in 2..n:
-        let next = a + b
+        let next: int = a + b
         sum += next
         a = b
         b = next
@@ -37,7 +37,7 @@ proc fib_iter(n: int): int =
 
 
 when isMainModule:
-    var memoTable = initTable[int, int]()
+    var memoTable: Table[system.int, system.int] = initTable[int, int]()
 
     echo "Fibonacci(10): ", fibMemo(10, memoTable)
     echo "Fibonacci(20): ", fibMemo(20, memoTable)

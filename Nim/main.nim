@@ -24,6 +24,11 @@ proc peak[T](stack: Stack[T]): string =
         return "The stack is empty"
     return stack.stack[stack.top]
 
+proc get_length[T](stack: Stack[T]): int = 
+    if stack.top < 0:
+        return 0
+    return stack.stack.len
+
 when isMainModule:
     let stack: Stack[string] = new_stack[string]()
 

@@ -32,7 +32,6 @@ func (q *Queue) Enqueue(value string) {
 	newNode.next = q.top
 	q.top = newNode
 	q.len++
-	return
 }
 
 func (q *Queue) Dequeue() string {

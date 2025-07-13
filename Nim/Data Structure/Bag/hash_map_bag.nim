@@ -1,6 +1,4 @@
-import strutils 
 import std/tables
-import std/algorithm
 
 type 
     HashMapBag = ref object
@@ -34,7 +32,7 @@ proc greatest(self: HashMapBag): seq[string] =
     if self.bag.len == 0:
         return @[]
 
-    var maxCount = 0
+    var maxCount: int = 0
     for value in self.bag.values:
         if value > maxCount:
             maxCount = value
@@ -45,7 +43,7 @@ proc greatest(self: HashMapBag): seq[string] =
             result.add(k)
 
 when isMainModule:
-    let bag = new_hash_map_bag()
+    let bag: HashMapBag = new_hash_map_bag()
 
     bag.add("React")
     bag.add("React")

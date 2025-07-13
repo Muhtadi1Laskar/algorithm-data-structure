@@ -40,6 +40,9 @@ proc peak[T](stack: Stack[T]): string =
         return "The stack is empty"
     return stack.top.value
 
+proc get_len[T](stack: Stack[T]): int = 
+    return stack.length
+
 proc log[T](stack: Stack[T]): string = 
     var stack_value: seq[string] = @[]
     var current_node: Node[string] = stack.top
@@ -73,3 +76,4 @@ when isMainModule:
 
     echo stack.log()
     echo stack.peak()
+    echo stack.get_len()

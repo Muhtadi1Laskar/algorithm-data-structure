@@ -50,6 +50,6 @@ func main() {
 	graph.AddEdge("C", "E")
 	graph.AddEdge("D", "F")
 	graph.AddEdge("E", "F")
-	
+
 	fmt.Println(graph.BFS("A"))
 }

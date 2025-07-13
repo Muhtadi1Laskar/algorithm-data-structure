@@ -30,7 +30,7 @@ proc insert[T](bst: BinarySearchTree[T], value: T) =
         bst.insert_helper(bst.root, value)
 
 proc search[T](bst: BinarySearchTree[T], value: T): T = 
-    var current_node = bst.root
+    var current_node: Node[system.string] = bst.root
 
     while not current_node.isNil:
         if value < current_node.value:

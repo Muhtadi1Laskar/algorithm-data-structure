@@ -1,16 +1,14 @@
-import std/sequtils
-
 proc solve(goal: int, standing: seq[int], score: int, chosenForSum: seq[int]): seq[int] =
   if score == goal:
     return chosenForSum
   elif score > goal or standing.len == 0:
-    return seq[int](nil)
+    return @[]
   else:
-    let currentNum = standing[0]
-    let remainingNums = standing[1 ..< standing.len]
-    let resultIfChosen = solve(goal, remainingNums, currentNum + score, chosenForSum & @[currentNum])
+    let currentNum: int = standing[0]
+    let remainingNums: seq[int] = standing[1 ..< standing.len]
+    let resultIfChosen: seq[int] = solve(goal, remainingNums, currentNum + score, chosenForSum & @[currentNum])
 
-    if resultIfChosen != nil:
+    if resultIfChosen.len > 0:
       return resultIfChosen
     
     return solve(goal, remainingNums, score, chosenForSum) 

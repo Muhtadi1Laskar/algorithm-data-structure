@@ -1,4 +1,4 @@
-const size = 10
+const size: int = 10
 
 type
     Array = ref object

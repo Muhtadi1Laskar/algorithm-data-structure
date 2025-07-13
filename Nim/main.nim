@@ -15,6 +15,10 @@ proc push[T](stack: Stack[T], item: T) =
     stack.top += 1
     stack.stack[stack.top] = item
 
+proc pop[T](stack: Stack[T]) = 
+    if stack.top > -1:
+        stack.top -= 1
+
 when isMainModule:
     let stack: Stack[string] = new_stack[string]()
 
@@ -23,5 +27,10 @@ when isMainModule:
     stack.push("Solid.js")
     stack.push("Apline.js")
     stack.push("Django")
+
+    echo stack.stack
+
+    stack.pop()
+    stack.push("Flask")
 
     echo stack.stack

@@ -35,6 +35,11 @@ proc remove[T](stack: Stack[T]) =
     stack.top = stack.top.next
     stack.length -= 1
 
+proc peak[T](stack: Stack[T]): string = 
+    if stack.top.isNil:
+        return "The stack is empty"
+    return stack.top.value
+
 proc log[T](stack: Stack[T]): string = 
     var stack_value: seq[string] = @[]
     var current_node: Node[string] = stack.top
@@ -60,9 +65,11 @@ when isMainModule:
     stack.push("Brook")
 
     echo stack.log()
+    echo stack.peak()
 
     stack.remove()
     stack.remove()
     stack.remove()
 
     echo stack.log()
+    echo stack.peak()

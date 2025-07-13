@@ -14,14 +14,14 @@ proc newLinkedListBag(): BagLinkedList =
     return BagLinkedList(head: nil)
 
 proc append(self: BagLinkedList, item: string) =
-    let new_node = Node(value: item, next: nil)
+    let new_node: Node = Node(value: item, next: nil)
 
     if self.head.isNil:
         self.head = new_node
         self.length += 1
         return
 
-    var current_node = self.head
+    var current_node: Node = self.head
 
     while not current_node.next.isNil:
         current_node = current_node.next
@@ -35,18 +35,18 @@ proc delete(self: BagLinkedList, index: int) =
         return
 
     if index == 1:
-        let current_node = self.head.next
+        let current_node: Node = self.head.next
         self.head = current_node
         self.length -= 1
         return
 
-    var previous_node = self.head
+    var previous_node: Node = self.head
 
     for i in 1 ..< index-1:
         if not previous_node.isNil:
             previous_node = previous_node.next
     
-    var current_node = previous_node.next
+    var current_node: Node = previous_node.next
     previous_node.next = current_node.next
     self.length -= 1
     return
@@ -56,7 +56,7 @@ proc search(self: BagLinkedList, index: int): string =
         echo "Index out of range"
         return " "
     
-    var current_node = self.head
+    var current_node: Node = self.head
     var idx: int = 1
 
     while not current_node.isNil:
@@ -76,7 +76,7 @@ proc log(self: BagLinkedList): string =
         return ""
 
     var result: seq[string] = @[]
-    var current_node = self.head
+    var current_node: Node = self.head
 
     while not current_node.isNil:
         result.add(current_node.value)
@@ -85,9 +85,9 @@ proc log(self: BagLinkedList): string =
     return join(result, " ---> ")
 
 when isMainModule:
-    let list = newLinkedListBag()
+    let list: BagLinkedList = newLinkedListBag()
 
-    let data = ["Jack", "Mike", "Jenny", "Randall", "Natasha", "Milley"]
+    let data: array[0..5, string] = ["Jack", "Mike", "Jenny", "Randall", "Natasha", "Milley"]
 
     for i in 0..<data.len:
         list.append(data[i])

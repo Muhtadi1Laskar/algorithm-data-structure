@@ -75,14 +75,14 @@ proc log(self: BagLinkedList): string =
         echo "The list is empty"
         return ""
 
-    var result: seq[string] = @[]
+    var arr: seq[string] = @[]
     var current_node: Node = self.head
 
     while not current_node.isNil:
-        result.add(current_node.value)
+        arr.add(current_node.value)
         current_node = current_node.next
     
-    return join(result, " ---> ")
+    return join(arr, " ---> ")
 
 when isMainModule:
     let list: BagLinkedList = newLinkedListBag()

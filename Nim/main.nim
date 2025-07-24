@@ -12,30 +12,47 @@ type
 proc new_bst(): BinarySearchTree = 
     return BinarySearchTree(root: nil)
 
-
-proc insertHelper(node: Node, value: string) = 
+proc insertHelper(bst: BinarySearchTree, node: Node, value: string) = 
     if value < node.value:
         if node.left.isNil:
-            var newNode: Node = Node(value: value)
-            node.left = newNode
+            node.left = Node(value: value)
         else:
-            insertHelper(node.left, value)
+            bst.insertHelper(node.left, value)
     else:
         if node.right.isNil:
-            if node.right.isNil:
-                var newNode: Node = Node(value: value)
-                node.right = newNode
-            else:
-                insertHelper(node.right, value)
+            node.right = Node(value: value)
+        else:
+            bst.insertHelper(node.right, value)
     
 
 proc insert(bst: BinarySearchTree, value: string) = 
     if bst.root.isNil:
-        var newNode: Node = Node(left: nil, right: nil, value: value)
-        bst.root = newNode
+        bst.root = Node(value: value)
         return
     else:
-        insertHelper(bst.root, value)
+        bst.insertHelper(bst.root, value)
+
+proc traversal(bst: BinarySearchTree) = 
+    proc walk(node: Node) = 
+        if not node.isNil:
+            walk(node.left)
+            echo node.value
+            walk(node.right) 
+        
+    walk(bst.root)
+
+proc search(bst: BinarySearchTree, value: string): string = 
+    var currentNode: Node = bst.root
+
+    while not currentNode.isNil:
+        if value < currentNode.value:
+            currentNode = currentNode.left
+        elif value > currentNode.value:
+            currentNode = currentNode.right
+        else:
+            return currentNode.value
+    return "The item is not available in the tree"
+
 
 
 when isMainModule:
@@ -51,5 +68,8 @@ when isMainModule:
     bst.insert("Nim")
     bst.insert("Ruby")
 
-    echo bst.root.value
+    bst.traversal()
+
+    echo ""
+    echo bst.search("Nim")
 

@@ -53,7 +53,23 @@ proc search(bst: BinarySearchTree, value: string): string =
             return currentNode.value
     return "The item is not available in the tree"
 
+proc bfs(bst: BinarySearchTree): seq[string] = 
+    if bst.root.isNil:
+        echo "The tree is empty"
+        return @[]
+    var arr: seq[string] = @[]
+    var queue: seq[Node] = @[bst.root]
 
+    while queue.len > 0:
+        var currentNode: Node = queue[0]
+        queue = queue[1 ..< queue.len]
+        arr.add(currentNode.value)
+
+        if not currentNode.left.isNil:
+            queue.add(currentNode.left)
+        if not currentNode.right.isNil:
+            queue.add(currentNode.right)
+    return arr
 
 when isMainModule:
     var bst: BinarySearchTree = new_bst()
@@ -72,4 +88,6 @@ when isMainModule:
 
     echo ""
     echo bst.search("Nim")
+
+    echo bst.bfs()
 

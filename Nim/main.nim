@@ -1,3 +1,5 @@
+import algorithm
+
 type
     Node = ref object
         left: Node
@@ -104,6 +106,19 @@ proc count(bst: BinarySearchTree): int =
             return 0
         return (1 + calculate(node.left) + calculate(node.right))
     return calculate(bst.root)
+
+proc buildFullBST(arr: seq[string], start, endIdx: int): Node = 
+    if start > endIdx:
+        return nil
+    let mid: int = (start + endIdx) div 2
+    let root: Node = Node(value: arr[mid])
+    root.left = buildFullBST(arr, start, mid - 1)
+    root.right = buildFullBST(arr, mid + 1, endIdx)
+    return root
+
+proc createFullBST(bst: BinarySearchTree, arr: seq[string]): BinarySearchTree = 
+    let sortedArr: seq[string] = sorted(arr)
+    BinarySearchTree(root: buildFullBST(sortedArr, 0, sortedArr.len - 1))
 
 when isMainModule:
     var bst: BinarySearchTree = new_bst()

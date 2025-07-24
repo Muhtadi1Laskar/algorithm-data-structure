@@ -131,6 +131,12 @@ proc isFullTree(bst: BinarySearchTree): bool =
         return false
     return checkFull(bst.root)
 
+proc count(bst: BinarySearchTree): int = 
+    proc calculate(node: Node): int = 
+        if node.isNil:
+            return 0
+        return (1 + calculate(node.left) + calculate(node.right))
+    return calculate(bst.root)
 
 when isMainModule:
     let bst: BinarySearchTree[system.string] = new_bst[string]()

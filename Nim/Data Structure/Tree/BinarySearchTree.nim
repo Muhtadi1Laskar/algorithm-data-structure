@@ -108,7 +108,7 @@ proc depth_first_search[T](bst: BinarySearchTree[T], traverse_type: string): seq
 proc iterative_dfs[T](bst: BinarySearchTree[T]): seq[T] = 
     var arr: seq[T] = @[]
     var stack: seq[Node[T]] = @[]
-    var current_node = bst.root
+    var current_node: Node[system.string] = bst.root
 
     while not current_node.isNil or stack.len > 0:
         while not current_node.isNil:
@@ -119,6 +119,18 @@ proc iterative_dfs[T](bst: BinarySearchTree[T]): seq[T] =
 
         current_node = current_node.right
     return arr
+
+proc isFullTree(bst: BinarySearchTree): bool =
+    proc checkFull(node: Node): bool =
+        if node.isNil:
+            return true
+        if node.left.isNil and node.right.isNil:
+            return true
+        if not node.left.isNil and not node.right.isNil:
+            return (checkFull(node.left) and checkFull(node.right))
+        return false
+    return checkFull(bst.root)
+
 
 when isMainModule:
     let bst: BinarySearchTree[system.string] = new_bst[string]()

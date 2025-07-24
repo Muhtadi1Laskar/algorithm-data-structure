@@ -87,6 +87,24 @@ proc iterativeDFS(bst: BinarySearchTree): seq[string] =
     
     return arr
 
+proc isFullTree(bst: BinarySearchTree): bool =
+    proc checkFull(node: Node): bool =
+        if node.isNil:
+            return true
+        if node.left.isNil and node.right.isNil:
+            return true
+        if not node.left.isNil and not node.right.isNil:
+            return (checkFull(node.left) and checkFull(node.right))
+        return false
+    return checkFull(bst.root)
+
+proc count(bst: BinarySearchTree): int = 
+    proc calculate(node: Node): int = 
+        if node.isNil:
+            return 0
+        return (1 + calculate(node.left) + calculate(node.right))
+    return calculate(bst.root)
+
 when isMainModule:
     var bst: BinarySearchTree = new_bst()
 
@@ -99,6 +117,7 @@ when isMainModule:
     bst.insert("Machine Code")
     bst.insert("Nim")
     bst.insert("Ruby")
+    bst.insert("Odin")
 
     bst.traversal()
 
@@ -107,4 +126,8 @@ when isMainModule:
 
     echo bst.bfs()
     echo bst.iterativeDFS()
+
+    echo bst.isFullTree()
+
+    echo bst.count()
 

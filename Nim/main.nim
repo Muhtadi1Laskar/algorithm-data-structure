@@ -71,6 +71,22 @@ proc bfs(bst: BinarySearchTree): seq[string] =
             queue.add(currentNode.right)
     return arr
 
+proc iterativeDFS(bst: BinarySearchTree): seq[string] = 
+    var arr: seq[string] = @[]
+    var stack: seq[Node] = @[]
+    var currentNode: Node = bst.root
+
+    while not currentNode.isNil or stack.len > 0:
+        while not currentNode.isNil:
+            stack.add(currentNode)
+            currentNode = currentNode.left
+        currentNode = stack.pop()
+        arr.add(currentNode.value)
+
+        currentNode = currentNode.right
+    
+    return arr
+
 when isMainModule:
     var bst: BinarySearchTree = new_bst()
 
@@ -90,4 +106,5 @@ when isMainModule:
     echo bst.search("Nim")
 
     echo bst.bfs()
+    echo bst.iterativeDFS()
 

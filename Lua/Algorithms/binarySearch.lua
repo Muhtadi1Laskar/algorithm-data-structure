@@ -2,19 +2,19 @@ function binarySearch(array, item)
     local l = 1
     local r = #array
     print(item)
-
+    
     while l <= r do
         local mid = math.floor((l + r) / 2)
-
+        
         if array[mid] == item then
             return mid
         elseif array[mid] > item then
             r = mid - 1
-        else 
+        else
             l = mid + 1
         end
     end
-
+    
     return nil
 end
 

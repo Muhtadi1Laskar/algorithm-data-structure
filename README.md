@@ -33,6 +33,7 @@ This repository aims to help developers and learners dive deeper into the world 
 - **Python**
 - **Ruby**
 - **Nim**
+- **Lua**
 
 ## What You'll Find
 

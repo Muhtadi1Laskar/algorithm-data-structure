@@ -1,13 +1,13 @@
 function selectionSort(array)
     for i = 1, #array, 1 do
-        min = i
-
+        local min = i
+        
         for j = i + 1, #array, 1 do
             if array[j] < array[min] then
                 min = j
             end
         end
-
+        
         if min ~= i then
             temp = array[i]
             array[i] = array[min]

@@ -14,7 +14,6 @@ function bogosort!(arr)
     return arr
 end
 
-# Example usage:
 my_array = [3, 1, 4, 1, 5, 9, 2, 6]
 println("Original array: ", my_array)
 bogosort!(my_array)

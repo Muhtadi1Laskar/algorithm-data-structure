@@ -20,4 +20,3 @@ bogosort xs = do
     if isSorted shuffledList
         then return shuffledList
         else bogosort xs
-        

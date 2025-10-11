@@ -32,6 +32,9 @@ proc build(leaves: seq[string]): seq[seq[string]] =
     
     return levels
 
+proc getRoot(self: MerkleTree): string = 
+    return self.root
+
 
 
 

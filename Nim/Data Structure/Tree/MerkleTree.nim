@@ -36,9 +36,14 @@ proc getRoot(self: MerkleTree): string =
     return self.root
 
 
-
-
 proc newMerkleTree(leaves: seq[string]): MerkleTree = 
-    var tree = MerkleTree(leaves: leaves)
+    var tree: MerkleTree = MerkleTree(leaves: leaves)
 
+    tree.levels = build(leaves)
+
+    if tree.levels.len > 0 and tree.levels[^1].len > 0:
+        tree.root = tree.levels[^1][0]
+    else:
+        tree.root = ""
+        
     return tree

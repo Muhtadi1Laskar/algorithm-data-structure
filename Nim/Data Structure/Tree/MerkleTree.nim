@@ -57,6 +57,6 @@ when isMainModule:
         "The root hash summarizes the entire dataset."
     ]
 
-    var tree: MerkleTree = MerkleTree(data)
+    var tree: MerkleTree = newMerkleTree(data)
 
     echo "\n Root Hash: ", tree.getRoot()

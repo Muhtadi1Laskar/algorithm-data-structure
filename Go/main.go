@@ -6,6 +6,12 @@ import (
 	"fmt"
 )
 
+type MerkleTree struct {
+	leaves []string
+	levels [][]string
+	root   string
+}
+
 func hashFunction(text string) string {
 	byteMessage := []byte(text)
 	hash := sha256.New()
@@ -16,10 +22,19 @@ func hashFunction(text string) string {
 	return hex.EncodeToString(hashedBytes)
 }
 
-type MerkleTree struct {
-	leaves []string
-	levels [][]string
-	root string
+func mapHash(data []string) []string {
+	var hashes []string = make([]string, len(data))
+	for i := 0; i < len(data); i++ {
+		hashes[i] = hashFunction(data[i])
+	}
+	return hashes
+}
+
+func newMerkleTree(leaves []string) *MerkleTree {
+	tree := &MerkleTree{leaves: leaves}
+	tree.levels = tree.build(leaves)
+	tree.root = tree.levels[len(tree.levels)-1][0]
+	return tree
 }
 
 func (tree *MerkleTree) build(leaves []string) [][]string {
@@ -27,16 +42,18 @@ func (tree *MerkleTree) build(leaves []string) [][]string {
 		return [][]string{}
 	}
 	var levels [][]string = [][]string{leaves}
-	var currentLevel []string = leaves
+	var currentLevel []string = mapHash(leaves)
 
-	for len(currentLevel) > 0 {
+	levels = append(levels, currentLevel)
+
+	for len(currentLevel) > 1 {
 		var nextLevel []string = []string{}
-		for i := 0; i < len(currentLevel) - 1; i += 2 {
-			if i + 1 < len(currentLevel) {
+		for i := 0; i < len(currentLevel); i += 2 {
+			if i+1 < len(currentLevel) {
 				hash := hashFunction(currentLevel[i] + currentLevel[i+1])
 				nextLevel = append(nextLevel, hash)
 			} else {
-				nextLevel = append(nextLevel, hashFunction(currentLevel[i] + currentLevel[i]))
+				nextLevel = append(nextLevel, hashFunction(currentLevel[i]+currentLevel[i]))
 			}
 		}
 		levels = append(levels, nextLevel)
@@ -45,18 +62,19 @@ func (tree *MerkleTree) build(leaves []string) [][]string {
 	return levels
 }
 
-func newMerkleTree(leaves []string) *MerkleTree {
-	tree := &MerkleTree{leaves: leaves} 
-	tree.levels = tree.build(leaves)
-	
-	if len(leaves) > 0 {
-		tree.root = tree.levels[len(tree.levels)][0]
-	}
-	return tree
+func (tree *MerkleTree) getRoot() string {
+	return tree.root
 }
 
 func main() {
-	var data string = "This is a text"
+	var data []string = []string{
+		"Blockchain ensures data integrity through consensus.",
+		"Merkle trees allow efficient verification of data chunks.",
+		"Each leaf node represents a hashed data block.",
+		"Parent nodes store hashes of their children.",
+		"The root hash summarizes the entire dataset.",
+	}
+	tree := newMerkleTree(data)
 
-	fmt.Println(hashFunction(data))
+	fmt.Println("Root Hash: ", tree.getRoot())
 }

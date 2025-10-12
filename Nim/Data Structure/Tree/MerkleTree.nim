@@ -47,3 +47,16 @@ proc newMerkleTree(leaves: seq[string]): MerkleTree =
         tree.root = ""
         
     return tree
+
+when isMainModule:
+    let data: seq[string] = @[
+        "Blockchain ensures data integrity through consensus.",
+        "Merkle trees allow efficient verification of data chunks.",
+        "Each leaf node represents a hashed data block.",
+        "Parent nodes store hashes of their children.",
+        "The root hash summarizes the entire dataset."
+    ]
+
+    var tree: MerkleTree = MerkleTree(data)
+
+    echo "\n Root Hash: ", tree.getRoot()

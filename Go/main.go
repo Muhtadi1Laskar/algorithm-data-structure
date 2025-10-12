@@ -13,13 +13,8 @@ type MerkleTree struct {
 }
 
 func hashFunction(text string) string {
-	byteMessage := []byte(text)
-	hash := sha256.New()
-	hash.Write(byteMessage)
-
-	hashedBytes := hash.Sum(nil)
-
-	return hex.EncodeToString(hashedBytes)
+	hash := sha256.Sum256([]byte(text))
+	return hex.EncodeToString(hash[:])
 }
 
 func mapHash(data []string) []string {

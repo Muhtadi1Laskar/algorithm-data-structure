@@ -5,7 +5,7 @@ func binarySearch(array []int, item int) int {
 	var r int = len(array) - 1
 
 	for l <= r {
-		var mid int = l - (r-1) / 2
+		var mid int = l + (r-l) / 2
 
 		if array[mid] == item {
 			return mid

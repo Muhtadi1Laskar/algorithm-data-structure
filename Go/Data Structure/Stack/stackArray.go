@@ -10,7 +10,10 @@ type Stack struct {
 }
 
 func NewStack() *Stack {
-	return &Stack{array: [5]string{}, top: -1}
+	return &Stack{
+		array: [5]string{},
+		top:   -1,
+	}
 }
 
 func (s *Stack) Push(item string) {

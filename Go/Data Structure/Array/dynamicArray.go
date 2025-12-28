@@ -11,7 +11,11 @@ type DynamicArray struct {
 }
 
 func NewDynamicArray(arraySize int) *DynamicArray {
-	return &DynamicArray{size: arraySize, arr: make([]string, arraySize), len: 0}
+	return &DynamicArray{
+		size: arraySize, 
+		arr: make([]string, arraySize), 
+		len: 0,
+	}
 }
 
 func (arr *DynamicArray) Push(item string) {
